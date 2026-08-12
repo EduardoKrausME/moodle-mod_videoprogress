@@ -61,4 +61,3 @@ class caption_form extends moodleform {
         $this->add_action_buttons(true, get_string("addcaption", "videoprogress"));
     }
 }
-

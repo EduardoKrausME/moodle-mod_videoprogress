@@ -74,4 +74,3 @@ class rebuild_viewmaps extends scheduled_task {
         $activities->close();
     }
 }
-

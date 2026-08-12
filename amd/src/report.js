@@ -78,4 +78,3 @@ define(["jquery", "core/str"], function ($, Str) {
 
     return {init: init};
 });
-

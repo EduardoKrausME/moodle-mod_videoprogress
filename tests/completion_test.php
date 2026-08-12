@@ -44,4 +44,3 @@ class completion_test extends \advanced_testcase {
         $this->assertFalse($manager->is_complete($activity, $progress));
     }
 }
-

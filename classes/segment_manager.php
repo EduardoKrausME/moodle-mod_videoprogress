@@ -190,4 +190,3 @@ class segment_manager {
         return $normalised ? (float)end($normalised)[1] : 0.0;
     }
 }
-

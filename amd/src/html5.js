@@ -211,4 +211,3 @@ define(["jquery"], function ($) {
 
     return Html5Adapter;
 });
-

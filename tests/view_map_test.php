@@ -56,4 +56,3 @@ class view_map_test extends \advanced_testcase {
         $this->assertEquals(20, $insights["dropoff"]["start"]);
     }
 }
-

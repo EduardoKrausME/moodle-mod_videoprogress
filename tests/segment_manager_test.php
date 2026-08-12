@@ -82,4 +82,3 @@ class segment_manager_test extends \advanced_testcase {
         $this->assertSame([[0.0, 100.0]], segment_manager::normalise(array_reverse($segments)));
     }
 }
-

@@ -62,4 +62,3 @@ define(["jquery", "mod_videoprogress/html5"], function ($, Html5Adapter) {
 
     return HlsAdapter;
 });
-

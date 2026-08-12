@@ -40,4 +40,3 @@ $addons = [
         "lang" => [["pluginname", "videoprogress"]],
     ],
 ];
-

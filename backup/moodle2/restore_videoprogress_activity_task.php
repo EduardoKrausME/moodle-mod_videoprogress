@@ -79,4 +79,3 @@ class restore_videoprogress_activity_task extends restore_activity_task {
         return [];
     }
 }
-

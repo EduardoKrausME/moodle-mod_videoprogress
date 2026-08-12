@@ -53,4 +53,3 @@ class backup_videoprogress_activity_task extends backup_activity_task {
         return $content;
     }
 }
-

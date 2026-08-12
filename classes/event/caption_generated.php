@@ -65,4 +65,3 @@ class caption_generated extends base {
         ]);
     }
 }
-

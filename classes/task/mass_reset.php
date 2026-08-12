@@ -68,4 +68,3 @@ class mass_reset extends adhoc_task {
         }
     }
 }
-

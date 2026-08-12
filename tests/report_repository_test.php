@@ -50,4 +50,3 @@ class report_repository_test extends \advanced_testcase {
         $this->assertEquals(1, $result["total"]);
     }
 }
-

@@ -41,4 +41,3 @@ define(["jquery", "core/notification", "core/str"], function ($, Notification, S
     };
     return {init: init};
 });
-

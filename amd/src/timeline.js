@@ -33,4 +33,3 @@ define(["jquery"], function ($) {
 
     return {init: init};
 });
-

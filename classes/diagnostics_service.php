@@ -150,4 +150,3 @@ class diagnostics_service {
         return $result;
     }
 }
-

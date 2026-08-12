@@ -53,4 +53,3 @@ class report_access {
         return (bool)array_intersect(array_keys($allowed), array_keys($usergroups));
     }
 }
-

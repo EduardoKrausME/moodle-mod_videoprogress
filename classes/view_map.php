@@ -130,4 +130,3 @@ class view_map {
         ];
     }
 }
-

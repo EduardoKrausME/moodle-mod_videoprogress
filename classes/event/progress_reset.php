@@ -66,4 +66,3 @@ class progress_reset extends base {
         ]);
     }
 }
-

@@ -80,4 +80,3 @@ class report_exporter {
         $csv->download_file();
     }
 }
-
