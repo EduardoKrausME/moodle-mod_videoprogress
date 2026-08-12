@@ -90,7 +90,7 @@ class report_service {
             $pages[] = [
                 "number" => $page + 1,
                 "active" => $page === $filters->page,
-                "url" => (string)new moodle_url('/mod/videoprogress/report.php', $baseparams + ["page" => $page]),
+                "url" => (string)new moodle_url('/mod/videoprogress/report/report.php', $baseparams + ["page" => $page]),
             ];
         }
         $views = view_map::decode($this->activity->aggregateviewmap ?? '');
@@ -110,7 +110,7 @@ class report_service {
                 "started" => (int)$video->started,
                 "completed" => (int)$video->completed,
                 "averagepercent" => (int)round((float)$video->averagepercent),
-                "url" => (string)new moodle_url('/mod/videoprogress/report.php', ["id" => $video->cmid]),
+                "url" => (string)new moodle_url('/mod/videoprogress/report/report.php', ["id" => $video->cmid]),
                 "timeline" => format::timeline($video->aggregateviewmap, (float)$video->duration, true),
             ];
         }
@@ -142,14 +142,14 @@ class report_service {
             "pagination" => [
                 "pages" => $pages,
                 "hasprevious" => $filters->page > 0,
-                "previousurl" => (new moodle_url('/mod/videoprogress/report.php',
+                "previousurl" => (new moodle_url('/mod/videoprogress/report/report.php',
                     $baseparams + ["page" => max(0, $filters->page - 1)]))->out(false),
                 "hasnext" => $filters->page + 1 < $pagecount,
-                "nexturl" => (new moodle_url('/mod/videoprogress/report.php',
+                "nexturl" => (new moodle_url('/mod/videoprogress/report/report.php',
                     $baseparams + ["page" => min($pagecount - 1, $filters->page + 1)]))->out(false),
             ],
-            "exporturl" => (string)new moodle_url('/mod/videoprogress/export.php', $baseparams),
-            "massreseturl" => (string)new moodle_url('/mod/videoprogress/reset.php', $baseparams + ["mass" => 1]),
+            "exporturl" => (string)new moodle_url('/mod/videoprogress/report/export.php', $baseparams),
+            "massreseturl" => (string)new moodle_url('/mod/videoprogress/report/reset.php', $baseparams + ["mass" => 1]),
             "canreset" => has_capability('mod/videoprogress:resetprogress', context_module::instance($this->cm->id)),
             "canexport" => has_capability('mod/videoprogress:exportreport', context_module::instance($this->cm->id)),
             "datatableconfig" => json_encode([
@@ -193,7 +193,7 @@ class report_service {
             "timelinealternative" => format::segment_alternative($record->watchedsegments),
             "detailsurl" => (new moodle_url('/mod/videoprogress/report/user.php',
                 ["id" => $this->cm->id, "userid" => $record->id]))->out(false),
-            "reseturl" => (new moodle_url('/mod/videoprogress/reset.php',
+            "reseturl" => (new moodle_url('/mod/videoprogress/report/reset.php',
                 ["id" => $this->cm->id, "userid" => $record->id]))->out(false),
         ];
     }
@@ -222,7 +222,7 @@ class report_service {
             ];
         }
         return [
-            "action" => (string)new moodle_url('/mod/videoprogress/report.php'),
+            "action" => (string)new moodle_url('/mod/videoprogress/report/report.php'),
             "cmid" => $this->cm->id,
             "search" => s($filters->search),
             "groups" => $groupoptions,

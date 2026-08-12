@@ -25,7 +25,7 @@
 use mod_videoprogress\report_exporter;
 use mod_videoprogress\report_repository;
 
-require('../../config.php');
+require('../../../config.php');
 
 $id = required_param("id", PARAM_INT);
 $cm = get_coursemodule_from_id("videoprogress", $id, 0, false, MUST_EXIST);

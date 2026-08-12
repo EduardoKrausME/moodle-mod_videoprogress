@@ -60,11 +60,6 @@ foreach ($repository->get_sessions($userid) as $session) {
         ]),
     ];
 }
-$objectives = (new \mod_videoprogress\objective\manager())->get_student_items(
-    $activity->id,
-    $context,
-    $cm->id
-);
 $percent = $progress ? (float)$progress->percent : 0;
 $templatedata = [
     "activityname" => format_string($activity->name),
@@ -84,13 +79,11 @@ $templatedata = [
     "timelinealternative" => format::segment_alternative($progress->watchedsegments ?? ''),
     "sessions" => $sessions,
     "hassessions" => (bool)$sessions,
-    "objectives" => $objectives,
-    "hasobjectives" => (bool)$objectives,
     "confirmation" => !empty($progress->confirmation),
     "confirmationtime" => !empty($progress->confirmationtime) ? userdate($progress->confirmationtime) : '',
     "canreset" => has_capability('mod/videoprogress:resetprogress', $context),
-    "reseturl" => (string)new moodle_url('/mod/videoprogress/reset.php', ["id" => $cm->id, "userid" => $userid]),
-    "backurl" => (string)new moodle_url('/mod/videoprogress/report.php', ["id" => $cm->id]),
+    "reseturl" => (string)new moodle_url('/mod/videoprogress/report/reset.php', ["id" => $cm->id, "userid" => $userid]),
+    "backurl" => (string)new moodle_url('/mod/videoprogress/report/report.php', ["id" => $cm->id]),
 ];
 
 $PAGE->set_url('/mod/videoprogress/report/user.php', ["id" => $cm->id, "userid" => $userid]);

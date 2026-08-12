@@ -159,7 +159,7 @@ $templatedata = [
         "sesskey" => sesskey(),
     ],
     "canviewreport" => has_capability('mod/videoprogress:viewreport', $context),
-    "reporturl" => (string)new moodle_url('/mod/videoprogress/report.php', ["id" => $cm->id]),
+    "reporturl" => (string)new moodle_url('/mod/videoprogress/report/report.php', ["id" => $cm->id]),
     "canmanageresources" => has_capability('mod/videoprogress:managematerials', $context) ||
         has_capability('mod/videoprogress:managecontent', $context) ||
         has_capability('mod/videoprogress:manageobjectives', $context),

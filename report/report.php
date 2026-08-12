@@ -25,7 +25,7 @@
 use mod_videoprogress\report_repository;
 use mod_videoprogress\report_service;
 
-require('../../config.php');
+require('../../../config.php');
 
 $id = required_param("id", PARAM_INT);
 $cm = get_coursemodule_from_id("videoprogress", $id, 0, false, MUST_EXIST);
@@ -56,7 +56,7 @@ foreach ($templatedata["coursevideos"] as &$video) {
 }
 unset($video);
 
-$PAGE->set_url('/mod/videoprogress/report.php', ["id" => $cm->id] + $filters->url_params());
+$PAGE->set_url('/mod/videoprogress/report/report.php', ["id" => $cm->id] + $filters->url_params());
 $PAGE->set_title(get_string("reporttitle", "videoprogress"));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
