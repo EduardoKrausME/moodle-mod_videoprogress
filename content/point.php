@@ -25,6 +25,7 @@
 use mod_videoprogress\content\manager;
 use mod_videoprogress\content\timecode;
 use mod_videoprogress\form\point_form;
+use mod_videoprogress\player_config;
 
 require('../../../config.php');
 
@@ -57,12 +58,25 @@ if ($mform->is_cancelled()) {
     $manager->save_point($activity->id, $point, $data);
     redirect($returnurl, get_string("pointsaved", "videoprogress"));
 }
+
+$player = player_config::build($activity, $context);
+$playerclientconfig = $player;
+unset($playerclientconfig["sourcetemplate"]);
+$player["sourcehtml"] = $OUTPUT->render_from_template($player["sourcetemplate"], ["player" => $player]);
+
+$PAGE->requires->js_call_amd('mod_videoprogress/point', 'init');
+
 echo $OUTPUT->header();
-echo $OUTPUT->render_from_template('mod_videoprogress/form_page', [
+echo $OUTPUT->render_from_template('mod_videoprogress/point_form_page', [
     "backurl" => $returnurl->out(false),
     "eyebrow" => format_string($activity->name),
     "title" => $point ? get_string("editpoint", "videoprogress") : get_string("addpoint", "videoprogress"),
     "description" => get_string("pointformhelp", "videoprogress"),
     "formhtml" => $mform->render(),
+    "player" => $player,
+    "configjson" => json_encode(
+        $playerclientconfig,
+        JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT
+    ),
 ]);
 echo $OUTPUT->footer();

@@ -169,6 +169,80 @@
   padding: 1.25rem;
 }
 
+.videoprogress-point-form-page {
+  color: #172235;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.videoprogress-point-form-page__layout {
+  align-items: start;
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.85fr);
+  margin-top: 1.5rem;
+}
+
+.videoprogress-point-timepicker {
+  background: #fff;
+  border: 1px solid #dce4ee;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(24, 49, 83, 0.08);
+  padding: 1rem;
+  position: sticky;
+  top: 1rem;
+}
+.videoprogress-point-timepicker .videoprogress-player-card {
+  border: 0;
+  box-shadow: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.videoprogress-point-timepicker__header {
+  margin-bottom: 1rem;
+}
+.videoprogress-point-timepicker__header h3 {
+  font-size: 1.1rem;
+  margin: 0 0 0.35rem;
+}
+.videoprogress-point-timepicker__header p {
+  color: #617086;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.videoprogress-point-timepicker__controls {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.videoprogress-point-timepicker__time {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.videoprogress-point-timepicker__time > span {
+  color: #617086;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.videoprogress-point-timepicker__time strong {
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 991.98px) {
+  .videoprogress-point-form-page__layout {
+    grid-template-columns: 1fr;
+  }
+  .videoprogress-point-timepicker {
+    position: static;
+  }
+}
 .videoprogress-player-card {
   background: #fff;
   border: 1px solid #dce4ee;
