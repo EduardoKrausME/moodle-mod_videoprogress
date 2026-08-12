@@ -26,6 +26,7 @@ use mod_videoprogress\source\manager;
 
 defined('MOODLE_INTERNAL') || die();
 
+global $CFG;
 require_once($CFG->dirroot . '/course/moodleform_mod.php');
 
 /**
@@ -36,6 +37,8 @@ class mod_videoprogress_mod_form extends moodleform_mod {
      * Defines the fields, defaults, dependencies, and actions displayed by the Moodle form.
      *
      * @return void This method does not return a value.
+     * @throws coding_exception
+     * @throws moodle_exception
      */
     public function definition(): void {
         $mform = $this->_form;
@@ -106,6 +109,7 @@ class mod_videoprogress_mod_form extends moodleform_mod {
      * @param mixed $data Validated input or tracking data.
      * @param mixed $files Files submitted with the Moodle form.
      * @return array Structured data produced by the operation.
+     * @throws coding_exception
      */
     public function validation($data, $files): array {
         $errors = parent::validation($data, $files);
@@ -122,6 +126,8 @@ class mod_videoprogress_mod_form extends moodleform_mod {
      *
      * @param mixed $defaultvalues defaultvalues value used by the operation.
      * @return void This method does not return a value.
+     * @throws coding_exception
+     * @throws moodle_exception
      */
     public function data_preprocessing(&$defaultvalues): void {
         foreach (["completionpercent", "requireconfirmation"] as $field) {
@@ -145,6 +151,7 @@ class mod_videoprogress_mod_form extends moodleform_mod {
      * Adds the custom completion percentage controls to the activity form.
      *
      * @return array Structured data produced by the operation.
+     * @throws coding_exception
      */
     public function add_completion_rules(): array {
         $mform = $this->_form;
