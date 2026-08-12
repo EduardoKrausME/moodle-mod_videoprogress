@@ -34,16 +34,13 @@
 }}
 
 <div class="videoprogress-index">
-    <span class="videoprogress-eyebrow">{{coursename}}</span>
     <h2>{{#str}} modulenameplural, videoprogress {{/str}}</h2>
     {{#hasactivities}}
         <div class="videoprogress-index__list">
             {{#activities}}
                 <article>
-                    <div>
-                        <h3><a href="{{viewurl}}">{{name}}</a></h3>
-                        <p>{{#str}} indexrequirement, videoprogress, {{{completionpercent}}} {{/str}}</p>
-                    </div>
+                    <h3><a href="{{viewurl}}">{{name}}</a></h3>
+                    <p>{{#str}} indexrequirement, videoprogress, {{{completionpercent}}} {{/str}}</p>
                     {{#canreport}}
                         <a href="{{reporturl}}" class="btn btn-outline-primary">{{#str}}viewreport, videoprogress {{/str}}</a>
                     {{/canreport}}

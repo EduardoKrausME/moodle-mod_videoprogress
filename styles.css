@@ -36,15 +36,6 @@
   margin: 0;
 }
 
-.videoprogress-eyebrow {
-  color: #1469d2;
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 750;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
 .videoprogress-view__actions,
 .videoprogress-report__actions,
 .videoprogress-row-actions,

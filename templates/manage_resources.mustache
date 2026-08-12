@@ -32,21 +32,33 @@
 
 <div class="videoprogress-manage">
     <a href="{{backurl}}" class="videoprogress-report__back">{{#str}} backtovideo, videoprogress {{/str}}</a>
-    <span class="videoprogress-eyebrow">{{activityname}}</span>
     <h2>{{#str}} manageresources, videoprogress {{/str}}</h2>
     <p>{{#str}} manageresourceshelp, videoprogress {{/str}}</p>
     <div class="videoprogress-manage__cards">
+        {{#cancaptions}}
+            <a class="btn btn-outline-secondary"
+               href="{{captionsurl}}">
+                <strong>{{#str}}managecaptions, videoprogress {{/str}}</strong>
+                <span>{{#str}}managecaptionshelp, videoprogress {{/str}}</span>
+            </a>
+        {{/cancaptions}}
         {{#canobjectives}}
-            <a href="{{objectivesurl}}"><strong>{{#str}} learningobjectives, videoprogress {{/str}}</strong>
-                <span>{{#str}}manageobjectiveshelp, videoprogress {{/str}}</span></a>
+            <a href="{{objectivesurl}}">
+                <strong>{{#str}} learningobjectives, videoprogress {{/str}}</strong>
+                <span>{{#str}}manageobjectiveshelp, videoprogress {{/str}}</span>
+            </a>
         {{/canobjectives}}
         {{#canmaterials}}
-            <a href="{{materialsurl}}"><strong>{{#str}} supportmaterials, videoprogress {{/str}}</strong>
-                <span>{{#str}}managematerialshelp, videoprogress {{/str}}</span></a>
+            <a href="{{materialsurl}}">
+                <strong>{{#str}} supportmaterials, videoprogress {{/str}}</strong>
+                <span>{{#str}}managematerialshelp, videoprogress {{/str}}</span>
+            </a>
         {{/canmaterials}}
         {{#cancontent}}
-            <a href="{{contenturl}}"><strong>{{#str}} videocontent, videoprogress {{/str}}</strong>
-                <span>{{#str}}managecontenthelp, videoprogress {{/str}}</span></a>
+            <a href="{{contenturl}}">
+                <strong>{{#str}} videocontent, videoprogress {{/str}}</strong>
+                <span>{{#str}}managecontenthelp, videoprogress {{/str}}</span>
+            </a>
         {{/cancontent}}
     </div>
 </div>

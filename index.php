@@ -44,9 +44,9 @@ foreach ($modinfo->get_instances_of("videoprogress") as $cm) {
     $activities[] = [
         "name" => format_string($activity->name),
         "completionpercent" => $activity->completionpercent,
-        "viewurl" => (new moodle_url('/mod/videoprogress/view.php', ["id" => $cm->id]))->out(false),
+        "viewurl" => new moodle_url('/mod/videoprogress/view.php', ["id" => $cm->id]),
         "canreport" => has_capability('mod/videoprogress:viewreport', $context),
-        "reporturl" => (new moodle_url('/mod/videoprogress/report.php', ["id" => $cm->id]))->out(false),
+        "reporturl" => (string)new moodle_url('/mod/videoprogress/report.php', ["id" => $cm->id]),
     ];
 }
 echo $OUTPUT->header();

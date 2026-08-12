@@ -43,8 +43,8 @@ $PAGE->set_context($context);
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template('mod_videoprogress/manage_content', [
     "activityname" => format_string($activity->name),
-    "backurl" => (new moodle_url('/mod/videoprogress/manage.php', ["id" => $cm->id]))->out(false),
-    "addpointurl" => (new moodle_url('/mod/videoprogress/content/point.php', ["id" => $cm->id]))->out(false),
+    "backurl" => new moodle_url('/mod/videoprogress/manage.php', ["id" => $cm->id]),
+    "addpointurl" => new moodle_url('/mod/videoprogress/content/point.php', ["id" => $cm->id]),
     "points" => $points,
     "haspoints" => (bool)$points,
 ]);

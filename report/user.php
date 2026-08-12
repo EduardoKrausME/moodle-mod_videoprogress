@@ -89,8 +89,8 @@ $templatedata = [
     "confirmation" => !empty($progress->confirmation),
     "confirmationtime" => !empty($progress->confirmationtime) ? userdate($progress->confirmationtime) : '',
     "canreset" => has_capability('mod/videoprogress:resetprogress', $context),
-    "reseturl" => (new moodle_url('/mod/videoprogress/reset.php', ["id" => $cm->id, "userid" => $userid]))->out(false),
-    "backurl" => (new moodle_url('/mod/videoprogress/report.php', ["id" => $cm->id]))->out(false),
+    "reseturl" => (string)new moodle_url('/mod/videoprogress/reset.php', ["id" => $cm->id, "userid" => $userid]),
+    "backurl" => (string)new moodle_url('/mod/videoprogress/report.php', ["id" => $cm->id]),
 ];
 
 $PAGE->set_url('/mod/videoprogress/report/user.php', ["id" => $cm->id, "userid" => $userid]);

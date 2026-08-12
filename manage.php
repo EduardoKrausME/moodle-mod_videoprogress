@@ -44,12 +44,14 @@ $PAGE->set_context($context);
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template('mod_videoprogress/manage_resources', [
     "activityname" => format_string($activity->name),
-    "backurl" => (new moodle_url('/mod/videoprogress/view.php', ["id" => $cm->id]))->out(false),
+    "backurl" => (string)new moodle_url('/mod/videoprogress/view.php', ["id" => $cm->id]),
     "canmaterials" => $canmaterials,
-    "materialsurl" => (new moodle_url('/mod/videoprogress/materials.php', ["id" => $cm->id]))->out(false),
+    "materialsurl" => (string)new moodle_url('/mod/videoprogress/materials.php', ["id" => $cm->id]),
     "cancontent" => $cancontent,
-    "contenturl" => (new moodle_url('/mod/videoprogress/content.php', ["id" => $cm->id]))->out(false),
+    "contenturl" => (string)new moodle_url('/mod/videoprogress/content.php', ["id" => $cm->id]),
     "canobjectives" => $canobjectives,
-    "objectivesurl" => (new moodle_url('/mod/videoprogress/objectives.php', ["id" => $cm->id]))->out(false),
+    "objectivesurl" => (string)new moodle_url('/mod/videoprogress/objectives.php', ["id" => $cm->id]),
+    "captionsurl" => (string)new moodle_url('/mod/videoprogress/captions.php', ["id" => $cm->id]),
+    "cancaptions" => has_capability('mod/videoprogress:managecaptions', $context),
 ]);
 echo $OUTPUT->footer();

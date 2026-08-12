@@ -70,17 +70,6 @@ class mod_videoprogress_mod_form extends moodleform_mod {
             $mform->hideIf("poster", "videosource", "in", $nopostersources);
         }
 
-        $filemanageroptions = [
-            "subdirs" => 0,
-            "accepted_types" => ['.vtt', '.srt'],
-        ];
-        $mform->addElement("filemanager", "subtitles", get_string("subtitles", "videoprogress"), null, $filemanageroptions);
-        $mform->addHelpButton("subtitles", "subtitles", "videoprogress");
-        $nocaptionsources = $sourcemanager->get_sources_without_uploaded_captions();
-        if ($nocaptionsources) {
-            $mform->hideIf("subtitles", "videosource", "in", $nocaptionsources);
-        }
-
         $mform->addElement("html", html_writer::tag("h3", get_string("playbackheader", "videoprogress")));
         $mform->addElement("select", "resumeplayback", get_string("resumeplayback", "videoprogress"), [
             1 => get_string("resumeautomatic", "videoprogress"),

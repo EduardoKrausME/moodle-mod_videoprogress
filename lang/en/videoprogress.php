@@ -184,6 +184,7 @@ $string['learningheader'] = 'Objetivos de aprendizagem';
 $string['learningobjectives'] = 'Objetivos de aprendizagem';
 $string['leastwatchedsection'] = 'Trecho menos assistido';
 $string['managecaptions'] = 'Gerenciar legendas';
+$string['managecaptionshelp'] = '';
 $string['managecontenthelp'] = 'Crie pontos na linha do tempo e adicione zero, um ou vários conteúdos interativos em cada tempo.';
 $string['managematerials'] = 'Gerenciar materiais de apoio';
 $string['managematerialshelp'] = 'Cada formato é fornecido por um subplugin independente, com formulário e visualização próprios.';

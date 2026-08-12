@@ -46,7 +46,7 @@ $PAGE->set_context($context);
 
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template('mod_videoprogress/material_page', [
-    "backurl" => (new moodle_url('/mod/videoprogress/view.php', ["id" => $cm->id]))->out(false),
+    "backurl" => new moodle_url('/mod/videoprogress/view.php', ["id" => $cm->id]),
     "content" => $manager->get_plugin($material->plugin)->render_full($material, $context, $cm->id),
 ]);
 echo $OUTPUT->footer();

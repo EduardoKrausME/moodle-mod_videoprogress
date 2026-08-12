@@ -157,15 +157,11 @@ $templatedata = [
         "sesskey" => sesskey(),
     ],
     "canviewreport" => has_capability('mod/videoprogress:viewreport', $context),
-    "reporturl" => (new moodle_url('/mod/videoprogress/report.php', ["id" => $cm->id]))->out(false),
-    "cancaptions" => has_capability('mod/videoprogress:managecaptions', $context),
-    "captionsurl" => (new moodle_url('/mod/videoprogress/captions.php', ["id" => $cm->id]))->out(false),
+    "reporturl" => (string)new moodle_url('/mod/videoprogress/report.php', ["id" => $cm->id]),
     "canmanageresources" => has_capability('mod/videoprogress:managematerials', $context) ||
         has_capability('mod/videoprogress:managecontent', $context) ||
         has_capability('mod/videoprogress:manageobjectives', $context),
-    "manageurl" => (new moodle_url('/mod/videoprogress/manage.php', ["id" => $cm->id]))->out(false),
-    "canmanageobjectives" => has_capability('mod/videoprogress:manageobjectives', $context),
-    "objectivesurl" => (new moodle_url('/mod/videoprogress/objectives.php', ["id" => $cm->id]))->out(false),
+    "manageurl" => (string)new moodle_url('/mod/videoprogress/manage.php', ["id" => $cm->id]),
 ];
 $templatedata["progress"]["watchedofduration"] = get_string("watchedofduration", "videoprogress", (object)[
     "uniquewatched" => $templatedata["progress"]["uniquewatched"],

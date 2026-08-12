@@ -52,7 +52,7 @@ $PAGE->set_context($context);
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template('mod_videoprogress/manage_materials', [
     "activityname" => format_string($activity->name),
-    "backurl" => (new moodle_url('/mod/videoprogress/manage.php', ["id" => $cm->id]))->out(false),
+    "backurl" => (string)new moodle_url('/mod/videoprogress/manage.php', ["id" => $cm->id]),
     "addurls" => $addurls,
     "items" => $items,
     "hasitems" => (bool)$items,

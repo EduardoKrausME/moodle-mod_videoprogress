@@ -56,11 +56,13 @@
 
 <div class="videoprogress-manage">
     <a href="{{backurl}}" class="videoprogress-report__back">{{#str}} back, videoprogress {{/str}}</a>
-    <span class="videoprogress-eyebrow">{{activityname}}</span>
     <div class="videoprogress-manage__heading">
-        <div><h2>{{#str}} managevideocontent, videoprogress {{/str}}</h2>
-            <p>{{#str}} managecontenthelp, videoprogress {{/str}}</p></div>
-        <a class="btn btn-primary" href="{{addpointurl}}">{{#str}} addpoint, videoprogress {{/str}}</a></div>
+        <div>
+            <h2>{{#str}} managevideocontent, videoprogress {{/str}}</h2>
+            <p>{{#str}} managecontenthelp, videoprogress {{/str}}</p>
+        </div>
+        <a class="btn btn-primary" href="{{addpointurl}}">{{#str}} addpoint, videoprogress {{/str}}</a>
+    </div>
     {{#haspoints}}
         <div class="videoprogress-point-list">
             {{#points}}
