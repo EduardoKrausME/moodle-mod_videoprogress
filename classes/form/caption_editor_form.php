@@ -43,18 +43,16 @@ class caption_editor_form extends moodleform {
      */
     public function definition(): void {
         $mform = $this->_form;
+        $languages = $this->_customdata['languages'] ?? [];
+
         $mform->addElement("hidden", "id");
         $mform->setType("id", PARAM_INT);
         $mform->addElement("hidden", "captionid");
         $mform->setType("captionid", PARAM_INT);
 
-        $mform->addElement("text", "language", get_string("captionlanguage", "videoprogress"));
+        $mform->addElement("select", "language", get_string("captionlanguage", "videoprogress"), $languages);
         $mform->setType("language", PARAM_ALPHANUMEXT);
         $mform->addRule("language", null, "required", null, "client");
-
-        $mform->addElement("text", "label", get_string("captionlabel", "videoprogress"));
-        $mform->setType("label", PARAM_TEXT);
-        $mform->addRule("label", null, "required", null, "client");
 
         $options = ["rows" => 24, "class" => 'w-100'];
         $mform->addElement("textarea", "content", get_string("captioncontent", "videoprogress"), $options);

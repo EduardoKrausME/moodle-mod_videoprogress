@@ -42,15 +42,25 @@ $PAGE->set_title(get_string("editcaption", "videoprogress"));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
 
+$languageoptions = [];
+foreach (get_string_manager()->get_list_of_translations() as $code => $name) {
+    $languageoptions[str_replace('_', '-', strtolower($code))] = $name;
+}
+
 $files = get_file_storage()->get_area_files($context->id, "mod_videoprogress", "caption", $caption->id, "filename", false);
 $caption->content = $files ? reset($files)->get_content() : '';
+$caption->language = str_replace('_', '-', strtolower($caption->language));
 $caption->captionid = $caption->id;
 $caption->id = $cm->id;
-$mform = new caption_editor_form($PAGE->url);
+$mform = new caption_editor_form($PAGE->url, ["languages" => $languageoptions]);
 $mform->set_data($caption);
 if ($mform->is_cancelled()) {
     redirect(new moodle_url('/mod/videoprogress/captions.php', ["id" => $cm->id]));
 } else if ($data = $mform->get_data()) {
+    if (!isset($languageoptions[$data->language])) {
+        throw new invalid_parameter_exception('Invalid caption language.');
+    }
+    $data->label = $languageoptions[$data->language];
     $captionrecord = $DB->get_record("videoprogress_captions",
         ["id" => $data->captionid, "videoprogressid" => $activity->id], "*", MUST_EXIST);
     (new caption_manager())->update_content($captionrecord, $context, $data);

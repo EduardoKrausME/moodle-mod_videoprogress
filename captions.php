@@ -55,10 +55,19 @@ if ($action !== '') {
     }
 }
 
-$mform = new caption_form($PAGE->url);
+$languageoptions = [];
+foreach (get_string_manager()->get_list_of_translations() as $code => $name) {
+    $languageoptions[str_replace('_', '-', strtolower($code))] = $name;
+}
+
+$mform = new caption_form($PAGE->url, ["languages" => $languageoptions]);
 if ($mform->is_cancelled()) {
     redirect(new moodle_url('/mod/videoprogress/view.php', ["id" => $cm->id]));
 } else if ($data = $mform->get_data()) {
+    if (!isset($languageoptions[$data->language])) {
+        throw new invalid_parameter_exception('Invalid caption language.');
+    }
+    $data->label = $languageoptions[$data->language];
     $manager->save_upload($activity->id, $context, $data, $USER->id);
     redirect($PAGE->url, get_string("captionsaved", "videoprogress"));
 }

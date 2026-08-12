@@ -35,7 +35,9 @@
     <div class="videoprogress-progress__header">
         <div>
             <h3 id="videoprogress-progress-heading">{{#str}} yourprogress, videoprogress {{/str}}</h3>
-            <p data-region="progress-text">{{#str}} watchedpercent, videoprogress, {{{progress.percentrounded}}} {{/str}}</p>
+            <p data-region="progress-text" class="{{#progress.notstarted}}d-none{{/progress.notstarted}}">
+                {{#str}} watchedpercent, videoprogress, {{{progress.percentrounded}}} {{/str}}
+            </p>
         </div>
         <strong class="videoprogress-progress__percent" data-region="percent">{{progress.percentrounded}}%</strong>
     </div>
@@ -44,7 +46,9 @@
         <div class="progress-bar" data-region="progress-bar" style="width: {{progress.percent}}%"></div>
     </div>
     <div class="videoprogress-progress__meta">
-        <span data-region="watched-duration">{{progress.watchedofduration}}</span>
+        <span data-region="watched-duration" class="{{#progress.notstarted}}d-none{{/progress.notstarted}}">
+            {{progress.watchedofduration}}
+        </span>
         <span>{{#str}} completionrequirement, videoprogress, {{{progress.requiredpercent}}} {{/str}}</span>
     </div>
     <div class="videoprogress-status">

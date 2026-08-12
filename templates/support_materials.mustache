@@ -19,6 +19,8 @@
 
     Example context (json):
     {
+        "canmanagematerials": true,
+        "materialsmanageurl": "/mod/videoprogress/materials.php?id=10",
         "materials": [
             {
                 "html": "<article class=\"videoprogress-material-card\"><strong>Guia de estudo</strong></article>"
@@ -28,9 +30,16 @@
 }}
 
 <section class="videoprogress-support-materials" aria-labelledby="videoprogress-materials-heading">
-    <div class="videoprogress-section-heading">
-        <h3 id="videoprogress-materials-heading">{{#str}} supportmaterials, videoprogress {{/str}}</h3>
-        <p>{{#str}} supportmaterialshelp, videoprogress {{/str}}</p>
+    <div class="videoprogress-section-heading d-flex justify-content-between align-items-start flex-wrap">
+        <div>
+            <h3 id="videoprogress-materials-heading">{{#str}} supportmaterials, videoprogress {{/str}}</h3>
+            <p>{{#str}} supportmaterialshelp, videoprogress {{/str}}</p>
+        </div>
+        {{#canmanagematerials}}
+            <a class="btn btn-sm btn-outline-primary mb-2" href="{{materialsmanageurl}}">
+                {{#str}} managematerials, videoprogress {{/str}}
+            </a>
+        {{/canmanagematerials}}
     </div>
     <div class="videoprogress-support-materials__grid">
         {{#materials}}{{{html}}}{{/materials}}

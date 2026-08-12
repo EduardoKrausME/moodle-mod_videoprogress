@@ -45,7 +45,6 @@ $PAGE->set_title(format_string($activity->name));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
 
-
 $progressmanager = new progress_manager();
 if ($confirm) {
     require_sesskey();
@@ -122,6 +121,7 @@ $objectives = (new \mod_videoprogress\objective\manager())->get_student_items(
     $cm->id
 );
 $duration = max((float)$progress->duration, 0);
+$canmanagematerials = has_capability('mod/videoprogress:managematerials', $context);
 $templatedata = [
     "name" => format_string($activity->name),
     "intro" => format_module_intro("videoprogress", $activity, $cm->id),
@@ -131,6 +131,8 @@ $templatedata = [
     "player" => $player,
     "materials" => $materialcards,
     "hasmaterials" => (bool)$materialcards,
+    "canmanagematerials" => $canmanagematerials,
+    "materialsmanageurl" => (string)new moodle_url('/mod/videoprogress/materials.php', ["id" => $cm->id]),
     "contentpoints" => $contentdata["points"],
     "hascontentpoints" => (bool)$contentdata["points"],
     "contentoverlays" => $contentdata["overlays"],
@@ -171,7 +173,7 @@ $templatedata["progress"]["watchedofduration"] = get_string("watchedofduration",
 $PAGE->requires->strings_for_js([
     "resumequestion", "resumeyes", "resumeno", "trackingerror", "seekblocked",
     "activitycompleted", "pendingupdates", "invalidplayer",
-    "interactionrequired", "interactionerror",
+    "interactionrequired", "interactionerror", "watchedpercent", "watchedofduration",
 ], "videoprogress");
 $PAGE->requires->js_call_amd('mod_videoprogress/tracker', "init");
 $PAGE->requires->js_call_amd('mod_videoprogress/timeline', "init");

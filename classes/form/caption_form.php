@@ -43,15 +43,16 @@ class caption_form extends moodleform {
      */
     public function definition(): void {
         $mform = $this->_form;
-        $mform->addElement("text", "language", get_string("captionlanguage", "videoprogress"), ["size" => 10]);
+        $languages = $this->_customdata['languages'] ?? [];
+
+        $mform->addElement("select", "language", get_string("captionlanguage", "videoprogress"), $languages);
         $mform->setType("language", PARAM_ALPHANUMEXT);
         $mform->addRule("language", null, "required", null, "client");
-        $mform->addElement("text", "label", get_string("captionlabel", "videoprogress"), ["size" => 40]);
-        $mform->setType("label", PARAM_TEXT);
-        $mform->addRule("label", null, "required", null, "client");
+
         $options = ["accepted_types" => ['.vtt', '.srt'], "maxbytes" => 5 * 1024 * 1024];
         $mform->addElement("filepicker", "captionfile", get_string("captionfile", "videoprogress"), null, $options);
         $mform->addRule("captionfile", null, "required", null, "client");
+
         $mform->addElement("selectyesno", "isdefault", get_string("captiondefault", "videoprogress"));
         $mform->addElement("select", "status", get_string("captionstatus", "videoprogress"), [
             "draft" => get_string("captionstatusdraft", "videoprogress"),

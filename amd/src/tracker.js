@@ -244,9 +244,12 @@ define([
                 this.showMessage(response.reason);
             }
             const percentage = Math.round(Number(response.percent || 0));
+            const watched = Number(response.uniquewatched || 0);
             const percent = this.root.querySelector('[data-region="percent"]');
             const bar = this.root.querySelector('[data-region="progress-bar"]');
             const progressbar = bar ? bar.parentElement : null;
+            const progressText = this.root.querySelector('[data-region="progress-text"]');
+            const watchedDuration = this.root.querySelector('[data-region="watched-duration"]');
             if (percent) {
                 percent.textContent = percentage + '%';
             }
@@ -255,6 +258,24 @@ define([
             }
             if (progressbar) {
                 progressbar.setAttribute('aria-valuenow', percentage);
+            }
+            if (watched > 0) {
+                if (progressText) {
+                    progressText.classList.remove('d-none');
+                    Str.get_string('watchedpercent', 'videoprogress', percentage).then((message) => {
+                        progressText.textContent = message;
+                    });
+                }
+                if (watchedDuration) {
+                    const duration = this.player ? Number(this.player.getDuration() || 0) : 0;
+                    watchedDuration.classList.remove('d-none');
+                    Str.get_string('watchedofduration', 'videoprogress', {
+                        uniquewatched: this.formatTime(watched),
+                        duration: this.formatTime(duration)
+                    }).then((message) => {
+                        watchedDuration.textContent = message;
+                    });
+                }
             }
             if (response.completed) {
                 this.showMessage('activitycompleted', 'success');

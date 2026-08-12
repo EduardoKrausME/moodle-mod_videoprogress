@@ -161,4 +161,34 @@ final class tracking_manager_test extends \advanced_testcase {
         ], 2001);
         $this->assertSame([10.0, 14.0], $result["segment"]);
     }
+
+    /**
+     * Verifies that a real ended event closes the tiny final player timing gap.
+     *
+     * @return void This method does not return a value.
+     */
+    public function test_ended_event_closes_final_timing_gap(): void {
+        $activity = (object)["allowseek" => 0, "maxplaybackrate" => 1];
+        $progress = (object)["watchedsegments" => '[[0,98.5]]'];
+        $session = (object)[
+            "sequence" => 8,
+            "lastposition" => 98.5,
+            "lastheartbeat" => 1000,
+            "lastclienttime" => 1000,
+        ];
+        $result = (new tracking_manager())->validate($activity, $progress, $session, [
+            "duration" => 100,
+            "currentposition" => 100,
+            "playbackrate" => 1,
+            "segmentstart" => 98.5,
+            "segmentend" => 99.4,
+            "sequence" => 9,
+            "clienttime" => 1001,
+            "playerstate" => "ended",
+        ], 1001);
+
+        $this->assertFalse($result["seekblocked"]);
+        $this->assertSame([98.5, 100.0], $result["segment"]);
+        $this->assertSame(100.0, $result["currentposition"]);
+    }
 }

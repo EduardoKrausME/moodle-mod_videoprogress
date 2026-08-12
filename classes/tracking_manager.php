@@ -31,9 +31,14 @@ use stdClass;
  */
 class tracking_manager {
     /**
-     * Latency
+     * Latency.
      */
     private const LATENCY_TOLERANCE = 3.0;
+
+    /**
+     * Small player timing difference accepted when the real ended event is received.
+     */
+    private const END_TOLERANCE = 2.0;
 
     /**
      * Validates raw player tracking against sequence, timing, rate, and anti-skip rules.
@@ -102,6 +107,15 @@ class tracking_manager {
                 $seekblocked = true;
                 $acceptedsegment = null;
             }
+        }
+
+        // Player APIs can emit their final timeupdate slightly before the exact duration.
+        // Only close that tiny gap after a genuine ended event and an accepted segment at the end.
+        if ($data["playerstate"] === "ended" && !$seekblocked && $acceptedsegment && $duration > 0 &&
+            $current >= $duration - self::END_TOLERANCE &&
+            $acceptedsegment[1] >= $duration - self::END_TOLERANCE) {
+            $acceptedsegment[1] = $duration;
+            $correctposition = $duration;
         }
 
         $watchtime = 0.0;
