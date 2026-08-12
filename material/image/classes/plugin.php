@@ -37,10 +37,23 @@ class plugin extends plugin_base {
     /** @var array Safe image extensions supported by the subplugin. */
     private const ACCEPTED_TYPES = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
 
+    /**
+     * get_name
+     *
+     * @return string
+     * @throws \coding_exception
+     */
     public function get_name(): string {
         return get_string("pluginname", "videoprogressmaterial_image");
     }
 
+    /**
+     * add_form_elements
+     *
+     * @param MoodleQuickForm $mform
+     * @return void
+     * @throws \coding_exception
+     */
     public function add_form_elements(MoodleQuickForm $mform): void {
         $mform->addElement("filemanager", "imagefile", get_string("imagefile", "videoprogressmaterial_image"), null, [
             "subdirs" => 0,
@@ -55,6 +68,14 @@ class plugin extends plugin_base {
         $mform->setDefault("allowdownload", 1);
     }
 
+    /**
+     * prepare_form_data
+     *
+     * @param stdClass $data
+     * @param stdClass|null $material
+     * @param context_module $context
+     * @return stdClass
+     */
     public function prepare_form_data(stdClass $data, stdClass|null $material, context_module $context): stdClass {
         $draftid = file_get_submitted_draft_itemid("imagefile");
         file_prepare_draft_area($draftid, $context->id, "videoprogressmaterial_image", "image",
@@ -66,6 +87,16 @@ class plugin extends plugin_base {
         return $data;
     }
 
+    /**
+     * validation
+     *
+     * @param array $data
+     * @param array $files
+     * @param stdClass|null $material
+     * @param context_module $context
+     * @return array
+     * @throws \coding_exception
+     */
     public function validation(array $data, array $files, stdClass|null $material, context_module $context): array {
         $draftid = (int)($data["imagefile"] ?? 0);
         if ($draftid && !empty(file_get_draft_area_info($draftid)["filecount"])) {
@@ -78,6 +109,15 @@ class plugin extends plugin_base {
         return ["imagefile" => get_string("required")];
     }
 
+    /**
+     * save
+     *
+     * @param stdClass $material
+     * @param stdClass $data
+     * @param context_module $context
+     * @return array
+     * @throws \coding_exception
+     */
     public function save(stdClass $material, stdClass $data, context_module $context): array {
         file_save_draft_area_files($data->imagefile, $context->id, "videoprogressmaterial_image", "image",
             $material->id, ["subdirs" => 0, "maxfiles" => 1, "accepted_types" => self::ACCEPTED_TYPES]);
@@ -87,10 +127,26 @@ class plugin extends plugin_base {
         ];
     }
 
+    /**
+     * delete
+     *
+     * @param stdClass $material
+     * @param context_module $context
+     * @return void
+     */
     public function delete(stdClass $material, context_module $context): void {
         get_file_storage()->delete_area_files($context->id, "videoprogressmaterial_image", "image", $material->id);
     }
 
+    /**
+     * render_card
+     *
+     * @param stdClass $material
+     * @param context_module $context
+     * @param int $cmid
+     * @return string
+     * @throws \core\exception\moodle_exception
+     */
     public function render_card(stdClass $material, context_module $context, int $cmid): string {
         global $OUTPUT;
 
@@ -103,6 +159,14 @@ class plugin extends plugin_base {
         ]);
     }
 
+    /**
+     * render_full
+     *
+     * @param stdClass $material
+     * @param context_module $context
+     * @param int $cmid
+     * @return string
+     */
     public function render_full(stdClass $material, context_module $context, int $cmid): string {
         global $OUTPUT;
 
