@@ -66,10 +66,11 @@ class plugin extends plugin_base {
     public function add_form_elements(MoodleQuickForm $mform, string $sourcefield): void {
         $filemanageroptions = [
             "subdirs" => 0,
-            //"maxfiles" => 1,
             "accepted_types" => ['.mp4', '.webm', '.ogv', '.m4v', '.mov', '.m3u8'],
         ];
-        $mform->addElement("filemanager", "videofile", get_string("videofile", "videoprogresssource_upload"), null, $filemanageroptions);
+        $mform->addElement("filemanager", "videofile",
+            get_string("videofile", "videoprogresssource_upload"),
+            null, $filemanageroptions);
         $mform->hideIf("videofile", $sourcefield, "neq", "upload");
     }
 

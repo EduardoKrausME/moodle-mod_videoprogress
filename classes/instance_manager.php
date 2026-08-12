@@ -61,7 +61,6 @@ class instance_manager {
         } else if (isset($data->poster)) {
             file_save_draft_area_files($data->poster, $context->id, "mod_videoprogress", "poster", 0, [
                 "subdirs" => 0,
-                // "maxfiles" => 1,
                 "accepted_types" => ["image"],
             ]);
         }

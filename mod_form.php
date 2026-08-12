@@ -62,7 +62,6 @@ class mod_videoprogress_mod_form extends moodleform_mod {
 
         $filemanageroptions = [
             "subdirs" => 0,
-            // "maxfiles" => 1,
             "accepted_types" => ["image"],
         ];
         $mform->addElement("filemanager", "poster", get_string("poster", "videoprogress"), null, $filemanageroptions);
@@ -71,9 +70,8 @@ class mod_videoprogress_mod_form extends moodleform_mod {
             $mform->hideIf("poster", "videosource", "in", $nopostersources);
         }
 
-        $filemanageroptions=[
+        $filemanageroptions = [
             "subdirs" => 0,
-            // "maxfiles" => 10,
             "accepted_types" => ['.vtt', '.srt'],
         ];
         $mform->addElement("filemanager", "subtitles", get_string("subtitles", "videoprogress"), null, $filemanageroptions);

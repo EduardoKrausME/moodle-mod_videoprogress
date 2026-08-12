@@ -201,8 +201,8 @@ class manager {
         global $DB;
 
         $items = [];
-        foreach ($DB->get_records("videoprogress_objectives", ["videoprogressid" => $activityid], 'sortorder,id')
-            as $record) {
+        $records = $DB->get_records("videoprogress_objectives", ["videoprogressid" => $activityid], 'sortorder,id');
+        foreach ($records as $record) {
             $pluginavailable = true;
             try {
                 $plugin = $this->get_plugin($record->plugin);
