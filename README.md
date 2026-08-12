@@ -1,311 +1,685 @@
 # Video Progress
 
-O Video Progress transforma vídeos em atividades completas dentro do Software Moodle™. Em vez de considerar apenas se o aluno abriu o vídeo ou chegou ao final, a atividade registra quais trechos foram realmente reproduzidos, quanto conteúdo diferente foi assistido, quanto tempo foi gasto na reprodução e quais partes foram revistas.
+Video Progress transforms videos into complete activities within the Moodle™ Software.
 
-Professores e gestores podem acompanhar o progresso individual, analisar o comportamento da turma, identificar momentos de maior interesse, perceber pontos de abandono e utilizar o percentual realmente assistido para conclusão e nota.
+Instead of considering only whether the student opened the video or reached the end, the activity tracks which parts were actually played, how much unique content was watched, how much time was spent playing the video, which segments were rewatched, and where the student stopped watching.
 
-## Progresso baseado no que foi realmente assistido
+The progress percentage is calculated based on the content actually watched. Seeking the player to the end does not cause the video to be considered complete.
 
-A posição alcançada no vídeo não é usada como sinônimo de progresso. Se o aluno avançar para uma parte distante, o trecho ignorado continuará marcado como não assistido.
+Teachers and managers also have access to individual and class reports, a viewing timeline, automatic completion, gradebook integration, supporting materials, learning objectives, and content synchronized with specific moments in the video.
 
-Em um vídeo de 10 minutos, se o aluno assistir do início até 1 minuto, avançar para o minuto 8 e assistir até o final, o resultado será:
+## Main features
 
-- Última posição em 10 minutos.
-- 3 minutos de conteúdo diferente assistido.
-- Aproximadamente 3 minutos de reprodução.
-- 30% de progresso.
+- Progress based on the segments actually watched.
+- Identification of watched, skipped, and rewatched parts.
+- Unique content watch time.
+- Total playback time, including repetitions.
+- Last watched position.
+- Automatic or optional playback resume.
+- Completion based on a minimum percentage.
+- Optional student confirmation after reaching the required percentage.
+- Grade from 0 to 100 based on the percentage actually watched.
+- Individual timeline.
+- Aggregated class timeline.
+- Identification of the most-watched segments.
+- Identification of the least-watched segments.
+- Identification of drop-off points.
+- Optional protection against seeking to parts that have not yet been watched.
+- Configurable playback speed limit.
+- Viewing session logging.
+- Reports with filters, sorting, and pagination.
+- Export of results.
+- Individual or bulk progress reset.
+- Multiple subtitles for compatible videos.
+- Support for WebVTT and SRT subtitles.
+- Learning objectives based on Bloom's Taxonomy.
+- Supporting materials in different formats.
+- Content synchronized with moments in the video.
+- Synchronized explanatory notes.
+- Mandatory quiz during playback.
+- Backup and restore.
+- Moodle app integration.
+- Privacy API.
+- Administrative diagnostic and repair tools.
+- Extensible architecture through subplugins.
 
-Chegar ao final do vídeo não transforma esse resultado em 100%.
+## Progress based on what was actually watched
 
-Quando o aluno volta e assiste novamente a uma parte, a repetição aumenta o tempo total de reprodução e a intensidade dessa região nos relatórios, mas não aumenta artificialmente o percentual.
+Video Progress does not use only the player's current position to determine progress.
 
-Em um vídeo de 10 minutos, se o aluno assistir do início até 5 minutos, voltar ao minuto 2 e rever até o minuto 5, o resultado será:
+Imagine a 10-minute video.
 
-- 5 minutos de conteúdo diferente assistido.
-- Aproximadamente 8 minutos de reprodução.
-- 50% de progresso.
-- Maior destaque para o trecho entre 2 e 5 minutos, pois ele foi assistido duas vezes.
+If the student watches from the beginning to 1 minute, seeks directly to minute 8, and watches until the end, approximately 3 minutes of unique content will actually have been watched.
 
-## Recursos principais
+The result will be approximately:
 
-- Registro do início da visualização.
-- Percentual calculado pelo conteúdo realmente reproduzido.
-- Identificação de partes assistidas, ignoradas e revistas.
-- Tempo de conteúdo diferente assistido.
-- Tempo total de reprodução, incluindo repetições.
-- Última posição e ponto de retomada.
-- Data da última visualização.
-- Situação como não iniciado, em andamento ou concluído.
-- Conclusão por percentual mínimo.
-- Nota de 0 a 100 baseada no percentual realmente assistido.
-- Confirmação opcional do aluno depois de cumprir o percentual exigido.
-- Linha do tempo individual e da turma.
-- Proteção contra avanços para partes ainda não assistidas.
-- Limite configurável de velocidade.
-- Relatórios detalhados e exportação de resultados.
-- Materiais de apoio.
-- Objetivos de aprendizagem ilimitados.
-- Conteúdos e interações sincronizados com momentos do vídeo.
-- Múltiplas legendas, transcrição e tradução.
+- Last position at 10 minutes.
+- 3 minutes of unique content watched.
+- Approximately 3 minutes of playback.
+- 30% progress.
 
-## Fontes de vídeo
+Reaching the end does not turn this result into 100%.
 
-O professor pode utilizar diferentes origens:
+Skipped segments remain marked as unwatched.
 
-- Vídeo enviado diretamente para o Software Moodle™.
-- Link direto para um arquivo de vídeo.
-- Transmissão de vídeo por link.
-- YouTube.
-- Vimeo público.
-- Vimeo não listado.
+### Repetitions
 
-Cada origem mantém a mesma proposta de acompanhamento, respeitando os recursos que o serviço de vídeo disponibiliza.
+Rewatching part of the video does not artificially increase the completion percentage.
 
-## Retomada da reprodução
+In a 10-minute video, if the student watches from the beginning to 5 minutes, goes back to minute 2, and watches again until minute 5, the result will be approximately:
 
-O professor escolhe o que acontece quando o aluno retorna à atividade:
+- 5 minutes of unique content watched.
+- 8 minutes of total playback.
+- 50% progress.
+- Higher viewing intensity between minutes 2 and 5.
 
-- Continuar automaticamente do ponto onde parou.
-- Perguntar se deseja retomar daquele ponto.
-- Começar novamente desde o início.
+This makes it possible to distinguish two important pieces of information:
 
-A posição salva é utilizada somente para facilitar a retomada. Ela nunca substitui os trechos realmente assistidos no cálculo do progresso.
+**Unique content watched**
 
-## Proteção contra avanços
+Represents which parts of the video the student actually went through at least once.
 
-Quando o avanço está bloqueado, o aluno não pode pular para uma região que ainda não assistiu. Ele continua podendo voltar e rever partes anteriores.
+**Total playback time**
 
-O Video Progress também verifica se o deslocamento informado é compatível com o tempo transcorrido e com a velocidade de reprodução. Isso evita que um grande salto seja registrado como se todos os segundos intermediários tivessem sido assistidos.
+Represents how much time was spent watching the video, including repetitions.
 
-## Velocidade e controles do player
+## Video sources
 
-É possível definir uma velocidade máxima, incluindo 1x, 1,25x, 1,5x, 1,75x e 2x, ou deixar sem limite.
+Video sources are implemented as subplugins of type `videoprogresssource`.
 
-Também existem opções para dificultar algumas ações comuns do navegador:
+The plugin currently includes the following sources.
 
-- Ocultar o botão de download quando possível.
-- Desabilitar a reprodução em uma pequena janela flutuante.
-- Desabilitar o menu aberto pelo botão direito do mouse.
+### Upload
 
-Essas opções ajudam a reduzir ações casuais, mas não representam proteção DRM e não impedem completamente a cópia ou a captura do vídeo.
+The teacher can upload the file directly to the Moodle™ Software.
 
-## Objetivos de aprendizagem ilimitados
+Files are stored through the Moodle File API and are delivered only to users who have access to the activity.
 
-Depois de criar a atividade, o professor pode acessar **Gerenciar objetivos de aprendizagem** e cadastrar quantos objetivos forem necessários.
+Accepted formats:
 
-Ao adicionar um objetivo, o professor escolhe o tipo e preenche as informações correspondentes. Os formatos disponíveis incluem:
+- MP4
+- WebM
+- OGV
+- M4V
+- MOV
+- HLS/M3U8
 
-- Texto, para apresentar um objetivo de forma simples e direta.
-- Taxonomia de Bloom, para relacionar o objetivo a ações como lembrar, compreender, aplicar, analisar, avaliar ou criar.
+### URL
 
-Os objetivos são exibidos ao aluno antes do vídeo e também aparecem nos detalhes pedagógicos da atividade.
+Allows the direct use of an HTTP or HTTPS URL for a video file.
 
-Quando a confirmação estiver habilitada, o aluno deverá atingir o percentual mínimo e confirmar que revisou os objetivos ou o conteúdo apresentado. A confirmação complementa o acompanhamento e nunca substitui a visualização.
+Accepted formats:
 
-## Materiais de apoio
+- `.mp4`
+- `.webm`
+- `.ogv`
+- `.m4v`
+- `.mov`
+- `.m3u8`
 
-O professor pode disponibilizar materiais logo abaixo do vídeo, mantendo a aula e os conteúdos complementares reunidos na mesma atividade.
+`.m3u8` files are handled as HLS streams.
 
-Os formatos disponíveis incluem:
+### YouTube
 
-- PDF com visualização na página e opção de permitir ou bloquear o download.
-- Guia de exercícios com texto formatado, imagens e links.
+Allows the use of YouTube videos through the IFrame Player API.
 
-Outros formatos de material podem ser acrescentados conforme a necessidade da instituição.
+Different URL formats are recognized, including:
 
-## Conteúdo sincronizado com o vídeo
+- Traditional YouTube URLs.
+- `youtu.be`.
+- Embed URLs.
+- YouTube Shorts.
+- `youtube-nocookie.com`.
 
-É possível cadastrar pontos importantes em tempos específicos. Esses pontos aparecem em uma lista lateral e acompanham a reprodução, mostrando ao aluno o assunto correspondente ao momento atual.
+The administrator can also use YouTube's privacy-enhanced domain.
 
-Em cada ponto, o professor pode:
+### Vimeo
 
-- Mostrar somente o título na lista lateral.
-- Exibir uma explicação sobre o vídeo.
-- Apresentar um balão sobre o player.
-- Pausar o vídeo até o aluno confirmar a leitura.
-- Aplicar um quiz obrigatório antes de continuar.
-- Adicionar mais de um conteúdo no mesmo momento.
+Allows the use of public and unlisted Vimeo videos.
 
-Um ponto também pode existir sem nenhuma interação, funcionando apenas como marcador para organizar a aula.
+URLs containing the private identifier used by unlisted videos are also supported.
 
-## Linha do tempo do aluno
+## Source architecture
 
-Abaixo do player, o aluno visualiza uma linha do tempo que diferencia:
+Sources are not hard-coded directly into the activity core.
 
-- Partes ainda não assistidas.
-- Partes assistidas uma vez.
-- Partes revistas.
+Video Progress declares the subplugin type:
 
-Ao passar o cursor por uma região, é possível consultar o período aproximado e quantas vezes ele foi reproduzido. A mesma informação possui uma descrição em texto para quem utiliza leitor de tela.
+`videoprogresssource`
 
-Além da linha do tempo, a atividade apresenta o percentual, o tempo de conteúdo diferente assistido, a duração do vídeo, o requisito mínimo e a situação atual.
+The following are currently included:
 
-## Legendas
+- `videoprogresssource_upload`
+- `videoprogresssource_url`
+- `videoprogresssource_youtube`
+- `videoprogresssource_vimeo`
 
-O Video Progress permite manter várias legendas para o mesmo vídeo, com idioma, título e escolha da faixa padrão.
+This architecture makes it possible to add new video platforms in the future without changing the core of `mod_videoprogress`.
 
-O professor pode:
+## Playback resume
 
-- Enviar legendas existentes.
-- Adicionar diferentes idiomas.
-- Definir a legenda padrão.
-- Substituir ou remover uma faixa.
-- Revisar e editar o conteúdo.
-- Manter uma legenda como rascunho antes da publicação.
+The teacher can choose how Video Progress should behave when the student returns to the activity.
 
-Quando a instituição possui um serviço de inteligência artificial configurado, também é possível:
+There are three options:
 
-- Gerar uma transcrição com marcação de tempo.
-- Revisar e corrigir o resultado antes de publicar.
-- Traduzir uma legenda existente.
-- Preservar os tempos durante a tradução.
-- Criar uma nova faixa sem substituir a original.
+### Resume automatically
 
-Todo o processamento ocorre no ambiente da instituição. Nenhuma credencial é enviada ao navegador do aluno.
+The video starts near the last recorded position.
 
-## Conclusão e nota
+### Ask
 
-O professor define o percentual mínimo de conteúdo diferente que o aluno precisa assistir, como 80%.
+The student is given the option to continue from where they stopped or start again.
 
-A atividade pode ser concluída:
+### Start from the beginning
 
-- Ao atingir o percentual mínimo.
-- Ao atingir o percentual mínimo e realizar uma confirmação.
+The video always starts from the beginning.
 
-A nota representa o percentual realmente assistido e é atualizada no livro de notas do Software Moodle™. A atividade também pode utilizar normalmente a nota mínima para aprovação definida no curso.
+The saved position is used only to make navigation easier.
 
-Chegar ao final sem assistir às partes anteriores não conclui a atividade.
+It is not used to determine the watched percentage.
 
-## Relatórios e análises
+## Seeking protection
 
-O relatório apresenta uma visão geral da turma com indicadores como:
+The teacher can allow or block seeking to parts of the video that have not yet been watched.
 
-- Alunos matriculados.
-- Alunos que iniciaram.
-- Alunos que nunca iniciaram.
-- Alunos em andamento.
-- Alunos que concluíram.
-- Percentual médio assistido.
-- Média de conteúdo diferente assistido.
-- Média de tempo total de reprodução.
-- Tempo total reproduzido pela turma.
-- Taxa de conclusão.
+When seeking is blocked, the student can go back to an earlier region and rewatch the content normally, but cannot simply drag the player to a part that has not yet been unlocked.
 
-A linha do tempo da turma mostra a intensidade de visualização em cada região. Trechos vistos ou revistos por mais alunos recebem maior destaque.
+Tracking also considers the actual progression of playback to prevent player seeking from being treated as content that was effectively watched.
 
-O relatório também identifica automaticamente:
+## Playback speed
 
-- Trecho mais assistido.
-- Trecho menos assistido.
-- Maior ponto de abandono.
+The teacher can control the maximum playback speed available to the student.
 
-## Acompanhamento individual
+The current options are:
 
-Para cada aluno, professores autorizados podem consultar:
+- No limit.
+- 1x.
+- 1.25x.
+- 1.5x.
+- 1.75x.
+- 2x.
 
-- Nome, foto e e-mail.
-- Percentual realmente assistido.
-- Tempo de conteúdo diferente.
-- Tempo total de reprodução.
-- Última posição.
-- Última visualização.
-- Situação atual.
-- Linha do tempo individual.
-- Partes nunca assistidas, assistidas uma vez e revistas.
-- Sessões de visualização.
-- Objetivos de aprendizagem.
-- Confirmação realizada pelo aluno.
+The limit is also taken into account by the validations performed during playback tracking.
 
-Os resultados podem ser pesquisados por nome ou e-mail e filtrados por grupo, situação, faixa de percentual e período da última visualização.
+## Additional player controls
 
-A lista permite ordenação, paginação e escolha da quantidade de alunos por página. No celular, cada aluno aparece em um card próprio, evitando uma tabela extensa e difícil de usar.
+There are options to make some common browser actions more difficult:
 
-## Relatório do curso
+- Hide the download button when supported by the player.
+- Disable Picture-in-Picture.
+- Disable the context menu opened with the right mouse button.
 
-O relatório do curso reúne as atividades Video Progress disponíveis e apresenta um resumo de participação, progresso e conclusão de cada vídeo.
+These features are convenience and basic protection measures.
 
-O professor consegue acessar os detalhes de uma atividade diretamente dessa visão geral, sem precisar procurar cada vídeo dentro das seções do curso.
+They do not constitute DRM and cannot completely prevent copying, screen recording, or content capture.
 
-## Exportação
+## Student timeline
 
-Professores autorizados podem exportar os resultados respeitando os filtros selecionados. O arquivo inclui identificação do aluno, grupo, percentual, tempos, última posição, situação, última visualização e conclusão.
+Video Progress keeps a map of the segments played by the student.
 
-Os dados detalhados usados para desenhar as linhas do tempo não são incluídos por padrão.
+The timeline makes it possible to distinguish regions that are:
 
-## Reset de progresso
+- Not yet watched.
+- Watched.
+- Rewatched.
 
-Usuários autorizados podem resetar:
+When a part is played more than once, the intensity of that region increases.
 
-- O progresso de um aluno específico.
-- O progresso de todos os alunos correspondentes aos filtros atuais.
+In addition to the visual representation, a textual description of the segments is available so that the information does not depend only on colors.
 
-Antes de um reset em massa, o sistema informa quantos alunos serão afetados e exige confirmação.
+The activity can also show the student:
 
-O reset remove percentual, trechos assistidos, intensidade da linha do tempo, duração registrada, posição salva, tempos de reprodução, sessões e confirmação. A nota e a conclusão também são atualizadas.
+- Percentage watched.
+- Unique content watch time.
+- Total playback time.
+- Video duration.
+- Percentage required for completion.
+- Current status.
+- Last position.
 
-## Múltiplas abas e dispositivos
+## Activity completion
 
-O mesmo vídeo pode ser aberto em mais de uma aba, navegador ou dispositivo. O Video Progress evita que uma atualização antiga substitua informações mais recentes.
+The teacher defines the minimum percentage that must actually be watched.
 
-Trechos válidos recebidos de sessões simultâneas podem ser combinados, preservando o conteúdo realmente assistido.
+For example:
 
-## Falhas de conexão
+`80%`
 
-As atualizações são enviadas em intervalos adequados e também em momentos importantes, como pausa, mudança de posição, encerramento e saída da página.
+In this case, reaching the end of the video without watching the previous parts does not complete the activity.
 
-Se a conexão falhar, o navegador guarda temporariamente a atualização pendente e tenta enviá-la novamente. Os dados confirmados pelo Software Moodle™ continuam sendo a fonte oficial do progresso.
+Completion uses the progress calculated on the server.
 
-## Acessibilidade
+### Additional confirmation
 
-As páginas oferecem:
+Optionally, the teacher can require confirmation after the minimum percentage has been reached.
 
-- Navegação por teclado.
-- Foco visível.
-- Contraste adequado.
-- Textos de apoio.
-- Informações que não dependem apenas de cor.
-- Descrição textual das linhas do tempo.
-- Organização adaptada para computadores, tablets e celulares.
+In this mode, two conditions must be met:
 
-## Aplicativo Moodle
+1. The minimum percentage must have been reached.
+2. The student must provide confirmation.
 
-A atividade pode ser aberta pelo aplicativo Moodle mantendo o acompanhamento da reprodução. Quando necessário, o vídeo é exibido em uma página integrada para preservar o registro do progresso, dos conteúdos sincronizados e das interações.
+Confirmation complements viewing tracking and does not replace the requirement to watch the video.
 
-## Privacidade
+## Grade
 
-O Video Progress guarda somente as informações necessárias para acompanhar a atividade, como progresso, trechos assistidos, posição, tempos, sessões, confirmação e datas de acesso.
+Video Progress integrates with the Moodle™ Software gradebook.
 
-Não são armazenados endereço IP, localização, impressão digital do navegador ou identificação do dispositivo.
+The grade directly represents the percentage of unique content watched.
 
-Os dados podem ser exportados ou excluídos conforme as regras de privacidade da instituição.
+For example:
 
-## Cópia e restauração de cursos
+| Progress | Grade |
+| --- | ---: |
+| 25% | 25 |
+| 50% | 50 |
+| 82.5% | 82.5 |
+| 100% | 100 |
 
-Ao copiar ou restaurar uma atividade, podem ser preservados:
+The activity uses a 0 to 100 scale.
 
-- Configurações do vídeo.
-- Descrição.
-- Arquivo do vídeo.
-- Imagem de capa.
-- Legendas.
-- Objetivos de aprendizagem.
-- Materiais de apoio.
-- Pontos e conteúdos sincronizados.
-- Configurações de reprodução.
+The grade item can be disabled through the activity's standard grading settings.
 
-Quando a cópia inclui dados dos alunos, também podem ser preservados progresso, trechos assistidos, tempos, sessões, posição e confirmação. Quando não inclui, nenhuma informação de acompanhamento dos alunos é levada para a nova atividade.
+The native gradebook settings remain available, including the passing grade.
 
-## Diagnóstico administrativo
+## Viewing sessions
 
-Administradores podem consultar uma visão geral para identificar:
+In addition to consolidated progress, the plugin records playback sessions.
 
-- Atividades cadastradas.
-- Quantidade de registros de progresso.
-- Registros sem atividade correspondente.
-- Atividades sem item de nota.
-- Notas diferentes do progresso calculado.
-- Percentuais inválidos.
-- Linhas do tempo com dados inválidos.
-- Problemas em fórmulas do livro de notas.
+Each session can store information such as:
 
-Quando necessário, o sistema pode recriar itens de nota ausentes, reenviar notas, sincronizar o livro de notas e atualizar conclusões. Fórmulas com referências ausentes são apresentadas ao administrador, mas não são modificadas automaticamente.
+- Session start.
+- End.
+- Watch time.
+- Initial position.
+- Final position.
+- Last position.
+- Player state.
+
+This information helps provide a better understanding of how the student consumed the video without relying only on the final percentage.
+
+## Learning objectives
+
+Video Progress has its own subplugin architecture for objectives:
+
+`videoprogressobjective`
+
+The currently included type is:
+
+`videoprogressobjective_bloom`
+
+### Bloom's Taxonomy
+
+Each objective has a description and a Bloom's Taxonomy level.
+
+The available levels are:
+
+- Remember.
+- Understand.
+- Apply.
+- Analyze.
+- Evaluate.
+- Create.
+
+The teacher can add multiple objectives to the same activity.
+
+Objectives are shown to the student together with the activity and can also be viewed in the student's individual tracking page used by the teacher.
+
+New objective types can be implemented in the future through new `videoprogressobjective` subplugins.
+
+## Supporting materials
+
+Video Progress allows complementary materials to be added to the activity.
+
+Materials are implemented through the subplugin type:
+
+`videoprogressmaterial`
+
+The plugin currently supports:
+
+### PDF
+
+Allows PDF documents related to the video to be made available.
+
+### HTML
+
+Allows formatted content to be created directly in the Moodle™ Software.
+
+It can be used for additional explanations, instructions, exercises, or any complementary textual content.
+
+### Image
+
+Allows images to be associated with the activity content.
+
+### Link
+
+Allows links to other resources to be provided.
+
+### Downloadable file
+
+Allows complementary files to be made available to the student.
+
+### Office
+
+Allows working with document formats commonly used in office tools.
+
+Materials are independent from the video and can be organized within the activity.
+
+The architecture makes it possible to add new types through `videoprogressmaterial` subplugins.
+
+## Content synchronized with the video
+
+The teacher can create points at specific moments during playback.
+
+Each point has:
+
+- Time in the video.
+- Title.
+- Active or inactive state.
+
+A single point can have associated content.
+
+Content is implemented through subplugins:
+
+`videoprogresscontent`
+
+There are currently two types.
+
+### Note
+
+A note makes it possible to present an explanation synchronized with a specific moment in the video.
+
+The content can use the Moodle™ Software editor and accept formatted text, images, and other elements supported by the editor.
+
+The note can work only as a temporary message or can be configured to pause the video.
+
+When configured to require confirmation, playback remains paused until the student acknowledges the displayed content.
+
+It is also possible to define the display period when mandatory pause is not enabled.
+
+### Quiz
+
+The Quiz creates a mandatory question at a specific moment in the video.
+
+The video is paused and the student must answer correctly before continuing.
+
+Each quiz has:
+
+- A question created in the editor.
+- Up to four alternatives.
+- At least two alternatives filled in.
+- Definition of the correct alternative.
+- Feedback for a correct answer.
+- Feedback for an incorrect answer.
+
+Correct-answer validation occurs on the server.
+
+The correct alternative does not need to be sent to the student's browser in advance.
+
+The interaction state is stored individually for each user.
+
+## More than one content item at the same point
+
+The Video Progress structure makes it possible to associate multiple items with the same point on the timeline.
+
+This makes it possible to create situations such as:
+
+**05:30**
+
+Explanatory note → confirmation → quiz
+
+or combine different content added by future subplugins.
+
+## Subtitles
+
+Video Progress allows local subtitles to be managed for sources that support this feature.
+
+The following files are currently accepted:
+
+- WebVTT (`.vtt`)
+- SubRip (`.srt`)
+
+SRT files are converted to WebVTT during import.
+
+Each subtitle has:
+
+- Language.
+- Name.
+- Default track indication.
+- Publication status.
+- Origin.
+- Associated protected file.
+
+The teacher can:
+
+- Upload a new subtitle.
+- Keep multiple subtitles.
+- Choose the language.
+- Define the default track.
+- Edit the WebVTT content.
+- Publish or keep a track unpublished.
+- Delete a subtitle.
+
+Only published subtitles are delivered to the player.
+
+### YouTube and Vimeo
+
+YouTube and Vimeo manage their own subtitles within their respective players.
+
+Therefore, Video Progress local subtitle file management is not used for these two sources.
+
+Subtitle support depends on the capabilities of the selected video source.
+
+## Activity report
+
+Users with the required permission can access a complete activity report.
+
+The summary shows indicators such as:
+
+- Enrolled students.
+- Students who started.
+- Students who never started.
+- Students in progress.
+- Students who completed.
+- Average percentage watched.
+- Average unique content watched.
+- Average total playback time.
+- Total playback time for the class.
+- Completion rate.
+
+## Class timeline
+
+In addition to individual information, the plugin maintains an aggregated timeline.
+
+It shows playback intensity throughout the video.
+
+Segments watched or rewatched more frequently appear with greater intensity.
+
+The aggregated map uses up to 120 regions distributed across the video duration.
+
+This makes it possible to analyze long videos without storing a separate record for every second for every student.
+
+## Automatic insights
+
+Timeline analysis automatically identifies:
+
+### Most-watched segment
+
+Region with the highest viewing intensity.
+
+This can help identify important or difficult parts, or parts that generated greater interest.
+
+### Least-watched segment
+
+Watched region with the lowest frequency.
+
+### Drop-off point
+
+Largest decrease in viewing identified between consecutive regions of the video.
+
+These indicators do not attempt to pedagogically interpret the reason for the behavior.
+
+They present data so that the teacher or manager can perform that analysis.
+
+## Student list
+
+The report shows the students in the activity with information such as:
+
+- Name.
+- Email.
+- Profile picture.
+- Percentage watched.
+- Unique content time.
+- Total playback time.
+- Last position.
+- Last viewing.
+- Status.
+- Individual timeline.
+
+The list includes filters to make analysis easier.
+
+## Individual tracking
+
+Each student has an individual tracking page.
+
+It shows:
+
+- Name.
+- Email.
+- Percentage actually watched.
+- Unique content time.
+- Total playback time.
+- Last position.
+- Last viewing.
+- Status.
+- Timeline.
+- Textual description of watched segments.
+- Playback sessions.
+- Learning objectives.
+- Confirmation status.
+- Confirmation date, when available.
+
+Authorized users can also reset progress directly from this page.
+
+## Course activity overview
+
+Within the report, the teacher can also navigate between the Video Progress activities available in the same course.
+
+Each video shows a summary with information such as:
+
+- Number of students who started.
+- Number of students who completed.
+- Average percentage.
+- Aggregated timeline.
+
+This makes it easier to compare and navigate between videos without manually returning to each course section.
+
+## Export
+
+Users with the appropriate capability can export report results.
+
+The export respects the applied filters.
+
+The data includes consolidated student tracking information without necessarily including the entire internal structure used to build the viewing maps.
+
+## Progress reset
+
+Authorized users can delete the progress of:
+
+- A specific student.
+- All students matching the selected filters.
+
+The reset also updates information that depends on progress, including the grade and activity completion.
+
+Bulk operations require confirmation before execution.
+
+## Multiple tabs and devices
+
+Video Progress maintains an update sequence and independent sessions to reduce problems caused by multiple player instances being open at the same time.
+
+This is important when the same student opens the activity:
+
+- In two tabs.
+- In different browsers.
+- On another device.
+
+Consolidated progress continues to be maintained on the server.
+
+## Connection failures
+
+Tracking data is sent during playback and at important player events.
+
+The server remains the authoritative source for the consolidated state.
+
+This model avoids relying only on the browser's local state to determine the grade or completion.
+
+## Moodle app
+
+Video Progress integrates with the Moodle app through the module's Mobile support.
+
+The activity can be opened from the app in an integrated view that directs the user to the full Video Progress page.
+
+This preserves features that depend on the player and web application, such as:
+
+- Playback tracking.
+- Synchronized content.
+- Interactions.
+- Timeline.
+- Progress updates.
+
+## Backup and restore
+
+The module implements the Moodle™ Software backup and restore API.
+
+The backup can include:
+
+- Activity settings.
+- Video source.
+- Uploaded video file.
+- Cover image.
+- Subtitles.
+- Objectives.
+- Materials.
+- Timeline points.
+- Synchronized content.
+- Playback settings.
+
+When the backup includes user data, information related to tracking can also be preserved.
+
+When user data is not included, the new activity does not receive the students' individual progress.
+
+## Administrative diagnostics
+
+Administrators have a diagnostic tool to verify Video Progress integrity.
+
+The page analyzes information such as:
+
+- Number of activities.
+- Number of progress records.
+- Orphaned records.
+- Activities without a corresponding gradebook item.
+- Grades inconsistent with the calculated percentage.
+- Percentages outside the allowed range.
+- Invalid segments.
+- Invalid viewing maps.
+- Gradebook formulas with missing references.
+
+## Gradebook repair
+
+The administrative tool can also start a repair task.
+
+This task goes through the Video Progress activities and:
+
+- Ensures that grade items exist.
+- Resubmits calculated grades.
+- Reevaluates completion status.
+- Updates Moodle™ Software completion when necessary.
+
+Gradebook formulas containing missing references are identified and shown to the administrator.
+
+These formulas are not changed automatically.
+
+## License
+
+This plugin is distributed under the terms of the GNU General Public License v3 or later.
+
+Copyright © 2026 Eduardo Kraus
