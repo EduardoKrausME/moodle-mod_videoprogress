@@ -31,18 +31,18 @@
 <section class="videoprogress-material-view videoprogress-material-view--office">
     <header class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
         <div>
-            <h3 class="mb-1">{{name}}</h3>
-            {{#filename}}<small class="text-muted">{{filename}}</small>{{/filename}}
+            <h3 class="mb-1">{{{name}}}</h3>
+            {{#filename}}<small class="text-muted">{{{filename}}}</small>{{/filename}}
         </div>
         {{#allowdownload}}
-            <a class="btn btn-outline-primary" href="{{downloadurl}}">{{#str}}download, videoprogressmaterial_office{{/str}}</a>
+            <a class="btn btn-outline-primary" href="{{{downloadurl}}}">{{#str}}download, videoprogressmaterial_office{{/str}}</a>
         {{/allowdownload}}
     </header>
 
     {{#hasfile}}
         {{#haspreview}}
-            <iframe src="{{viewerurl}}" class="w-100 border rounded" height="800"
-                    title="{{name}}" loading="lazy"></iframe>
+            <iframe src="{{{viewerurl}}}" class="w-100 border rounded" height="800"
+                    title="{{{name}}}" loading="lazy"></iframe>
         {{/haspreview}}
         {{^haspreview}}
             <div class="alert alert-warning">{{#str}}previewunavailable, videoprogressmaterial_office{{/str}}</div>

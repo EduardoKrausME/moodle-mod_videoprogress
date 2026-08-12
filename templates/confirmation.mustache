@@ -44,8 +44,8 @@
             {{^confirmation.available}}
                 {{#str}}confirmationlocked, videoprogress {{/str}}
             {{/confirmation.available}}</p>
-        <form method="post" action="{{confirmation.url}}">
-            <input type="hidden" name="sesskey" value="{{confirmation.sesskey}}">
+        <form method="post" action="{{{confirmation.url}}}">
+            <input type="hidden" name="sesskey" value="{{{confirmation.sesskey}}}">
             <input type="hidden" name="confirm" value="1">
             <button type="submit" class="btn btn-primary"
                     {{^confirmation.available}}disabled{{/confirmation.available}}>{{#str}}confirmobjectives, videoprogress {{/str}}</button>

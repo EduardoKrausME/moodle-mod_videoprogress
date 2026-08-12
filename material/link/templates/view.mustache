@@ -27,10 +27,10 @@
     }
 }}
 <section class="videoprogress-material-view videoprogress-material-view--link">
-    <h3>{{name}}</h3>
+    <h3>{{{name}}}</h3>
     {{#hasurl}}
-        {{#host}}<p class="text-muted mb-3">{{host}}</p>{{/host}}
-        <a class="btn btn-primary" href="{{externalurl}}"{{#opennewwindow}} target="_blank" rel="noopener noreferrer"{{/opennewwindow}}>
+        {{#host}}<p class="text-muted mb-3">{{{host}}}</p>{{/host}}
+        <a class="btn btn-primary" href="{{{externalurl}}}"{{#opennewwindow}} target="_blank" rel="noopener noreferrer"{{/opennewwindow}}>
             {{#str}}openlink, videoprogressmaterial_link{{/str}}
         </a>
     {{/hasurl}}

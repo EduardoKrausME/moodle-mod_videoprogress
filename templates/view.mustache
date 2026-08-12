@@ -22,7 +22,7 @@
         "configjson": "{}",
         "name": "Vídeo de exemplo",
         "canviewreport": true,
-        "reporturl": "/mod/videoprogress/report.php?id=10",
+        "reporturl": "/mod/videoprogress/report/report.php?id=10",
         "cancaptions": true,
         "captionsurl": "/mod/videoprogress/captions.php?id=10",
         "canmanageobjectives": true,
@@ -106,15 +106,15 @@
 
 <div class="videoprogress-view" data-region="videoprogress" data-config="{{configjson}}">
     <header class="videoprogress-view__header">
-        <h2>{{name}}</h2>
+        <h2>{{{name}}}</h2>
         <div class="videoprogress-view__actions">
             {{#canviewreport}}
                 <a class="btn btn-outline-primary"
-                   href="{{reporturl}}">{{#str}}viewreport, videoprogress {{/str}}</a>
+                   href="{{{reporturl}}}">{{#str}}viewreport, videoprogress {{/str}}</a>
             {{/canviewreport}}
             {{#canmanageresources}}
                 <a class="btn btn-outline-secondary"
-                   href="{{manageurl}}">{{#str}}manageresources, videoprogress {{/str}}</a>
+                   href="{{{manageurl}}}">{{#str}}manageresources, videoprogress {{/str}}</a>
             {{/canmanageresources}}
         </div>
     </header>

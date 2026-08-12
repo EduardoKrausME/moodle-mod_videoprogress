@@ -42,7 +42,7 @@
 }}
 
 <div class="videoprogress-manage">
-    <a href="{{backurl}}" class="btn btn-secondary btn-sm mb-3 videoprogress-report__back">
+    <a href="{{{backurl}}}" class="btn btn-secondary btn-sm mb-3 videoprogress-report__back">
         {{#str}} backtovideo, videoprogress {{/str}}
     </a>
     <div class="videoprogress-manage__heading">
@@ -55,7 +55,7 @@
                     data-toggle="dropdown">{{#str}}addmaterial, videoprogress {{/str}}</button>
             <div class="dropdown-menu dropdown-menu-right">
                 {{#addurls}}
-                    <a class="dropdown-item" href="{{url}}">{{name}}</a>
+                    <a class="dropdown-item" href="{{{url}}}">{{{name}}}</a>
                 {{/addurls}}
             </div>
         </div>
@@ -65,8 +65,8 @@
             {{#items}}
                 <article>
                     <div>
-                        <h3>{{name}}</h3>
-                        <span>{{pluginname}}</span>
+                        <h3>{{{name}}}</h3>
+                        <span>{{{pluginname}}}</span>
                         {{#disabled}}
                             <span class="badge badge-secondary">{{#str}} disabled, videoprogress {{/str}}</span>
                         {{/disabled}}
@@ -74,10 +74,10 @@
                     <div>
                         {{#pluginavailable}}
                             <a class="btn btn-sm btn-outline-primary"
-                               href="{{editurl}}">{{#str}}edit, videoprogress {{/str}}</a>
+                               href="{{{editurl}}}">{{#str}}edit, videoprogress {{/str}}</a>
                         {{/pluginavailable}}
                         <a class="btn btn-sm btn-outline-danger"
-                           href="{{deleteurl}}">{{#str}}delete, videoprogress {{/str}}</a>
+                           href="{{{deleteurl}}}">{{#str}}delete, videoprogress {{/str}}</a>
                     </div>
                 </article>
             {{/items}}

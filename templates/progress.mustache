@@ -39,15 +39,15 @@
                 {{#str}} watchedpercent, videoprogress, {{{progress.percentrounded}}} {{/str}}
             </p>
         </div>
-        <strong class="videoprogress-progress__percent" data-region="percent">{{progress.percentrounded}}%</strong>
+        <strong class="videoprogress-progress__percent" data-region="percent">{{{progress.percentrounded}}}%</strong>
     </div>
     <div class="progress videoprogress-progress__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-         aria-valuenow="{{progress.percentrounded}}">
+         aria-valuenow="{{{progress.percentrounded}}}">
         <div class="progress-bar" data-region="progress-bar" style="width: {{progress.percent}}%"></div>
     </div>
     <div class="videoprogress-progress__meta">
         <span data-region="watched-duration" class="{{#progress.notstarted}}d-none{{/progress.notstarted}}">
-            {{progress.watchedofduration}}
+            {{{progress.watchedofduration}}}
         </span>
         <span>{{#str}} completionrequirement, videoprogress, {{{progress.requiredpercent}}} {{/str}}</span>
     </div>

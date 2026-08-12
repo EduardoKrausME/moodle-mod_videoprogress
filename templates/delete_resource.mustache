@@ -29,13 +29,13 @@
 
 <div class="videoprogress-reset-confirmation">
     <span class="videoprogress-reset-confirmation__icon" aria-hidden="true">!</span>
-    <h2>{{title}}</h2>
-    <p>{{message}}</p>
-    <form method="post" action="{{actionurl}}"><input type="hidden" name="confirmed" value="1"><input type="hidden"
+    <h2>{{{title}}}</h2>
+    <p>{{{message}}}</p>
+    <form method="post" action="{{{actionurl}}}"><input type="hidden" name="confirmed" value="1"><input type="hidden"
                                                                                                       name="sesskey"
-                                                                                                      value="{{sesskey}}">
+                                                                                                      value="{{{sesskey}}}">
         <div class="videoprogress-reset-confirmation__actions">
             <button type="submit" class="btn btn-danger">{{#str}} confirmdelete, videoprogress {{/str}}</button>
-            <a href="{{returnurl}}" class="btn btn-secondary">{{#str}} cancel, videoprogress {{/str}}</a></div>
+            <a href="{{{returnurl}}}" class="btn btn-secondary">{{#str}} cancel, videoprogress {{/str}}</a></div>
     </form>
 </div>

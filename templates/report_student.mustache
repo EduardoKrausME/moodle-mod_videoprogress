@@ -19,12 +19,12 @@
 
     Example context (json):
     {
-        "backurl": "/mod/videoprogress/report.php?id=10",
+        "backurl": "/mod/videoprogress/report/report.php?id=10",
         "activityname": "Vídeo de exemplo",
         "fullname": "Aluno Exemplo",
         "email": "aluno@example.test",
         "canreset": true,
-        "reseturl": "/mod/videoprogress/reset.php?id=10&userid=2",
+        "reseturl": "/mod/videoprogress/report/reset.php?id=10&userid=2",
         "percent": 72,
         "uniquewatched": "07:12",
         "totalwatchtime": "09:40",
@@ -65,43 +65,36 @@
 <div class="videoprogress-student-detail">
     <header class="videoprogress-report__header">
         <div>
-            <a href="{{backurl}}" class="videoprogress-report__back">{{#str}} backtoreport, videoprogress {{/str}}</a>
-            <h2>{{fullname}}</h2>
-            <p>{{email}}</p>
+            <a href="{{{backurl}}}" class="btn btn-secondary btn-sm mb-3 videoprogress-report__back">
+                {{#str}} backtoreport, videoprogress {{/str}}
+            </a>
+            <h2>{{{fullname}}}</h2>
+            <p>{{{email}}}</p>
         </div>
         {{#canreset}}
-            <a href="{{reseturl}}"
+            <a href="{{{reseturl}}}"
                class="btn btn-outline-danger">{{#str}}resetprogress, videoprogress {{/str}}</a>
         {{/canreset}}
     </header>
     <section class="videoprogress-detail-metrics">
-        <article><h3>{{percent}}%</h3><span>{{#str}} progress, videoprogress {{/str}}</span></article>
-        <article><h3>{{uniquewatched}}</h3><span>{{#str}} uniquewatched, videoprogress {{/str}}</span></article>
-        <article><h3>{{totalwatchtime}}</h3><span>{{#str}} totalwatchtime, videoprogress {{/str}}</span></article>
-        <article><h3>{{lastposition}}</h3><span>{{#str}} lastposition, videoprogress {{/str}}</span></article>
-        <article><h3>{{status}}</h3><span>{{#str}} status, videoprogress {{/str}}</span></article>
-        <article><h3>{{lastview}}</h3><span>{{#str}} lastview, videoprogress {{/str}}</span></article>
+        <article><h3>{{{percent}}}%</h3><span>{{#str}} progress, videoprogress {{/str}}</span></article>
+        <article><h3>{{{uniquewatched}}}</h3><span>{{#str}} uniquewatched, videoprogress {{/str}}</span></article>
+        <article><h3>{{{totalwatchtime}}}</h3><span>{{#str}} totalwatchtime, videoprogress {{/str}}</span></article>
+        <article><h3>{{{lastposition}}}</h3><span>{{#str}} lastposition, videoprogress {{/str}}</span></article>
+        <article><h3>{{{status}}}</h3><span>{{#str}} status, videoprogress {{/str}}</span></article>
+        <article><h3>{{{lastview}}}</h3><span>{{#str}} lastview, videoprogress {{/str}}</span></article>
     </section>
     <section class="videoprogress-report-timeline">
         <h3>{{#str}} individualtimeline, videoprogress {{/str}}</h3>
         <div class="videoprogress-timeline" role="img"
              aria-label="{{#str}} individualtimelinearia, videoprogress, {{{fullname}}} {{/str}}">
             {{#timeline}}
-                <span class="videoprogress-timeline__bucket level-{{level}}" tabindex="0"
-                      title="{{tooltip}}"></span>
+                <span class="videoprogress-timeline__bucket level-{{{level}}}" tabindex="0"
+                      title="{{{tooltip}}}"></span>
             {{/timeline}}
         </div>
-        <p class="sr-only">{{timelinealternative}}</p>
+        <p class="sr-only">{{{timelinealternative}}}</p>
     </section>
-    {{#hasobjectives}}
-        <section class="videoprogress-detail-section"><h3>{{#str}} learningobjectives, videoprogress {{/str}}</h3>
-            <ul>
-                {{#objectives}}
-                    <li>{{{html}}}</li>
-                {{/objectives}}
-            </ul>
-        </section>
-    {{/hasobjectives}}
     <section class="videoprogress-detail-section">
         <h3>{{#str}} confirmationtitle, videoprogress {{/str}}</h3>
         {{#confirmation}}
@@ -117,10 +110,10 @@
             <div class="videoprogress-sessions">
                 {{#sessions}}
                     <article>
-                        <h3>{{date}}</h3>
+                        <h3>{{{date}}}</h3>
                         <span>{{#str}}sessionduration, videoprogress, {{{duration}}} {{/str}}</span>
                         <span>{{#str}}sessionwatchtime, videoprogress, {{{watchtime}}} {{/str}}</span>
-                        <span>{{range}}</span>
+                        <span>{{{range}}}</span>
                     </article>
                 {{/sessions}}
             </div>

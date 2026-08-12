@@ -27,7 +27,7 @@
                 "name": "Vídeo de exemplo",
                 "completionpercent": 80,
                 "canreport": true,
-                "reporturl": "/mod/videoprogress/report.php?id=10"
+                "reporturl": "/mod/videoprogress/report/report.php?id=10"
             }
         ]
     }
@@ -39,10 +39,10 @@
         <div class="videoprogress-index__list">
             {{#activities}}
                 <article>
-                    <h3><a href="{{viewurl}}">{{name}}</a></h3>
+                    <h3><a href="{{{viewurl}}}">{{{name}}}</a></h3>
                     <p>{{#str}} indexrequirement, videoprogress, {{{completionpercent}}} {{/str}}</p>
                     {{#canreport}}
-                        <a href="{{reporturl}}" class="btn btn-outline-primary">{{#str}}viewreport, videoprogress {{/str}}</a>
+                        <a href="{{{reporturl}}}" class="btn btn-outline-primary">{{#str}}viewreport, videoprogress {{/str}}</a>
                     {{/canreport}}
                 </article>
             {{/activities}}

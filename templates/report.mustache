@@ -24,12 +24,12 @@
         "activityname": "Vídeo de exemplo",
         "coursename": "Curso de exemplo",
         "canexport": true,
-        "exporturl": "/mod/videoprogress/export.php?id=10",
+        "exporturl": "/mod/videoprogress/report/export.php?id=10",
         "canreset": true,
-        "massreseturl": "/mod/videoprogress/reset.php?id=10&mass=1",
+        "massreseturl": "/mod/videoprogress/report/reset.php?id=10&mass=1",
         "coursevideos": [
             {
-                "url": "/mod/videoprogress/report.php?id=10",
+                "url": "/mod/videoprogress/report/report.php?id=10",
                 "active": true,
                 "name": "Vídeo de exemplo",
                 "stats": "12 alunos · média 72%",
@@ -84,7 +84,7 @@
             }
         },
         "filters": {
-            "action": "/mod/videoprogress/report.php",
+            "action": "/mod/videoprogress/report/report.php",
             "cmid": 10,
             "search": "",
             "groups": [
@@ -165,21 +165,21 @@
                 "timelinealternative": "O aluno assistiu principalmente o início do vídeo.",
                 "detailsurl": "/mod/videoprogress/report/user.php?id=10&userid=2",
                 "canreset": true,
-                "reseturl": "/mod/videoprogress/reset.php?id=10&userid=2"
+                "reseturl": "/mod/videoprogress/report/reset.php?id=10&userid=2"
             }
         ],
         "pagination": {
             "hasprevious": false,
-            "previousurl": "/mod/videoprogress/report.php?id=10&page=0",
+            "previousurl": "/mod/videoprogress/report/report.php?id=10&page=0",
             "pages": [
                 {
-                    "url": "/mod/videoprogress/report.php?id=10&page=0",
+                    "url": "/mod/videoprogress/report/report.php?id=10&page=0",
                     "active": true,
                     "number": 1
                 }
             ],
             "hasnext": false,
-            "nexturl": "/mod/videoprogress/report.php?id=10&page=1"
+            "nexturl": "/mod/videoprogress/report/report.php?id=10&page=1"
         }
     }
 }}
@@ -187,17 +187,19 @@
 <div class="videoprogress-report" data-region="report" data-datatable-config="{{datatableconfig}}">
     <header class="videoprogress-report__header">
         <div>
-            <a href="{{viewurl}}" class="videoprogress-report__back">{{#str}} backtovideo, videoprogress {{/str}}</a>
-            <h2>{{activityname}}</h2>
-            <p>{{coursename}}</p>
+            <a href="{{{backurl}}}" class="btn btn-secondary btn-sm mb-3 videoprogress-report__back">
+                {{#str}} backtovideo, videoprogress {{/str}}
+            </a>
+            <h2>{{{activityname}}}</h2>
+            <p>{{{coursename}}}</p>
         </div>
         <div class="videoprogress-report__actions">
             {{#canexport}}
-                <a href="{{exporturl}}"
+                <a href="{{{exporturl}}}"
                    class="btn btn-outline-primary">{{#str}}exportcsv, videoprogress {{/str}}</a>
             {{/canexport}}
             {{#canreset}}
-                <a href="{{massreseturl}}"
+                <a href="{{{massreseturl}}}"
                    class="btn btn-outline-danger">{{#str}}resetfiltered, videoprogress {{/str}}</a>
             {{/canreset}}
         </div>
@@ -207,12 +209,12 @@
         <summary>{{#str}} coursevideos, videoprogress {{/str}}</summary>
         <div class="videoprogress-course-videos__list">
             {{#coursevideos}}
-                <a href="{{url}}" class="videoprogress-course-video {{#active}}is-active{{/active}}">
-                    <strong>{{name}}</strong>
-                    <span>{{stats}}</span>
+                <a href="{{{url}}}" class="videoprogress-course-video {{#active}}is-active{{/active}}">
+                    <strong>{{{name}}}</strong>
+                    <span>{{{stats}}}</span>
                     <div class="videoprogress-mini-map" aria-hidden="true">
                         {{#timeline}}
-                            <i class="level-{{level}}"></i>
+                            <i class="level-{{{level}}}"></i>
                         {{/timeline}}
                     </div>
                 </a>
@@ -226,7 +228,7 @@
 
     <div class="videoprogress-report__result-heading">
         <h3>{{#str}} students, videoprogress {{/str}}</h3>
-        <span>{{#str}} resultcount, videoprogress, {{totalresults}} {{/str}}</span>
+        <span>{{#str}} resultcount, videoprogress, {{{totalresults}}} {{/str}}</span>
     </div>
     {{#hasstudents}}{{> mod_videoprogress/report_students}}{{/hasstudents}}
     {{^hasstudents}}{{> mod_videoprogress/report_empty}}{{/hasstudents}}

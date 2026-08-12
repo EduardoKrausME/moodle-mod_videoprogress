@@ -31,7 +31,7 @@
 }}
 
 <div class="videoprogress-manage">
-    <a href="{{backurl}}" class="btn btn-secondary btn-sm mb-3 videoprogress-report__back">
+    <a href="{{{backurl}}}" class="btn btn-secondary btn-sm mb-3 videoprogress-report__back">
         {{#str}} backtovideo, videoprogress {{/str}}
     </a>
     <h2>{{#str}} manageresources, videoprogress {{/str}}</h2>
@@ -39,28 +39,28 @@
     <div class="videoprogress-manage__cards">
         {{#cancaptions}}
             <a class="btn btn-outline-secondary"
-               href="{{captionsurl}}">
+               href="{{{captionsurl}}}">
                 <strong>{{#str}}managecaptions, videoprogress {{/str}}</strong>
                 <span>{{#str}}managecaptionshelp, videoprogress {{/str}}</span>
             </a>
         {{/cancaptions}}
         {{#canobjectives}}
             <a class="btn btn-outline-secondary"
-               href="{{objectivesurl}}">
+               href="{{{objectivesurl}}}">
                 <strong>{{#str}} learningobjectives, videoprogress {{/str}}</strong>
                 <span>{{#str}}manageobjectiveshelp, videoprogress {{/str}}</span>
             </a>
         {{/canobjectives}}
         {{#canmaterials}}
             <a class="btn btn-outline-secondary"
-               href="{{materialsurl}}">
+               href="{{{materialsurl}}}">
                 <strong>{{#str}} supportmaterials, videoprogress {{/str}}</strong>
                 <span>{{#str}}managematerialshelp, videoprogress {{/str}}</span>
             </a>
         {{/canmaterials}}
         {{#cancontent}}
             <a class="btn btn-outline-secondary"
-               href="{{contenturl}}">
+               href="{{{contenturl}}}">
                 <strong>{{#str}} videocontent, videoprogress {{/str}}</strong>
                 <span>{{#str}}managecontenthelp, videoprogress {{/str}}</span>
             </a>

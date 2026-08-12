@@ -32,16 +32,16 @@
 }}
 <section class="videoprogress-material-view videoprogress-material-view--download">
     <header class="mb-3">
-        <h3>{{name}}</h3>
+        <h3>{{{name}}}</h3>
     </header>
     {{#hasfiles}}
         <div class="list-group">
             {{#files}}
                 <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-                   href="{{downloadurl}}">
-                    <span>{{filename}}</span>
+                   href="{{{downloadurl}}}">
+                    <span>{{{filename}}}</span>
                     <span class="d-flex align-items-center gap-3">
-                        <small class="text-muted">{{filesize}}</small>
+                        <small class="text-muted">{{{filesize}}}</small>
                         <strong>{{#str}}download, videoprogressmaterial_download{{/str}}</strong>
                     </span>
                 </a>

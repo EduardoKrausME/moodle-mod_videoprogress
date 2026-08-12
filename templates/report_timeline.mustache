@@ -56,29 +56,29 @@
         <div class="videoprogress-timeline is-aggregate" role="img"
              aria-label="{{#str}} reporttimelineaccessible, videoprogress {{/str}}">
             {{#aggregatetimeline}}
-                <span class="videoprogress-timeline__bucket level-{{level}}" tabindex="0"
-                      title="{{tooltip}}"></span>
+                <span class="videoprogress-timeline__bucket level-{{{level}}}" tabindex="0"
+                      title="{{{tooltip}}}"></span>
             {{/aggregatetimeline}}
         </div>
         <div class="videoprogress-insights">
             {{#insights.mostwatched}}
                 <article>
                     <span>{{#str}}mostwatchedsection, videoprogress {{/str}}</span>
-                    <h3>{{range}}</h3>
+                    <h3>{{{range}}}</h3>
                     <small>{{#str}}viewsamount, videoprogress, {{{views}}} {{/str}}</small>
                 </article>
             {{/insights.mostwatched}}
             {{#insights.leastwatched}}
                 <article>
                     <span>{{#str}}leastwatchedsection, videoprogress {{/str}}</span>
-                    <h3>{{range}}</h3>
+                    <h3>{{{range}}}</h3>
                     <small>{{#str}}viewsamount, videoprogress, {{{views}}} {{/str}}</small>
                 </article>
             {{/insights.leastwatched}}
             {{#insights.dropoff}}
                 <article>
                     <span>{{#str}}largestdropoff, videoprogress {{/str}}</span>
-                    <h3>{{range}}</h3>
+                    <h3>{{{range}}}</h3>
                     <small>{{#str}}viewdrop, videoprogress, {{{views}}} {{/str}}</small>
                 </article>
             {{/insights.dropoff}}

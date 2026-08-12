@@ -20,7 +20,7 @@
     Example context (json):
     {
         "filters": {
-            "action": "/mod/videoprogress/report.php",
+            "action": "/mod/videoprogress/report/report.php",
             "cmid": 10,
             "search": "",
             "groups": [
@@ -78,18 +78,18 @@
 
 <section class="videoprogress-filters" aria-labelledby="videoprogress-filters-heading">
     <h3 id="videoprogress-filters-heading">{{#str}} filters, videoprogress {{/str}}</h3>
-    <form method="get" action="{{filters.action}}" class="videoprogress-filters__form">
-        <input type="hidden" name="id" value="{{filters.cmid}}">
+    <form method="get" action="{{{filters.action}}}" class="videoprogress-filters__form">
+        <input type="hidden" name="id" value="{{{filters.cmid}}}">
         <div class="form-group videoprogress-filter-search">
             <label for="videoprogress-search">{{#str}} searchstudents, videoprogress {{/str}}</label>
-            <input id="videoprogress-search" name="search" type="search" class="form-control" value="{{filters.search}}"
+            <input id="videoprogress-search" name="search" type="search" class="form-control" value="{{{filters.search}}}"
                    placeholder="{{#str}} searchplaceholder, videoprogress {{/str}}">
         </div>
         <div class="form-group">
             <label for="videoprogress-group">{{#str}} group, videoprogress {{/str}}</label>
             <select id="videoprogress-group" name="groupid" class="form-control">
                 {{#filters.groups}}
-                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+                    <option value="{{{value}}}" {{#selected}}selected{{/selected}}>{{{label}}}</option>
                 {{/filters.groups}}
             </select>
         </div>
@@ -97,7 +97,7 @@
             <label for="videoprogress-status">{{#str}} status, videoprogress {{/str}}</label>
             <select id="videoprogress-status" name="status" class="form-control">
                 {{#filters.statuses}}
-                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+                    <option value="{{{value}}}" {{#selected}}selected{{/selected}}>{{{label}}}</option>
                 {{/filters.statuses}}
             </select>
         </div>
@@ -105,8 +105,8 @@
             <label for="videoprogress-percent">{{#str}} percentage, videoprogress {{/str}}</label>
             <select id="videoprogress-percent" name="percentrange" class="form-control">
                 {{#filters.percentranges}}
-                    <option value="{{value}}"
-                            {{#selected}}selected{{/selected}}>{{label}}</option>
+                    <option value="{{{value}}}"
+                            {{#selected}}selected{{/selected}}>{{{label}}}</option>
                 {{/filters.percentranges}}
             </select>
         </div>
@@ -114,7 +114,7 @@
             <label for="videoprogress-lastview">{{#str}} lastview, videoprogress {{/str}}</label>
             <select id="videoprogress-lastview" name="lastview" class="form-control">
                 {{#filters.lastviews}}
-                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+                    <option value="{{{value}}}" {{#selected}}selected{{/selected}}>{{{label}}}</option>
                 {{/filters.lastviews}}
             </select>
         </div>
@@ -122,7 +122,7 @@
             <label for="videoprogress-sort">{{#str}} sortby, videoprogress {{/str}}</label>
             <select id="videoprogress-sort" name="sort" class="form-control">
                 {{#filters.sorts}}
-                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+                    <option value="{{{value}}}" {{#selected}}selected{{/selected}}>{{{label}}}</option>
                 {{/filters.sorts}}
             </select>
         </div>
@@ -130,8 +130,8 @@
             <label for="videoprogress-direction">{{#str}} direction, videoprogress {{/str}}</label>
             <select id="videoprogress-direction" name="direction" class="form-control">
                 {{#filters.directions}}
-                    <option value="{{value}}"
-                            {{#selected}}selected{{/selected}}>{{label}}</option>
+                    <option value="{{{value}}}"
+                            {{#selected}}selected{{/selected}}>{{{label}}}</option>
                 {{/filters.directions}}
             </select>
         </div>
@@ -139,7 +139,7 @@
             <label for="videoprogress-perpage">{{#str}} perpage, videoprogress {{/str}}</label>
             <select id="videoprogress-perpage" name="perpage" class="form-control">
                 {{#filters.perpages}}
-                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+                    <option value="{{{value}}}" {{#selected}}selected{{/selected}}>{{{label}}}</option>
                 {{/filters.perpages}}
             </select>
         </div>

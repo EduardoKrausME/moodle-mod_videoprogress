@@ -40,12 +40,12 @@
 <section class="videoprogress-content-overlay videoprogress-content-overlay--quiz" data-content-item="{{itemid}}"
          hidden>
     <div class="videoprogress-content-overlay__panel">
-        <h3>{{pointtitle}}</h3>
+        <h3>{{{pointtitle}}}</h3>
         <div class="videoprogress-content-overlay__body">{{{question}}}</div>
         <div class="videoprogress-quiz-answers">
             {{#answers}}
                 <button type="button" class="videoprogress-quiz-answer" data-answer="{{index}}">
-                    <span>{{number}}</span>{{text}}
+                    <span>{{{number}}}</span>{{{text}}}
                 </button>
             {{/answers}}
         </div>

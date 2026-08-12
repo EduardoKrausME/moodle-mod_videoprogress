@@ -47,11 +47,11 @@
     <div class="videoprogress-timeline" data-region="timeline" role="img"
          aria-label="{{#str}} timelineaccessible, videoprogress {{/str}}">
         {{#timeline}}
-            <span class="videoprogress-timeline__bucket level-{{level}}" tabindex="0" title="{{tooltip}}"
-                  data-start="{{start}}" data-end="{{end}}" data-views="{{views}}"></span>
+            <span class="videoprogress-timeline__bucket level-{{{level}}}" tabindex="0" title="{{{tooltip}}}"
+                  data-start="{{{start}}}" data-end="{{{end}}}" data-views="{{{views}}}"></span>
         {{/timeline}}
     </div>
-    <p class="sr-only" data-region="timeline-alternative">{{timelinealternative}}</p>
+    <p class="sr-only" data-region="timeline-alternative">{{{timelinealternative}}}</p>
     <div class="videoprogress-timeline__legend" aria-hidden="true">
         <span>{{#str}} notwatched, videoprogress {{/str}}</span>
         <span class="videoprogress-timeline__legend-scale"></span>

@@ -43,7 +43,7 @@
 <div class="videoprogress-captions">
     <header class="videoprogress-report__header">
         <div>
-            <a href="{{backurl}}" class="btn btn-secondary btn-sm mb-3 videoprogress-report__back">
+            <a href="{{{backurl}}}" class="btn btn-secondary btn-sm mb-3 videoprogress-report__back">
                 {{#str}} backtovideo, videoprogress {{/str}}
             </a>
             <h2>{{#str}} managecaptions, videoprogress {{/str}}</h2>
@@ -61,19 +61,19 @@
                 {{#captions}}
                     <article>
                         <div>
-                            <h3>{{label}}</h3>
-                            <span>{{language}} · {{status}} · {{source}}</span>
+                            <h3>{{{label}}}</h3>
+                            <span>{{{language}}} · {{{status}}} · {{{source}}}</span>
                             {{#isdefault}}
                                 <span class="badge badge-primary">{{#str}}default, videoprogress {{/str}}</span>
                             {{/isdefault}}
                         </div>
                         <div class="videoprogress-row-actions">
-                            <a href="{{editurl}}" class="btn btn-sm btn-outline-primary">{{#str}}edit, videoprogress {{/str}}</a>
-                            <form method="post" action="{{actionurl}}" data-action="delete-caption">
-                                <input type="hidden" name="id" value="{{cmid}}">
-                                <input type="hidden" name="sesskey" value="{{sesskey}}">
+                            <a href="{{{editurl}}}" class="btn btn-sm btn-outline-primary">{{#str}}edit, videoprogress {{/str}}</a>
+                            <form method="post" action="{{{actionurl}}}" data-action="delete-caption">
+                                <input type="hidden" name="id" value="{{{cmid}}}">
+                                <input type="hidden" name="sesskey" value="{{{sesskey}}}">
                                 <input type="hidden" name="action" value="delete">
-                                <input type="hidden" name="captionid" value="{{id}}">
+                                <input type="hidden" name="captionid" value="{{{id}}}">
                                 <button class="btn btn-sm btn-outline-danger"
                                         type="submit">{{#str}}delete, videoprogress {{/str}}</button>
                             </form>

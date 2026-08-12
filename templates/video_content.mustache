@@ -54,14 +54,14 @@
                             <span aria-hidden="true">✓</span>
                         <span class="sr-only">{{#str}}statuscompleted, videoprogress {{/str}}</span>
                         {{/completed}}
-                        {{^completed}}{{timecode}}{{/completed}}
+                        {{^completed}}{{{timecode}}}{{/completed}}
                     </span>
                     <span class="videoprogress-video-content__text">
-                        <strong>{{title}}</strong>
+                        <strong>{{{title}}}</strong>
                         {{#hasitems}}
                             <small>
                                 {{#items}}
-                                    <span>{{name}}</span>
+                                    <span>{{{name}}}</span>
                                 {{/items}}
                             </small>
                         {{/hasitems}}

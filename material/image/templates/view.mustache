@@ -29,13 +29,13 @@
 }}
 <section class="videoprogress-material-view videoprogress-material-view--image">
     <header class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
-        <h3 class="mb-0">{{name}}</h3>
+        <h3 class="mb-0">{{{name}}}</h3>
         {{#allowdownload}}
-            <a class="btn btn-outline-primary" href="{{downloadurl}}">{{#str}}download, videoprogressmaterial_image{{/str}}</a>
+            <a class="btn btn-outline-primary" href="{{{downloadurl}}}">{{#str}}download, videoprogressmaterial_image{{/str}}</a>
         {{/allowdownload}}
     </header>
     {{#hasfile}}
-        <img src="{{imageurl}}" alt="{{alttext}}" class="img-fluid rounded border">
+        <img src="{{{imageurl}}}" alt="{{{alttext}}}" class="img-fluid rounded border">
     {{/hasfile}}
     {{^hasfile}}
         <div class="alert alert-info">{{#str}}nofile, videoprogressmaterial_image{{/str}}</div>

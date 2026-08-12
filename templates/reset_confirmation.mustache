@@ -22,7 +22,7 @@
         "mass": false,
         "count": 1,
         "targetname": "Aluno Exemplo",
-        "actionurl": "/mod/videoprogress/reset.php",
+        "actionurl": "/mod/videoprogress/report/reset.php",
         "cmid": 10,
         "userid": 2,
         "sesskey": "examplesesskey",
@@ -32,7 +32,7 @@
                 "value": "inprogress"
             }
         ],
-        "returnurl": "/mod/videoprogress/report.php?id=10"
+        "returnurl": "/mod/videoprogress/report/report.php?id=10"
     }
 }}
 
@@ -46,18 +46,18 @@
         <p>{{#str}} resetconfirmation, videoprogress, {{{targetname}}} {{/str}}</p>
     {{/mass}}
     <p class="text-muted">{{#str}} resetdatadescription, videoprogress {{/str}}</p>
-    <form method="post" action="{{actionurl}}">
-        <input type="hidden" name="id" value="{{cmid}}">
-        <input type="hidden" name="userid" value="{{userid}}">
+    <form method="post" action="{{{actionurl}}}">
+        <input type="hidden" name="id" value="{{{cmid}}}">
+        <input type="hidden" name="userid" value="{{{userid}}}">
         <input type="hidden" name="mass" value="{{#mass}}1{{/mass}}{{^mass}}0{{/mass}}">
         <input type="hidden" name="confirmed" value="1">
-        <input type="hidden" name="sesskey" value="{{sesskey}}">
+        <input type="hidden" name="sesskey" value="{{{sesskey}}}">
         {{#hiddenfields}}
-            <input type="hidden" name="{{name}}" value="{{value}}">
+            <input type="hidden" name="{{{name}}}" value="{{{value}}}">
         {{/hiddenfields}}
         <div class="videoprogress-reset-confirmation__actions">
             <button type="submit" class="btn btn-danger">{{#str}} confirmreset, videoprogress {{/str}}</button>
-            <a href="{{returnurl}}" class="btn btn-secondary">{{#str}} cancel, videoprogress {{/str}}</a>
+            <a href="{{{returnurl}}}" class="btn btn-secondary">{{#str}} cancel, videoprogress {{/str}}</a>
         </div>
     </form>
 </div>
