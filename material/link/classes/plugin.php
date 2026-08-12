@@ -34,10 +34,23 @@ use stdClass;
  * Provides an external reference link as support material.
  */
 class plugin extends plugin_base {
+    /**
+     * get_name
+     *
+     * @return string
+     * @throws \coding_exception
+     */
     public function get_name(): string {
         return get_string("pluginname", "videoprogressmaterial_link");
     }
 
+    /**
+     * add_form_elements
+     *
+     * @param MoodleQuickForm $mform
+     * @return void
+     * @throws \coding_exception
+     */
     public function add_form_elements(MoodleQuickForm $mform): void {
         $mform->addElement("text", "externalurl", get_string("externalurl", "videoprogressmaterial_link"), ["size" => 80]);
         $mform->setType("externalurl", PARAM_URL);
@@ -47,6 +60,14 @@ class plugin extends plugin_base {
         $mform->setDefault("opennewwindow", 1);
     }
 
+    /**
+     * prepare_form_data
+     *
+     * @param stdClass $data
+     * @param stdClass|null $material
+     * @param context_module $context
+     * @return stdClass
+     */
     public function prepare_form_data(stdClass $data, stdClass|null $material, context_module $context): stdClass {
         $config = $this->decode_config($material);
         $data->externalurl = $config["url"] ?? '';
@@ -54,6 +75,16 @@ class plugin extends plugin_base {
         return $data;
     }
 
+    /**
+     * validation
+     *
+     * @param array $data
+     * @param array $files
+     * @param stdClass|null $material
+     * @param context_module $context
+     * @return array
+     * @throws \coding_exception
+     */
     public function validation(array $data, array $files, stdClass|null $material, context_module $context): array {
         $url = trim((string)($data["externalurl"] ?? ''));
         if ($url === '') {
@@ -69,6 +100,15 @@ class plugin extends plugin_base {
         return [];
     }
 
+    /**
+     * save
+     *
+     * @param stdClass $material
+     * @param stdClass $data
+     * @param context_module $context
+     * @return array
+     * @throws \coding_exception
+     */
     public function save(stdClass $material, stdClass $data, context_module $context): array {
         return [
             "url" => clean_param($data->externalurl, PARAM_URL),
@@ -76,6 +116,15 @@ class plugin extends plugin_base {
         ];
     }
 
+    /**
+     * render_card
+     *
+     * @param stdClass $material
+     * @param context_module $context
+     * @param int $cmid
+     * @return string
+     * @throws \core\exception\moodle_exception
+     */
     public function render_card(stdClass $material, context_module $context, int $cmid): string {
         global $OUTPUT;
 
@@ -88,6 +137,14 @@ class plugin extends plugin_base {
         ]);
     }
 
+    /**
+     * render_full
+     *
+     * @param stdClass $material
+     * @param context_module $context
+     * @param int $cmid
+     * @return string
+     */
     public function render_full(stdClass $material, context_module $context, int $cmid): string {
         global $OUTPUT;
 
