@@ -94,7 +94,7 @@ final class objective_manager_test extends \advanced_testcase {
         self::assertSame("apply", $config["level"]);
         self::assertSame("Apply the composition rule", $config["description"]);
         self::assertStringContainsString(
-            "Aplicar",
+            "Apply",
             $manager->get_plugin("bloom")->get_summary($objective, $context)
         );
     }
