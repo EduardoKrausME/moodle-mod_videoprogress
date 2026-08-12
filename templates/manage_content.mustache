@@ -89,8 +89,10 @@
                         <div>
                             <span>{{name}}{{#disabled}}· {{#str}} disabled, videoprogress {{/str}}{{/disabled}}</span>
                             <span>
-                                <a href="{{editurl}}">{{#str}} edit, videoprogress {{/str}}</a>
-                                <a href="{{deleteurl}}">{{#str}}delete, videoprogress {{/str}}</a>
+                                <a class="btn btn-sm btn-outline-primary"
+                                   href="{{editurl}}">{{#str}}edit, videoprogress {{/str}}</a>
+                                <a class="btn btn-sm btn-outline-danger ml-1"
+                                   href="{{deleteurl}}">{{#str}}delete, videoprogress {{/str}}</a>
                             </span>
                         </div>
                     {{/items}}
