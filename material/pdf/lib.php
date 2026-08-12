@@ -15,6 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * lib.php
+ *
+ * @package   videoprogressmaterial_pdf
+ * @copyright 2026 Eduardo Kraus {@link https://eduardokraus.com}
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+/**
  * Serves a protected PDF and enforces its configured download behavior.
  *
  * @param mixed $course Course record.
