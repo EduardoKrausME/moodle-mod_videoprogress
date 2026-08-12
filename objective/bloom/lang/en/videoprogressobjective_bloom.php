@@ -22,15 +22,15 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['description'] = 'Objetivo';
-$string['invalidlevel'] = 'Selecione um nível válido da Taxonomia de Bloom.';
-$string['level'] = 'Nível da Taxonomia de Bloom';
-$string['level:analyze'] = 'Analisar';
-$string['level:apply'] = 'Aplicar';
-$string['level:create'] = 'Criar';
-$string['level:evaluate'] = 'Avaliar';
-$string['level:remember'] = 'Lembrar';
-$string['level:understand'] = 'Compreender';
-$string['pluginname'] = 'Taxonomia de Bloom';
-$string['privacy:metadata'] = 'O tipo de objetivo da Taxonomia de Bloom não armazena dados pessoais.';
+$string['description'] = 'Objective';
+$string['invalidlevel'] = 'Select a valid Bloom\'s Taxonomy level.';
+$string['level'] = 'Bloom\'s Taxonomy level';
+$string['level:analyze'] = 'Analyze';
+$string['level:apply'] = 'Apply';
+$string['level:create'] = 'Create';
+$string['level:evaluate'] = 'Evaluate';
+$string['level:remember'] = 'Remember';
+$string['level:understand'] = 'Understand';
+$string['pluginname'] = 'Bloom\'s Taxonomy';
+$string['privacy:metadata'] = 'The Bloom\'s Taxonomy objective type does not store personal data.';
 $string['summary'] = '{$a->level}: {$a->description}';

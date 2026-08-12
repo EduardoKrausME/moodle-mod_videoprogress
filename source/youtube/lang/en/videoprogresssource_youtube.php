@@ -24,9 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['invalidurl'] = 'Informe uma URL válida do YouTube contendo um ID de vídeo.';
+$string['invalidurl'] = 'Enter a valid YouTube URL containing a video ID.';
 $string['pluginname'] = 'YouTube';
-$string['privacy:metadata'] = 'O subplugin do YouTube não armazena dados pessoais separadamente da atividade Video Progress.';
-$string['videourl'] = 'URL do YouTube';
-$string['youtubenocookie'] = 'Usar domínio de privacidade aprimorada';
-$string['youtubenocookie_help'] = 'Quando habilitado, o player utiliza youtube-nocookie.com sempre que a API permitir.';
+$string['privacy:metadata'] = 'The YouTube subplugin does not store personal data separately from the Video Progress activity.';
+$string['videourl'] = 'YouTube URL';
+$string['youtubenocookie'] = 'Use privacy-enhanced domain';
+$string['youtubenocookie_help'] = 'When enabled, the player uses youtube-nocookie.com whenever the API allows it.';

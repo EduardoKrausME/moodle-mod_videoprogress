@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['invalidurl'] = 'Informe uma URL válida de um vídeo público ou não listado do Vimeo.';
+$string['invalidurl'] = 'Enter a valid URL for a public or unlisted Vimeo video.';
 $string['pluginname'] = 'Vimeo';
-$string['privacy:metadata'] = 'O subplugin do Vimeo não armazena dados pessoais separadamente da atividade Video Progress.';
-$string['videourl'] = 'URL do Vimeo';
+$string['privacy:metadata'] = 'The Vimeo subplugin does not store personal data separately from the Video Progress activity.';
+$string['videourl'] = 'Vimeo URL';

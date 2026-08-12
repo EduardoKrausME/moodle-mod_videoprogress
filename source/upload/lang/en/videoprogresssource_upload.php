@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Arquivo enviado ao Moodle';
-$string['privacy:metadata'] = 'O subplugin de upload não armazena dados pessoais separadamente da atividade Video Progress.';
-$string['videofile'] = 'Arquivo de vídeo';
-$string['videofilemissing'] = 'O arquivo de vídeo protegido não foi encontrado.';
+$string['pluginname'] = 'File uploaded to Moodle';
+$string['privacy:metadata'] = 'The upload subplugin does not store personal data separately from the Video Progress activity.';
+$string['videofile'] = 'Video file';
+$string['videofilemissing'] = 'The protected video file was not found.';

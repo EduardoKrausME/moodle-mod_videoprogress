@@ -22,15 +22,15 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['answer'] = 'Alternativa {$a}';
-$string['chooseanswer'] = 'Selecione uma alternativa';
-$string['correctanswer'] = 'Alternativa correta';
-$string['correctfeedback'] = 'Feedback para resposta correta';
-$string['defaultcorrectfeedback'] = 'Resposta correta. Você pode continuar o vídeo.';
-$string['defaultincorrectfeedback'] = 'Essa não é a resposta correta. Tente novamente.';
-$string['incorrectfeedback'] = 'Feedback para resposta incorreta';
-$string['invalidcorrectanswer'] = 'A alternativa correta precisa estar preenchida.';
-$string['minimumanswers'] = 'Preencha pelo menos duas alternativas.';
-$string['pluginname'] = 'Quiz obrigatório';
-$string['privacy:metadata'] = 'O subplugin de quiz não armazena dados pessoais diretamente.';
-$string['question'] = 'Pergunta';
+$string['answer'] = 'Option {$a}';
+$string['chooseanswer'] = 'Select an option';
+$string['correctanswer'] = 'Correct option';
+$string['correctfeedback'] = 'Feedback for a correct answer';
+$string['defaultcorrectfeedback'] = 'Correct answer. You can continue the video.';
+$string['defaultincorrectfeedback'] = 'That is not the correct answer. Try again.';
+$string['incorrectfeedback'] = 'Feedback for an incorrect answer';
+$string['invalidcorrectanswer'] = 'The correct option must be filled in.';
+$string['minimumanswers'] = 'Fill in at least two options.';
+$string['pluginname'] = 'Required quiz';
+$string['privacy:metadata'] = 'The quiz subplugin does not store personal data directly.';
+$string['question'] = 'Question';

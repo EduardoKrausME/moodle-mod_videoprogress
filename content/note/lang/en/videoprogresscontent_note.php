@@ -22,12 +22,12 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['acknowledge'] = 'OK, entendi';
-$string['acknowledged'] = 'Ponto revisado.';
-$string['acknowledgementrequired'] = 'Confirme a leitura para continuar.';
-$string['displayduration'] = 'Tempo de exibição quando o vídeo não for pausado';
-$string['message'] = 'Explicação exibida sobre o vídeo';
-$string['pausevideo'] = 'Pausar o vídeo até o aluno confirmar';
-$string['pluginname'] = 'Balão explicativo';
-$string['privacy:metadata'] = 'O subplugin de balão não armazena dados pessoais diretamente.';
-$string['seconds'] = '{$a} segundos';
+$string['acknowledge'] = 'OK, I understand';
+$string['acknowledged'] = 'Point reviewed.';
+$string['acknowledgementrequired'] = 'Confirm that you have read this to continue.';
+$string['displayduration'] = 'Display duration when the video is not paused';
+$string['message'] = 'Explanation displayed over the video';
+$string['pausevideo'] = 'Pause the video until the student confirms';
+$string['pluginname'] = 'Explanatory note';
+$string['privacy:metadata'] = 'The note subplugin does not store personal data directly.';
+$string['seconds'] = '{$a} seconds';

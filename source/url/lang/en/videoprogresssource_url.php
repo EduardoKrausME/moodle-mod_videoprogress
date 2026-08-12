@@ -24,8 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['invalidextension'] = 'Informe uma URL terminada em MP4, WebM, OGV, M4V, MOV ou M3U8.';
-$string['invalidurl'] = 'Informe uma URL HTTP ou HTTPS válida.';
-$string['pluginname'] = 'URL direta ou HLS';
-$string['privacy:metadata'] = 'O subplugin de URL não armazena dados pessoais separadamente da atividade Video Progress.';
-$string['videourl'] = 'URL do vídeo';
+$string['invalidextension'] = 'Enter a URL ending in MP4, WebM, OGV, M4V, MOV or M3U8.';
+$string['invalidurl'] = 'Enter a valid HTTP or HTTPS URL.';
+$string['pluginname'] = 'Direct URL or HLS';
+$string['privacy:metadata'] = 'The URL subplugin does not store personal data separately from the Video Progress activity.';
+$string['videourl'] = 'Video URL';

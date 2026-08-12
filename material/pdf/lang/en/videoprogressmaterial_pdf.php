@@ -22,11 +22,11 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['allowdownload'] = 'Permitir download';
-$string['documentunavailable'] = 'O arquivo PDF não está disponível.';
-$string['downloaddocument'] = 'Baixar PDF';
+$string['allowdownload'] = 'Allow download';
+$string['documentunavailable'] = 'The PDF file is not available.';
+$string['downloaddocument'] = 'Download PDF';
 $string['filebadge'] = 'PDF';
-$string['pdffile'] = 'Arquivo PDF';
-$string['pluginname'] = 'Documento PDF';
-$string['privacy:metadata'] = 'O subplugin PDF não armazena dados pessoais.';
-$string['viewdocument'] = 'Visualizar PDF';
+$string['pdffile'] = 'PDF file';
+$string['pluginname'] = 'PDF document';
+$string['privacy:metadata'] = 'The PDF subplugin does not store personal data.';
+$string['viewdocument'] = 'View PDF';

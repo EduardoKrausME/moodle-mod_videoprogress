@@ -22,8 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['body'] = 'Conteúdo do guia';
+$string['body'] = 'Guide content';
 $string['filebadge'] = 'HTML';
-$string['openguide'] = 'Abrir guia';
-$string['pluginname'] = 'Guia em HTML';
-$string['privacy:metadata'] = 'O subplugin de guia HTML não armazena dados pessoais.';
+$string['openguide'] = 'Open guide';
+$string['pluginname'] = 'HTML guide';
+$string['privacy:metadata'] = 'The HTML guide subplugin does not store personal data.';
