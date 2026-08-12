@@ -71,8 +71,8 @@ foreach ($records as $caption) {
         "language" => s($caption->language),
         "label" => format_string($caption->label),
         "isdefault" => (bool)$caption->isdefault,
-        "status" => get_string("captionstatus" . $caption->status, "videoprogress"),
-        "source" => get_string("captionsource" . $caption->source, "videoprogress"),
+        "status" => get_string("captionstatus{$caption->status}", "videoprogress"),
+        "source" => get_string("captionsource{$caption->source}", "videoprogress"),
         "editurl" => (new moodle_url('/mod/videoprogress/captions/edit.php',
             ["id" => $cm->id, "captionid" => $caption->id]))->out(false),
     ];

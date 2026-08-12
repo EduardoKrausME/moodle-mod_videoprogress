@@ -35,7 +35,7 @@ class plugin extends plugin_base {
     public function add_form_elements(MoodleQuickForm $mform): void {
         $options = [];
         foreach (self::LEVELS as $level) {
-            $options[$level] = get_string("level:" . $level, "videoprogressobjective_bloom");
+            $options[$level] = get_string("level:{$level}", "videoprogressobjective_bloom");
         }
         $mform->addElement("select", "level", get_string("level", "videoprogressobjective_bloom"), $options);
         $mform->setType("level", PARAM_ALPHA);
@@ -111,7 +111,7 @@ class plugin extends plugin_base {
         $config = $this->decode_config($objective);
         $level = in_array($config["level"] ?? '', self::LEVELS, true) ? $config["level"] : self::LEVELS[0];
         return get_string("summary", "videoprogressobjective_bloom", (object)[
-            "level" => get_string("level:" . $level, "videoprogressobjective_bloom"),
+            "level" => get_string("level:{$level}", "videoprogressobjective_bloom"),
             "description" => format_string($config["description"] ?? ''),
         ]);
     }
@@ -130,7 +130,7 @@ class plugin extends plugin_base {
         $config = $this->decode_config($objective);
         $level = in_array($config["level"] ?? '', self::LEVELS, true) ? $config["level"] : self::LEVELS[0];
         return $OUTPUT->render_from_template("videoprogressobjective_bloom/objective", [
-            "level" => get_string("level:" . $level, "videoprogressobjective_bloom"),
+            "level" => get_string("level:{$level}", "videoprogressobjective_bloom"),
             "description" => format_string($config["description"] ?? ''),
         ]);
     }

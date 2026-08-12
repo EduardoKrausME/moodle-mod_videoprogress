@@ -63,7 +63,7 @@ class videoprogresssource extends base {
      * @return string Administration section identifier.
      */
     public function get_settings_section_name(): string {
-        return $this->type . "_" . $this->name;
+        return "{$this->type}_{$this->name}";
     }
 
     /**

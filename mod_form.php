@@ -50,7 +50,7 @@ class mod_videoprogress_mod_form extends moodleform_mod {
         $mform->addRule("name", null, "required", null, "client");
         $this->standard_intro_elements();
 
-        $mform->addElement("html", "sourceheader", html_writer::tag('h3', get_string("sourceheader", "videoprogress")));
+        $mform->addElement("html", html_writer::tag("h3", get_string("sourceheader", "videoprogress")));
 
         $mform->addElement("select", "videosource", get_string("videosource", "videoprogress"), $sourceoptions);
         $mform->setType("videosource", PARAM_PLUGIN);
@@ -74,7 +74,7 @@ class mod_videoprogress_mod_form extends moodleform_mod {
             $mform->hideIf("subtitles", "videosource", "in", $nocaptionsources);
         }
 
-        $mform->addElement("header", "playbackheader", html_writer::tag('h3',get_string("playbackheader", "videoprogress")));
+        $mform->addElement("html", html_writer::tag("h3", get_string("playbackheader", "videoprogress")));
         $mform->addElement("select", "resumeplayback", get_string("resumeplayback", "videoprogress"), [
             1 => get_string("resumeautomatic", "videoprogress"),
             2 => get_string("resumeask", "videoprogress"),
@@ -91,7 +91,9 @@ class mod_videoprogress_mod_form extends moodleform_mod {
             $mform->addElement("selectyesno", $field, get_string($field, "videoprogress"));
             $mform->setDefault($field, 0);
         }
-        $mform->addElement("static", "protectionnotice", '', get_string("protectionnotice", "videoprogress"));
+        $mform->addElement("html", html_writer::div(
+            get_string("protectionnotice", "videoprogress"),
+            ["class"=>"alert alert-info"]));
 
         $this->standard_grading_coursemodule_elements();
         $mform->setDefault("grade", 100);
@@ -193,6 +195,6 @@ class mod_videoprogress_mod_form extends moodleform_mod {
      * @return string Suffixed form field name.
      */
     private function get_suffixed_name(string $field): string {
-        return $field . '_videoprogress';
+        return "{$field}_videoprogress";
     }
 }

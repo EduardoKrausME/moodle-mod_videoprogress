@@ -58,9 +58,9 @@ class plugin extends plugin_base {
             self::editor_options($PAGE->context));
         $mform->addRule("question_editor", null, "required", null, "client");
         for ($index = 0; $index < 4; $index++) {
-            $mform->addElement("text", "answer" . $index,
+            $mform->addElement("text", "answer{$index}",
                 get_string("answer", "videoprogresscontent_quiz", $index + 1), ["size" => 70]);
-            $mform->setType("answer" . $index, PARAM_TEXT);
+            $mform->setType("answer{$index}", PARAM_TEXT);
         }
         $mform->addElement("select", "correctanswer", get_string("correctanswer", "videoprogresscontent_quiz"), [
             0 => get_string("answer", "videoprogresscontent_quiz", 1),
@@ -89,7 +89,7 @@ class plugin extends plugin_base {
         $data->question = $config["question"] ?? '';
         $data->questionformat = $config["questionformat"] ?? FORMAT_HTML;
         foreach (range(0, 3) as $index) {
-            $data->{"answer" . $index} = $config["answers"][$index] ?? '';
+            $data->{"answer{$index}"} = $config["answers"][$index] ?? '';
         }
         $data->correctanswer = (int)($config["correctanswer"] ?? 0);
         $data->correctfeedback = $config["correctfeedback"] ?? '';
@@ -109,7 +109,7 @@ class plugin extends plugin_base {
      * @throws coding_exception
      */
     public function validation(array $data, array $files, stdClass|null $item, context_module $context): array {
-        $answers = array_map(static fn(int $index): string => trim((string)($data["answer" . $index] ?? '')), range(0, 3));
+        $answers = array_map(static fn(int $index): string => trim((string)($data["answer{$index}"] ?? '')), range(0, 3));
         $errors = [];
         if (trim((string)($data["question_editor"]["text"] ?? '')) === '') {
             $errors["question_editor"] = get_string("required");
@@ -137,7 +137,7 @@ class plugin extends plugin_base {
             "videoprogresscontent_quiz", "question", $item->id);
         $answers = [];
         foreach (range(0, 3) as $index) {
-            $answers[$index] = trim((string)$data->{"answer" . $index});
+            $answers[$index] = trim((string)$data->{"answer{$index}"});
         }
         return [
             "question" => $data->question,

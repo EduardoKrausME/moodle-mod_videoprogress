@@ -81,7 +81,7 @@ class report_repository {
                        COALESCE(p.completed, 0) AS completed, COALESCE(p.confirmation, 0) AS confirmation,
                        COALESCE(p.timemodified, 0) AS lastview {$from}
                  WHERE {$where}
-              ORDER BY " . $this->order_by($filters);
+              ORDER BY {$this->order_by($filters)}";
         $recordparams = array_merge($params, $userfields->params);
         $records = $DB->get_records_sql($sql, $recordparams, $filters->page * $filters->perpage, $filters->perpage);
         $count = $DB->count_records_sql("SELECT COUNT(1) {$from} WHERE {$where}", $params);
@@ -264,7 +264,7 @@ class report_repository {
                     $DB->sql_like('u.email', ':search4', false),
                 ]) . ')';
             foreach (range(1, 4) as $index) {
-                $params["search" . $index] = $needle;
+                $params["search{$index}"] = $needle;
             }
         }
         if ($filters->status === "notstarted") {
