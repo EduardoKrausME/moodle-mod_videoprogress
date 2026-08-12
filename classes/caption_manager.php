@@ -27,7 +27,6 @@ namespace mod_videoprogress;
 use coding_exception;
 use context_module;
 use context_user;
-use core\task\manager;
 use dml_exception;
 use dml_transaction_exception;
 use file_exception;
@@ -246,34 +245,6 @@ class caption_manager {
             ];
         }
         return $tracks;
-    }
-
-    /**
-     * Queues a server-side ad hoc task to transcribe the activity video.
-     *
-     * @param int $activityid Video Progress activity identifier.
-     * @param int $userid Target user identifier.
-     * @param string $language language value used by the operation.
-     * @return void This method does not return a value.
-     */
-    public function queue_transcription(int $activityid, int $userid, string $language): void {
-        $task = new transcribe_video();
-        $task->set_custom_data(["activityid" => $activityid, "userid" => $userid, "language" => $language]);
-        manager::queue_adhoc_task($task);
-    }
-
-    /**
-     * Queues a server-side ad hoc task to translate an existing caption track.
-     *
-     * @param int $captionid Caption record identifier.
-     * @param int $userid Target user identifier.
-     * @param string $language language value used by the operation.
-     * @return void This method does not return a value.
-     */
-    public function queue_translation(int $captionid, int $userid, string $language): void {
-        $task = new translate_caption();
-        $task->set_custom_data(["captionid" => $captionid, "userid" => $userid, "language" => $language]);
-        manager::queue_adhoc_task($task);
     }
 
     /**

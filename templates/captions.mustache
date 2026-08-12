@@ -48,29 +48,13 @@
                         <div class="videoprogress-row-actions">
                             <a href="{{editurl}}" class="btn btn-sm btn-outline-primary">{{#str}}
                                 edit, videoprogress {{/str}}</a>
-                            {{#aienabled}}
-                                <form method="post" action="{{actionurl}}" class="videoprogress-inline-form">
-                                    <input type="hidden" name="id" value="{{cmid}}"><input type="hidden" name="sesskey"
-                                                                                           value="{{sesskey}}"><input
-                                        type="hidden" name="action" value="translate"><input type="hidden"
-                                                                                             name="captionid"
-                                                                                             value="{{id}}">
-                                    <label class="sr-only" for="translate-language-{{id}}">{{#str}}
-                                        targetlanguage, videoprogress {{/str}}</label>
-                                    <input id="translate-language-{{id}}" name="language"
-                                           class="form-control form-control-sm" required
-                                           placeholder="{{#str}} languageplaceholder, videoprogress {{/str}}">
-                                    <button class="btn btn-sm btn-outline-secondary" type="submit">{{#str}}
-                                        translate, videoprogress {{/str}}</button>
-                                </form>
-                            {{/aienabled}}
                             <form method="post" action="{{actionurl}}" data-action="delete-caption">
-                                <input type="hidden" name="id" value="{{cmid}}"><input type="hidden" name="sesskey"
-                                                                                       value="{{sesskey}}"><input
-                                    type="hidden" name="action" value="delete"><input type="hidden" name="captionid"
-                                                                                      value="{{id}}">
-                                <button class="btn btn-sm btn-outline-danger" type="submit">{{#str}}
-                                    delete, videoprogress {{/str}}</button>
+                                <input type="hidden" name="id" value="{{cmid}}">
+                                <input type="hidden" name="sesskey" value="{{sesskey}}">
+                                <input type="hidden" name="action" value="delete">
+                                <input type="hidden" name="captionid" value="{{id}}">
+                                <button class="btn btn-sm btn-outline-danger"
+                                        type="submit">{{#str}}delete, videoprogress {{/str}}</button>
                             </form>
                         </div>
                     </article>
@@ -79,20 +63,5 @@
         {{/hascaptions}}
         {{^hascaptions}}<p>{{#str}} nocaptions, videoprogress {{/str}}</p>{{/hascaptions}}
     </section>
-    {{#aienabled}}
-        <section class="videoprogress-detail-section">
-            <h3>{{#str}} aitranscription, videoprogress {{/str}}</h3>
-            <p>{{#str}} aitranscriptionhelp, videoprogress {{/str}}</p>
-            <form method="post" action="{{actionurl}}" class="videoprogress-inline-form">
-                <input type="hidden" name="id" value="{{cmid}}"><input type="hidden" name="sesskey" value="{{sesskey}}"><input
-                    type="hidden" name="action" value="transcribe">
-                <label for="transcription-language">{{#str}} captionlanguage, videoprogress {{/str}}</label>
-                <input id="transcription-language" name="language" class="form-control" required
-                       placeholder="{{#str}} languageplaceholder, videoprogress {{/str}}">
-                <button class="btn btn-primary" type="submit">{{#str}}
-                    generatetranscription, videoprogress {{/str}}</button>
-            </form>
-        </section>
-    {{/aienabled}}
 </div>
 

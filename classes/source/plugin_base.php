@@ -156,15 +156,6 @@ abstract class plugin_base {
     }
 
     /**
-     * Indicates whether this source can provide a server-readable media file for AI transcription.
-     *
-     * @return bool Whether server-side transcription is supported.
-     */
-    public function supports_transcription(): bool {
-        return false;
-    }
-
-    /**
      * Returns the protected media file supplied to a server-side transcription provider.
      *
      * @param context_module $context Module context containing source files.

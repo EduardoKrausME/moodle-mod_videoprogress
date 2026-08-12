@@ -53,19 +53,6 @@ if ($action !== '') {
         $manager->delete($captionid, $activity->id, $context);
         redirect($PAGE->url, get_string("captiondeleted", "videoprogress"));
     }
-    if ($action === "transcribe" && $language !== '') {
-        if (!$sourceplugin->supports_transcription()) {
-            throw new moodle_exception("transcriptionunsupportedsource", "videoprogress");
-        }
-        $manager->queue_transcription($activity->id, $USER->id, $language);
-        redirect($PAGE->url, get_string("transcriptionqueued", "videoprogress"));
-    }
-    if ($action === "translate" && $captionid && $language !== '') {
-        $caption = $DB->get_record("videoprogress_captions",
-            ["id" => $captionid, "videoprogressid" => $activity->id], "*", MUST_EXIST);
-        $manager->queue_translation($caption->id, $USER->id, $language);
-        redirect($PAGE->url, get_string("translationqueued", "videoprogress"));
-    }
 }
 
 $mform = new caption_form($PAGE->url);
@@ -98,9 +85,7 @@ $templatedata = [
     "actionurl" => $PAGE->url->out(false),
     "cmid" => $cm->id,
     "sesskey" => sesskey(),
-    "aienabled" => trim((string)get_config("mod_videoprogress", "aiproviderclass")) !== '' &&
-        $sourceplugin->supports_transcription(),
-    "backurl" => (new moodle_url('/mod/videoprogress/view.php', ["id" => $cm->id]))->out(false),
+    "backurl" => new moodle_url('/mod/videoprogress/view.php', ["id" => $cm->id]),
 ];
 $PAGE->requires->strings_for_js(["deletecaptionconfirm", "confirmdelete", "cancel"], "videoprogress");
 $PAGE->requires->js_call_amd('mod_videoprogress/captions', "init");

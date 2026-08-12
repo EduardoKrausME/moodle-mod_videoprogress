@@ -194,15 +194,6 @@ class plugin extends plugin_base {
     }
 
     /**
-     * Indicates that the uploaded file can be read by a server-side transcription provider.
-     *
-     * @return bool Always true for the protected upload source.
-     */
-    public function supports_transcription(): bool {
-        return true;
-    }
-
-    /**
      * Returns the protected uploaded media file used by server-side transcription.
      *
      * @param context_module $context Module context containing the uploaded video.
