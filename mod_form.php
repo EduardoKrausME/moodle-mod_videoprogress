@@ -91,9 +91,8 @@ class mod_videoprogress_mod_form extends moodleform_mod {
             $mform->addElement("selectyesno", $field, get_string($field, "videoprogress"));
             $mform->setDefault($field, 0);
         }
-        $mform->addElement("html", html_writer::div(
-            get_string("protectionnotice", "videoprogress"),
-            ["class"=>"alert alert-info"]));
+
+        $mform->addElement("html", html_writer::div(get_string("protectionnotice", "videoprogress"), "alert alert-info"));
 
         $this->standard_grading_coursemodule_elements();
         $mform->setDefault("grade", 100);
