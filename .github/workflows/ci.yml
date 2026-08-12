@@ -79,7 +79,7 @@ jobs:
       if: ${{ !cancelled() }}
       run: moodle-plugin-ci phpcs --max-warnings 0 --exclude="Universal.WhiteSpace.CommaSpacing,PSR12.Classes.ClassInstantiation,PSR12.Classes.OpeningBraceSpace,Universal.Lists.DisallowLongListSyntax,PSR2.Methods.FunctionCallSignature,PSR12.ControlStructures.ControlStructureSpacing,Squiz.WhiteSpace.ControlStructureSpacing,PSR2.ControlStructures.SwitchDeclaration,Squiz.Functions.MultiLineFunctionDeclaration,PSR2.Classes.ClassDeclaration"
       env:
-        CODECHECKER_IGNORE_PATHS: 'test'
+        CODECHECKER_IGNORE_PATHS: 'tests'
 
     - name: Validating
       if: ${{ !cancelled() }}
