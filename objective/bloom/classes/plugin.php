@@ -61,10 +61,14 @@ class plugin extends plugin_base {
         }
         $mform->addElement("select", "level", get_string("level", "videoprogressobjective_bloom"), $options);
         $mform->setType("level", PARAM_ALPHA);
-        $mform->addElement("textarea", "description", get_string("description", "videoprogressobjective_bloom"), [
-            "rows" => 4,
-        ]);
-        $mform->setType("description", PARAM_TEXT);
+        $mform->addElement(
+            "editor",
+            "description",
+            get_string("description", "videoprogressobjective_bloom"),
+            ["rows" => 8],
+            ["maxfiles" => 0]
+        );
+        $mform->setType("description", PARAM_RAW);
         $mform->addRule("description", null, "required", null, "client");
     }
 
@@ -79,7 +83,10 @@ class plugin extends plugin_base {
     public function prepare_form_data(stdClass $data, stdClass|null $objective, context_module $context): stdClass {
         $config = $this->decode_config($objective);
         $data->level = $config["level"] ?? self::LEVELS[0];
-        $data->description = $config["description"] ?? '';
+        $data->description = [
+            "text" => $config["description"] ?? '',
+            "format" => FORMAT_HTML,
+        ];
         return $data;
     }
 
@@ -98,7 +105,9 @@ class plugin extends plugin_base {
         if (!in_array($data["level"] ?? '', self::LEVELS, true)) {
             $errors["level"] = get_string("invalidlevel", "videoprogressobjective_bloom");
         }
-        if (trim((string)($data["description"] ?? '')) === '') {
+
+        $description = $data["description"]["text"] ?? '';
+        if (trim(strip_tags((string)$description)) === '') {
             $errors["description"] = get_string("required");
         }
         return $errors;
@@ -115,9 +124,13 @@ class plugin extends plugin_base {
      */
     public function save(stdClass $objective, stdClass $data, context_module $context): array {
         $level = in_array($data->level, self::LEVELS, true) ? $data->level : self::LEVELS[0];
+        $description = is_array($data->description)
+            ? ($data->description["text"] ?? '')
+            : (string)$data->description;
+
         return [
             "level" => $level,
-            "description" => clean_param($data->description, PARAM_TEXT),
+            "description" => clean_text((string)$description, FORMAT_HTML),
         ];
     }
 
@@ -134,7 +147,7 @@ class plugin extends plugin_base {
         $level = in_array($config["level"] ?? '', self::LEVELS, true) ? $config["level"] : self::LEVELS[0];
         return get_string("summary", "videoprogressobjective_bloom", (object)[
             "level" => get_string("level:{$level}", "videoprogressobjective_bloom"),
-            "description" => format_string($config["description"] ?? ''),
+            "description" => format_string(strip_tags($config["description"] ?? '')),
         ]);
     }
 
@@ -149,11 +162,16 @@ class plugin extends plugin_base {
      */
     public function render(stdClass $objective, context_module $context, int $cmid): string {
         global $OUTPUT;
+
         $config = $this->decode_config($objective);
         $level = in_array($config["level"] ?? '', self::LEVELS, true) ? $config["level"] : self::LEVELS[0];
         return $OUTPUT->render_from_template("videoprogressobjective_bloom/objective", [
             "level" => get_string("level:{$level}", "videoprogressobjective_bloom"),
-            "description" => format_string($config["description"] ?? ''),
+            "description" => format_text(
+                $config["description"] ?? '',
+                FORMAT_HTML,
+                ["context" => $context]
+            ),
         ]);
     }
 }

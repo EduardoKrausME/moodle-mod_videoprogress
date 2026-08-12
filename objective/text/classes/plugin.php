@@ -52,10 +52,14 @@ class plugin extends plugin_base {
      * @throws coding_exception
      */
     public function add_form_elements(MoodleQuickForm $mform): void {
-        $mform->addElement("textarea", "description", get_string("description", "videoprogressobjective_text"), [
-            "rows" => 4,
-        ]);
-        $mform->setType("description", PARAM_TEXT);
+        $mform->addElement(
+            "editor",
+            "description",
+            get_string("description", "videoprogressobjective_text"),
+            ["rows" => 8],
+            ["maxfiles" => 0]
+        );
+        $mform->setType("description", PARAM_RAW);
         $mform->addRule("description", null, "required", null, "client");
     }
 
@@ -69,7 +73,10 @@ class plugin extends plugin_base {
      */
     public function prepare_form_data(stdClass $data, stdClass|null $objective, context_module $context): stdClass {
         $config = $this->decode_config($objective);
-        $data->description = $config["description"] ?? '';
+        $data->description = [
+            "text" => $config["description"] ?? '',
+            "format" => FORMAT_HTML,
+        ];
         return $data;
     }
 
@@ -84,7 +91,8 @@ class plugin extends plugin_base {
      * @throws coding_exception
      */
     public function validation(array $data, array $files, stdClass|null $objective, context_module $context): array {
-        if (trim((string)($data["description"] ?? '')) === '') {
+        $description = $data["description"]["text"] ?? '';
+        if (trim(strip_tags((string)$description)) === '') {
             return ["description" => get_string("required")];
         }
         return [];
@@ -100,7 +108,13 @@ class plugin extends plugin_base {
      * @throws coding_exception
      */
     public function save(stdClass $objective, stdClass $data, context_module $context): array {
-        return ["description" => clean_param($data->description, PARAM_TEXT)];
+        $description = is_array($data->description)
+            ? ($data->description["text"] ?? '')
+            : (string)$data->description;
+
+        return [
+            "description" => clean_text((string)$description, FORMAT_HTML),
+        ];
     }
 
     /**
@@ -112,7 +126,7 @@ class plugin extends plugin_base {
      */
     public function get_summary(stdClass $objective, context_module $context): string {
         $config = $this->decode_config($objective);
-        return format_string($config["description"] ?? '');
+        return format_string(strip_tags($config["description"] ?? ''));
     }
 
     /**
@@ -125,8 +139,14 @@ class plugin extends plugin_base {
      */
     public function render(stdClass $objective, context_module $context, int $cmid): string {
         global $OUTPUT;
+
+        $config = $this->decode_config($objective);
         return $OUTPUT->render_from_template("videoprogressobjective_text/objective", [
-            "description" => $this->get_summary($objective, $context),
+            "description" => format_text(
+                $config["description"] ?? '',
+                FORMAT_HTML,
+                ["context" => $context]
+            ),
         ]);
     }
 }
