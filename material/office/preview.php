@@ -27,6 +27,8 @@
 
 require('../../../../config.php');
 
+require_login();
+
 $materialid = required_param("materialid", PARAM_INT);
 $token = required_param("token", PARAM_ALPHANUMEXT);
 
