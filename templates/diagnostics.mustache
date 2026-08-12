@@ -1,0 +1,71 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template mod_videoprogress/diagnostics
+
+    Example context (json):
+    {
+        Aqui tem que criar o context em inglês
+    }
+}}
+
+<div class="videoprogress-diagnostics">
+    <header class="videoprogress-report__header">
+        <div><span class="videoprogress-eyebrow">{{#str}} pluginname, videoprogress {{/str}}</span>
+            <h2>{{#str}} diagnosticstitle, videoprogress {{/str}}</h2>
+            <p>{{#str}} diagnosticshelp, videoprogress {{/str}}</p></div>
+    </header>
+    <section class="videoprogress-summary__grid">
+        {{#cards}}
+            <article class="videoprogress-stat-card"><strong>{{value}}</strong><span>{{label}}</span>
+            </article>{{/cards}}
+    </section>
+    <section class="videoprogress-detail-section">
+        <h3>{{#str}} repairgradebook, videoprogress {{/str}}</h3>
+        <p>{{#str}} repairgradebookhelp, videoprogress {{/str}}</p>
+        <form method="post" action="{{actionurl}}">
+            <input type="hidden" name="action" value="repair"><input type="hidden" name="confirmed" value="1"><input
+                type="hidden" name="sesskey" value="{{sesskey}}">
+            <label><input type="checkbox" required> {{#str}} confirmrepair, videoprogress {{/str}}</label>
+            <div>
+                <button type="submit" class="btn btn-primary mt-3">{{#str}}
+                    repairgradebook, videoprogress {{/str}}</button>
+            </div>
+        </form>
+    </section>
+    <section class="videoprogress-detail-section">
+        <h3>{{#str}} missinggradeitems, videoprogress {{/str}}</h3>
+        {{#hasmissinggradeitems}}
+            <div class="videoprogress-diagnostic-list">{{#missinggradeitems}}
+                <article><strong>{{name}}</strong><span>{{#str}}
+                    activityid, videoprogress, activityid {{/str}}</span><span>{{#str}}
+                    courseid, videoprogress, courseid {{/str}}</span></article>{{/missinggradeitems}}
+            </div>{{/hasmissinggradeitems}}
+        {{^hasmissinggradeitems}}<p>{{#str}} nodiagnosticproblems, videoprogress {{/str}}</p>{{/hasmissinggradeitems}}
+    </section>
+    <section class="videoprogress-detail-section">
+        <h3>{{#str}} brokenformulas, videoprogress {{/str}}</h3>
+        <p>{{#str}} brokenformulashelp, videoprogress {{/str}}</p>
+        {{#hasformulas}}
+            <div class="videoprogress-diagnostic-list">{{#formulas}}
+                <article><strong>{{itemname}}</strong><code>{{formula}}</code><span>{{problem}}</span><a
+                        href="{{editurl}}">{{#str}} editgradebook, videoprogress {{/str}}</a></article>{{/formulas}}
+            </div>{{/hasformulas}}
+        {{^hasformulas}}<p>{{#str}} nobrokenformulas, videoprogress {{/str}}</p>{{/hasformulas}}
+    </section>
+</div>
+

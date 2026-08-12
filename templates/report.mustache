@@ -1,0 +1,69 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template mod_videoprogress/report
+
+    Example context (json):
+    {
+        Aqui tem que criar o context em inglês
+    }
+}}
+
+<div class="videoprogress-report" data-region="report" data-datatable-config="{{datatableconfig}}">
+    <header class="videoprogress-report__header">
+        <div>
+            <a href="{{viewurl}}" class="videoprogress-report__back">{{#str}} backtovideo, videoprogress {{/str}}</a>
+            <span class="videoprogress-eyebrow">{{#str}} reporttitle, videoprogress {{/str}}</span>
+            <h2>{{activityname}}</h2>
+            <p>{{coursename}}</p>
+        </div>
+        <div class="videoprogress-report__actions">
+            {{#canexport}}<a href="{{exporturl}}" class="btn btn-outline-primary">{{#str}}
+                exportcsv, videoprogress {{/str}}</a>{{/canexport}}
+            {{#canreset}}<a href="{{massreseturl}}" class="btn btn-outline-danger">{{#str}}
+                resetfiltered, videoprogress {{/str}}</a>{{/canreset}}
+        </div>
+    </header>
+
+    <details class="videoprogress-course-videos">
+        <summary>{{#str}} coursevideos, videoprogress {{/str}}</summary>
+        <div class="videoprogress-course-videos__list">
+            {{#coursevideos}}
+                <a href="{{url}}" class="videoprogress-course-video {{#active}}is-active{{/active}}">
+                    <strong>{{name}}</strong>
+                    <span>{{#str}} coursevideostats, videoprogress, . {{/str}}</span>
+                    <div class="videoprogress-mini-map" aria-hidden="true">
+                        {{#timeline}}<i class="level-{{level}}"></i>{{/timeline}}
+                    </div>
+                </a>
+            {{/coursevideos}}
+        </div>
+    </details>
+
+    {{> mod_videoprogress/report_summary}}
+    {{> mod_videoprogress/report_timeline}}
+    {{> mod_videoprogress/report_filters}}
+
+    <div class="videoprogress-report__result-heading">
+        <h3>{{#str}} students, videoprogress {{/str}}</h3>
+        <span>{{#str}} resultcount, videoprogress, totalresults {{/str}}</span>
+    </div>
+    {{#hasstudents}}{{> mod_videoprogress/report_students}}{{/hasstudents}}
+    {{^hasstudents}}{{> mod_videoprogress/report_empty}}{{/hasstudents}}
+    {{> mod_videoprogress/report_pagination}}
+</div>
+
