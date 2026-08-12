@@ -19,6 +19,38 @@
 
     Example context (json):
     {
+        "backurl": "/mod/videoprogress/view.php?id=10",
+        "activityname": "Vídeo de exemplo",
+        "addpointurl": "/mod/videoprogress/content/point.php?id=10",
+        "haspoints": true,
+        "points": [
+            {
+                "timecode": "01:30",
+                "title": "Ponto de interação",
+                "disabled": false,
+                "editurl": "/mod/videoprogress/content/point.php?id=10&pointid=5",
+                "deleteurl": "/mod/videoprogress/content/delete.php?id=10&pointid=5",
+                "items": [
+                    {
+                        "name": "Pergunta",
+                        "disabled": false,
+                        "editurl": "/edit",
+                        "deleteurl": "/delete"
+                    }
+                ],
+                "hasitems": true,
+                "addurls": [
+                    {
+                        "url": "/add-note",
+                        "name": "Nota"
+                    },
+                    {
+                        "url": "/add-quiz",
+                        "name": "Quiz"
+                    }
+                ]
+            }
+        ]
     }
 }}
 

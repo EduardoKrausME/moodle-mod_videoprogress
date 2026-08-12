@@ -19,6 +19,88 @@
 
     Example context (json):
     {
+        "configjson": "{}",
+        "name": "Vídeo de exemplo",
+        "canviewreport": true,
+        "reporturl": "/mod/videoprogress/report.php?id=10",
+        "cancaptions": true,
+        "captionsurl": "/mod/videoprogress/captions.php?id=10",
+        "canmanageobjectives": true,
+        "objectivesurl": "/mod/videoprogress/objectives.php?id=10",
+        "canmanageresources": true,
+        "manageurl": "/mod/videoprogress/manage.php?id=10",
+        "hasintro": true,
+        "intro": "<p>Introdução da atividade.</p>",
+        "hascontentpoints": true,
+        "hasobjectives": true,
+        "objectives": [
+            {
+                "html": "<p>Identificar os elementos principais.</p>"
+            }
+        ],
+        "player": {
+            "source": true,
+            "sourcehtml": "<video controls><source src=\"https://example.test/video.mp4\"></video>"
+        },
+        "contentoverlays": [
+            {
+                "html": "<div class=\"videoprogress-content-overlay\" hidden></div>"
+            }
+        ],
+        "hasmaterials": true,
+        "materials": [
+            {
+                "html": "<article class=\"videoprogress-material-card\"><strong>Guia</strong></article>"
+            }
+        ],
+        "contentpoints": [
+            {
+                "id": 5,
+                "timepoint": 90,
+                "completed": false,
+                "timecode": "01:30",
+                "title": "Ponto de interação",
+                "hasitems": true,
+                "items": [
+                    {
+                        "name": "Quiz"
+                    }
+                ]
+            }
+        ],
+        "progress": {
+            "percentrounded": 72,
+            "percent": 72.4,
+            "watchedofduration": "07:12 / 10:00",
+            "requiredpercent": 80,
+            "completed": false,
+            "inprogress": true,
+            "notstarted": false
+        },
+        "timeline": [
+            {
+                "level": 1,
+                "tooltip": "00:00–00:10",
+                "start": 0,
+                "end": 10,
+                "views": 1
+            },
+            {
+                "level": 3,
+                "tooltip": "00:10–00:20",
+                "start": 10,
+                "end": 20,
+                "views": 3
+            }
+        ],
+        "timelinealternative": "A maior parte do início do vídeo foi assistida.",
+        "confirmation": {
+            "required": true,
+            "available": true,
+            "confirmed": false,
+            "url": "/mod/videoprogress/view.php?id=10",
+            "sesskey": "examplesesskey"
+        }
     }
 }}
 

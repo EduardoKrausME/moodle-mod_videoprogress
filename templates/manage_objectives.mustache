@@ -19,29 +19,29 @@
 
     Example context (json):
     {
-    }
-}}
-
-{{!
-    @template mod_videoprogress/manage_objectives
-
-    Example context (json):
-    {
         "activityname": "Composição visual",
         "backurl": "/mod/videoprogress/view.php?id=10",
         "hasplugins": true,
-        "addurls": [{"name": "Texto", "url": "/mod/videoprogress/objective/edit.php?id=10&plugin=text"}],
+        "addurls": [
+            {
+                "name": "Texto",
+                "url": "/mod/videoprogress/objective/edit.php?id=10&plugin=text"
+            }
+        ],
         "hasitems": true,
-        "items": [{
-            "summary": "Identificar elementos visuais",
-            "pluginname": "Texto",
-            "disabled": false,
-            "pluginavailable": true,
-            "editurl": "/edit",
-            "deleteurl": "/delete"
-        }]
+        "items": [
+            {
+                "summary": "Identificar elementos visuais",
+                "pluginname": "Texto",
+                "disabled": false,
+                "pluginavailable": true,
+                "editurl": "/edit",
+                "deleteurl": "/delete"
+            }
+        ]
     }
 }}
+
 <div class="videoprogress-manage">
     <a href="{{backurl}}" class="videoprogress-report__back">{{#str}} backtovideo, videoprogress {{/str}}</a>
     <span class="videoprogress-eyebrow">{{activityname}}</span>

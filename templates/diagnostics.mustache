@@ -19,6 +19,35 @@
 
     Example context (json):
     {
+        "cards": [
+            {
+                "value": 12,
+                "label": "Atividades"
+            },
+            {
+                "value": 0,
+                "label": "Problemas"
+            }
+        ],
+        "actionurl": "/mod/videoprogress/admin/diagnostics.php",
+        "sesskey": "examplesesskey",
+        "hasmissinggradeitems": true,
+        "missinggradeitems": [
+            {
+                "name": "Vídeo de exemplo",
+                "activityid": 7,
+                "courseid": 3
+            }
+        ],
+        "hasformulas": true,
+        "formulas": [
+            {
+                "itemname": "Nota final",
+                "formula": "=average([[item1]])",
+                "problem": "Item ausente",
+                "editurl": "/grade/edit/tree/index.php?id=3"
+            }
+        ]
     }
 }}
 
