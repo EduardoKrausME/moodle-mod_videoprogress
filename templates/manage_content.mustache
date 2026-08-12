@@ -35,19 +35,32 @@
                 <header>
                     <div>
                         <time>{{timecode}}</time>
-                        <strong>{{title}}</strong>{{#disabled}}<span class="badge badge-secondary">{{#str}}
-                        disabled, videoprogress {{/str}}</span>{{/disabled}}</div>
-                    <div><a class="btn btn-sm btn-outline-primary" href="{{editurl}}">{{#str}}
-                        editpoint, videoprogress {{/str}}</a><a class="btn btn-sm btn-outline-danger"
-                                                                href="{{deleteurl}}">{{#str}}
-                        delete, videoprogress {{/str}}</a></div>
+                        <strong>{{title}}</strong>
+                        {{#disabled}}
+                            <span class="badge badge-secondary">{{#str}}disabled, videoprogress {{/str}}</span>
+                        {{/disabled}}
+                    </div>
+                    <div>
+                        <a class="btn btn-sm btn-outline-primary"
+                           href="{{editurl}}">{{#str}}editpoint, videoprogress {{/str}}</a>
+                        <a class="btn btn-sm btn-outline-danger"
+                           href="{{deleteurl}}">{{#str}}delete, videoprogress {{/str}}</a>
+                    </div>
                 </header>
-                <div class="videoprogress-point-editor__items">{{#items}}
-                    <div><span>{{name}}{{#disabled}}
-                        · {{#str}} disabled, videoprogress {{/str}}{{/disabled}}</span><span><a
-                            href="{{editurl}}">{{#str}} edit, videoprogress {{/str}}</a><a href="{{deleteurl}}">{{#str}}
-                        delete, videoprogress {{/str}}</a></span></div>{{/items}}{{^hasitems}}
-                    <p>{{#str}} pointwithoutplugins, videoprogress {{/str}}</p>{{/hasitems}}</div>
+                <div class="videoprogress-point-editor__items">
+                    {{#items}}
+                        <div>
+                            <span>{{name}}{{#disabled}}· {{#str}} disabled, videoprogress {{/str}}{{/disabled}}</span>
+                            <span>
+                                <a href="{{editurl}}">{{#str}} edit, videoprogress {{/str}}</a>
+                                <a href="{{deleteurl}}">{{#str}}delete, videoprogress {{/str}}</a>
+                            </span>
+                        </div>
+                    {{/items}}
+                    {{^hasitems}}
+                        <p>{{#str}} pointwithoutplugins, videoprogress {{/str}}</p>
+                    {{/hasitems}}
+                </div>
                 <div class="dropdown">
                     <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button"
                             data-toggle="dropdown">{{#str}} addpointcontent, videoprogress {{/str}}</button>

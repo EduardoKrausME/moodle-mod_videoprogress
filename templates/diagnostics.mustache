@@ -41,20 +41,27 @@
                 type="hidden" name="sesskey" value="{{sesskey}}">
             <label><input type="checkbox" required> {{#str}} confirmrepair, videoprogress {{/str}}</label>
             <div>
-                <button type="submit" class="btn btn-primary mt-3">{{#str}}
-                    repairgradebook, videoprogress {{/str}}</button>
+                <button type="submit"
+                        class="btn btn-primary mt-3">{{#str}}repairgradebook, videoprogress {{/str}}</button>
             </div>
         </form>
     </section>
     <section class="videoprogress-detail-section">
         <h3>{{#str}} missinggradeitems, videoprogress {{/str}}</h3>
         {{#hasmissinggradeitems}}
-            <div class="videoprogress-diagnostic-list">{{#missinggradeitems}}
-                <article><strong>{{name}}</strong><span>{{#str}}
-                    activityid, videoprogress, activityid {{/str}}</span><span>{{#str}}
-                    courseid, videoprogress, courseid {{/str}}</span></article>{{/missinggradeitems}}
-            </div>{{/hasmissinggradeitems}}
-        {{^hasmissinggradeitems}}<p>{{#str}} nodiagnosticproblems, videoprogress {{/str}}</p>{{/hasmissinggradeitems}}
+            <div class="videoprogress-diagnostic-list">
+                {{#missinggradeitems}}
+                    <article>
+                        <strong>{{name}}</strong>
+                        <span>{{#str}}activityid, videoprogress, {{{activityid}}} {{/str}}</span>
+                        <span>{{#str}}courseid, videoprogress, {{{courseid}}} {{/str}}</span>
+                    </article>
+                {{/missinggradeitems}}
+            </div>
+        {{/hasmissinggradeitems}}
+        {{^hasmissinggradeitems}}
+            <p>{{#str}} nodiagnosticproblems, videoprogress {{/str}}</p>
+        {{/hasmissinggradeitems}}
     </section>
     <section class="videoprogress-detail-section">
         <h3>{{#str}} brokenformulas, videoprogress {{/str}}</h3>

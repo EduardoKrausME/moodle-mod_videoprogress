@@ -42,11 +42,9 @@
                 {{#captions}}
                     <article>
                         <div><strong>{{label}}</strong><span>{{language}} · {{status}} · {{source}}</span>{{#isdefault}}
-                            <span class="badge badge-primary">{{#str}}
-                                default, videoprogress {{/str}}</span>{{/isdefault}}</div>
+                            <span class="badge badge-primary">{{#str}}default, videoprogress {{/str}}</span>{{/isdefault}}</div>
                         <div class="videoprogress-row-actions">
-                            <a href="{{editurl}}" class="btn btn-sm btn-outline-primary">{{#str}}
-                                edit, videoprogress {{/str}}</a>
+                            <a href="{{editurl}}" class="btn btn-sm btn-outline-primary">{{#str}}edit, videoprogress {{/str}}</a>
                             <form method="post" action="{{actionurl}}" data-action="delete-caption">
                                 <input type="hidden" name="id" value="{{cmid}}">
                                 <input type="hidden" name="sesskey" value="{{sesskey}}">

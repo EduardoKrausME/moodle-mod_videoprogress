@@ -31,10 +31,14 @@
             <p>{{coursename}}</p>
         </div>
         <div class="videoprogress-report__actions">
-            {{#canexport}}<a href="{{exporturl}}" class="btn btn-outline-primary">{{#str}}
-                exportcsv, videoprogress {{/str}}</a>{{/canexport}}
-            {{#canreset}}<a href="{{massreseturl}}" class="btn btn-outline-danger">{{#str}}
-                resetfiltered, videoprogress {{/str}}</a>{{/canreset}}
+            {{#canexport}}
+                <a href="{{exporturl}}"
+                   class="btn btn-outline-primary">{{#str}}exportcsv, videoprogress {{/str}}</a>
+            {{/canexport}}
+            {{#canreset}}
+                <a href="{{massreseturl}}"
+                   class="btn btn-outline-danger">{{#str}}resetfiltered, videoprogress {{/str}}</a>
+            {{/canreset}}
         </div>
     </header>
 
@@ -44,7 +48,7 @@
             {{#coursevideos}}
                 <a href="{{url}}" class="videoprogress-course-video {{#active}}is-active{{/active}}">
                     <strong>{{name}}</strong>
-                    <span>{{#str}} coursevideostats, videoprogress, . {{/str}}</span>
+                    <span>{{#str}} coursevideostats, videoprogress, {{.}} {{/str}}</span>
                     <div class="videoprogress-mini-map" aria-hidden="true">
                         {{#timeline}}<i class="level-{{level}}"></i>{{/timeline}}
                     </div>
@@ -59,7 +63,7 @@
 
     <div class="videoprogress-report__result-heading">
         <h3>{{#str}} students, videoprogress {{/str}}</h3>
-        <span>{{#str}} resultcount, videoprogress, totalresults {{/str}}</span>
+        <span>{{#str}} resultcount, videoprogress, {{totalresults}} {{/str}}</span>
     </div>
     {{#hasstudents}}{{> mod_videoprogress/report_students}}{{/hasstudents}}
     {{^hasstudents}}{{> mod_videoprogress/report_empty}}{{/hasstudents}}

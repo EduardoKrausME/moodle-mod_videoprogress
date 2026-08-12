@@ -30,8 +30,10 @@
             <h2>{{fullname}}</h2>
             <p>{{email}}</p>
         </div>
-        {{#canreset}}<a href="{{reseturl}}" class="btn btn-outline-danger">{{#str}}
-            resetprogress, videoprogress {{/str}}</a>{{/canreset}}
+        {{#canreset}}
+            <a href="{{reseturl}}"
+               class="btn btn-outline-danger">{{#str}}resetprogress, videoprogress {{/str}}</a>
+        {{/canreset}}
     </header>
     <section class="videoprogress-detail-metrics">
         <article><strong>{{percent}}%</strong><span>{{#str}} progress, videoprogress {{/str}}</span></article>
@@ -45,7 +47,7 @@
     <section class="videoprogress-report-timeline">
         <h3>{{#str}} individualtimeline, videoprogress {{/str}}</h3>
         <div class="videoprogress-timeline" role="img"
-             aria-label="{{#str}} individualtimelinearia, videoprogress, fullname {{/str}}">
+             aria-label="{{#str}} individualtimelinearia, videoprogress, {{{fullname}}} {{/str}}">
             {{#timeline}}<span class="videoprogress-timeline__bucket level-{{level}}" tabindex="0"
                                title="{{tooltip}}"></span>{{/timeline}}
         </div>
@@ -59,19 +61,25 @@
     {{/hasobjectives}}
     <section class="videoprogress-detail-section">
         <h3>{{#str}} confirmationtitle, videoprogress {{/str}}</h3>
-        {{#confirmation}}<p class="text-success">{{#str}}
-            confirmationdetail, videoprogress, confirmationtime {{/str}}</p>{{/confirmation}}
-        {{^confirmation}}<p>{{#str}} notconfirmed, videoprogress {{/str}}</p>{{/confirmation}}
+        {{#confirmation}}
+            <p class="text-success">{{#str}}confirmationdetail, videoprogress, {{{confirmationtime}}} {{/str}}</p>
+        {{/confirmation}}
+        {{^confirmation}}
+            <p>{{#str}} notconfirmed, videoprogress {{/str}}</p>
+        {{/confirmation}}
     </section>
     <section class="videoprogress-detail-section">
         <h3>{{#str}} sessions, videoprogress {{/str}}</h3>
         {{#hassessions}}
             <div class="videoprogress-sessions">
                 {{#sessions}}
-                    <article><strong>{{date}}</strong><span>{{#str}}
-                        sessionduration, videoprogress, duration {{/str}}</span><span>{{#str}}
-                        sessionwatchtime, videoprogress, watchtime {{/str}}</span><span>{{#str}}
-                        sessionrange, videoprogress, . {{/str}}</span></article>{{/sessions}}
+                    <article>
+                        <strong>{{date}}</strong>
+                        <span>{{#str}}sessionduration, videoprogress, {{{duration}}} {{/str}}</span>
+                        <span>{{#str}}sessionwatchtime, videoprogress, {{{watchtime}}} {{/str}}</span>
+                        <span>{{#str}}sessionrange, videoprogress, {{{.}}} {{/str}}</span>
+                    </article>
+                {{/sessions}}
             </div>
         {{/hassessions}}
         {{^hassessions}}<p>{{#str}} nosessions, videoprogress {{/str}}</p>{{/hassessions}}

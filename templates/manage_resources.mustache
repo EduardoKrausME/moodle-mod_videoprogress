@@ -29,13 +29,16 @@
     <p>{{#str}} manageresourceshelp, videoprogress {{/str}}</p>
     <div class="videoprogress-manage__cards">
         {{#canobjectives}}
-            <a href="{{objectivesurl}}"><strong>{{#str}} learningobjectives, videoprogress {{/str}}</strong><span>{{#str}}
-                manageobjectiveshelp, videoprogress {{/str}}</span></a>{{/canobjectives}}
+            <a href="{{objectivesurl}}"><strong>{{#str}} learningobjectives, videoprogress {{/str}}</strong>
+                <span>{{#str}}manageobjectiveshelp, videoprogress {{/str}}</span></a>
+        {{/canobjectives}}
         {{#canmaterials}}
-            <a href="{{materialsurl}}"><strong>{{#str}} supportmaterials, videoprogress {{/str}}</strong><span>{{#str}}
-                managematerialshelp, videoprogress {{/str}}</span></a>{{/canmaterials}}
+            <a href="{{materialsurl}}"><strong>{{#str}} supportmaterials, videoprogress {{/str}}</strong>
+                <span>{{#str}}managematerialshelp, videoprogress {{/str}}</span></a>
+        {{/canmaterials}}
         {{#cancontent}}
-            <a href="{{contenturl}}"><strong>{{#str}} videocontent, videoprogress {{/str}}</strong><span>{{#str}}
-                managecontenthelp, videoprogress {{/str}}</span></a>{{/cancontent}}
+            <a href="{{contenturl}}"><strong>{{#str}} videocontent, videoprogress {{/str}}</strong>
+                <span>{{#str}}managecontenthelp, videoprogress {{/str}}</span></a>
+        {{/cancontent}}
     </div>
 </div>

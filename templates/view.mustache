@@ -29,18 +29,27 @@
             <h2>{{name}}</h2>
         </div>
         <div class="videoprogress-view__actions">
-            {{#canviewreport}}<a class="btn btn-outline-primary" href="{{reporturl}}">{{#str}}
-                viewreport, videoprogress {{/str}}</a>{{/canviewreport}}
-            {{#cancaptions}}<a class="btn btn-outline-secondary" href="{{captionsurl}}">{{#str}}
-                managecaptions, videoprogress {{/str}}</a>{{/cancaptions}}
-            {{#canmanageobjectives}}<a class="btn btn-outline-secondary" href="{{objectivesurl}}">{{#str}}
-                manageobjectives, videoprogress {{/str}}</a>{{/canmanageobjectives}}
-            {{#canmanageresources}}<a class="btn btn-outline-secondary" href="{{manageurl}}">{{#str}}
-                manageresources, videoprogress {{/str}}</a>{{/canmanageresources}}
+            {{#canviewreport}}
+                <a class="btn btn-outline-primary"
+                   href="{{reporturl}}">{{#str}}viewreport, videoprogress {{/str}}</a>
+            {{/canviewreport}}
+            {{#cancaptions}}
+                <a class="btn btn-outline-secondary"
+                   href="{{captionsurl}}">{{#str}}managecaptions, videoprogress {{/str}}</a>
+            {{/cancaptions}}
+            {{#canmanageobjectives}}
+                <a class="btn btn-outline-secondary"
+                   href="{{objectivesurl}}">{{#str}}manageobjectives, videoprogress {{/str}}</a>
+            {{/canmanageobjectives}}
+            {{#canmanageresources}}
+                <a class="btn btn-outline-secondary"
+                   href="{{manageurl}}">{{#str}}manageresources, videoprogress {{/str}}</a>
+            {{/canmanageresources}}
         </div>
     </header>
     {{#hasintro}}
-        <div class="videoprogress-intro">{{{intro}}}</div>{{/hasintro}}
+        <div class="videoprogress-intro">{{{intro}}}</div>
+    {{/hasintro}}
     <div class="videoprogress-learning-layout {{^hascontentpoints}}without-content{{/hascontentpoints}}">
         <main class="videoprogress-learning-layout__main">
             {{#hasobjectives}}{{> mod_videoprogress/objectives}}{{/hasobjectives}}

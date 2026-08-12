@@ -35,17 +35,23 @@
         </div>
         <div class="videoprogress-insights">
             {{#insights.mostwatched}}
-                <article><span>{{#str}}
-                    mostwatchedsection, videoprogress {{/str}}</span><strong>{{range}}</strong><small>{{#str}}
-                    viewsamount, videoprogress, views {{/str}}</small></article>{{/insights.mostwatched}}
+                <article>
+                    <span>{{#str}}mostwatchedsection, videoprogress {{/str}}</span><strong>{{range}}</strong>
+                    <small>{{#str}}viewsamount, videoprogress, {{{views}}} {{/str}}</small>
+                </article>
+            {{/insights.mostwatched}}
             {{#insights.leastwatched}}
-                <article><span>{{#str}}
-                    leastwatchedsection, videoprogress {{/str}}</span><strong>{{range}}</strong><small>{{#str}}
-                    viewsamount, videoprogress, views {{/str}}</small></article>{{/insights.leastwatched}}
+                <article>
+                    <span>{{#str}}leastwatchedsection, videoprogress {{/str}}</span><strong>{{range}}</strong>
+                    <small>{{#str}}viewsamount, videoprogress, {{{views}}} {{/str}}</small>
+                </article>
+            {{/insights.leastwatched}}
             {{#insights.dropoff}}
-                <article><span>{{#str}}
-                    largestdropoff, videoprogress {{/str}}</span><strong>{{range}}</strong><small>{{#str}}
-                    viewdrop, videoprogress, views {{/str}}</small></article>{{/insights.dropoff}}
+                <article>
+                    <span>{{#str}}largestdropoff, videoprogress {{/str}}</span><strong>{{range}}</strong>
+                    <small>{{#str}}viewdrop, videoprogress, {{{views}}} {{/str}}</small>
+                </article>
+            {{/insights.dropoff}}
         </div>
     {{/hasaggregateddata}}
     {{^hasaggregateddata}}

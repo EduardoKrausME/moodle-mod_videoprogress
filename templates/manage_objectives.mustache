@@ -68,14 +68,17 @@
                     <div>
                         <strong>{{summary}}</strong>
                         <span>{{pluginname}}</span>
-                        {{#disabled}}<span class="badge badge-secondary">{{#str}}
-                            disabled, videoprogress {{/str}}</span>{{/disabled}}
+                        {{#disabled}}
+                            <span class="badge badge-secondary">{{#str}}disabled, videoprogress {{/str}}</span>
+                        {{/disabled}}
                     </div>
                     <div>
-                        {{#pluginavailable}}<a class="btn btn-sm btn-outline-primary" href="{{editurl}}">{{#str}}
-                            edit, videoprogress {{/str}}</a>{{/pluginavailable}}
-                        <a class="btn btn-sm btn-outline-danger" href="{{deleteurl}}">{{#str}}
-                            delete, videoprogress {{/str}}</a>
+                        {{#pluginavailable}}
+                            <a class="btn btn-sm btn-outline-primary"
+                               href="{{editurl}}">{{#str}}edit, videoprogress {{/str}}</a>
+                        {{/pluginavailable}}
+                        <a class="btn btn-sm btn-outline-danger"
+                           href="{{deleteurl}}">{{#str}}delete, videoprogress {{/str}}</a>
                     </div>
                 </article>
             {{/items}}

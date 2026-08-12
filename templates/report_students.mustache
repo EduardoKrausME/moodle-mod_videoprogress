@@ -50,7 +50,7 @@
                     <div class="videoprogress-student-progress">
                         <strong>{{percentrounded}}%</strong>
                         <div class="progress"
-                             aria-label="{{#str}} studentprogressaria, videoprogress, percentrounded {{/str}}">
+                             aria-label="{{#str}} studentprogressaria, videoprogress, {{{percentrounded}}} {{/str}}">
                             <div class="progress-bar" style="width: {{percent}}%"></div>
                         </div>
                     </div>
@@ -63,17 +63,19 @@
                         class="badge badge-{{statusclass}}">{{status}}</span></td>
                 <td data-label="{{#str}} timeline, videoprogress {{/str}}">
                     <div class="videoprogress-mini-map"
-                         aria-label="{{#str}} individualtimelinearia, videoprogress, fullname {{/str}}">
+                         aria-label="{{#str}} individualtimelinearia, videoprogress, {{{fullname}}} {{/str}}">
                         {{#timeline}}<i class="level-{{level}}" title="{{tooltip}}"></i>{{/timeline}}
                     </div>
                     <span class="sr-only">{{timelinealternative}}</span>
                 </td>
                 <td data-label="{{#str}} actions, videoprogress {{/str}}">
                     <div class="videoprogress-row-actions">
-                        <a href="{{detailsurl}}" class="btn btn-sm btn-outline-primary">{{#str}}
-                            viewdetails, videoprogress {{/str}}</a>
-                        {{#canreset}}<a href="{{reseturl}}" class="btn btn-sm btn-outline-danger">{{#str}}
-                            resetprogress, videoprogress {{/str}}</a>{{/canreset}}
+                        <a href="{{detailsurl}}"
+                           class="btn btn-sm btn-outline-primary">{{#str}}viewdetails, videoprogress {{/str}}</a>
+                        {{#canreset}}
+                            <a href="{{reseturl}}"
+                               class="btn btn-sm btn-outline-danger">{{#str}}resetprogress, videoprogress {{/str}}</a>
+                        {{/canreset}}
                     </div>
                 </td>
             </tr>

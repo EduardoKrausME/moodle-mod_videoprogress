@@ -23,13 +23,16 @@
 }}
 
 <nav class="videoprogress-pagination" aria-label="{{#str}} pagination, videoprogress {{/str}}">
-    {{#pagination.hasprevious}}<a class="btn btn-outline-secondary" href="{{pagination.previousurl}}">{{#str}}
-        previous, videoprogress {{/str}}</a>{{/pagination.hasprevious}}
+    {{#pagination.hasprevious}}
+        <a class="btn btn-outline-secondary"
+           href="{{pagination.previousurl}}">{{#str}}previous, videoprogress {{/str}}</a>
+    {{/pagination.hasprevious}}
     <div class="videoprogress-pagination__pages">
         {{#pagination.pages}}
             <a href="{{url}}" class="btn {{#active}}btn-primary{{/active}}{{^active}}btn-outline-secondary{{/active}}"
                {{#active}}aria-current="page"{{/active}}>{{number}}</a>{{/pagination.pages}}
     </div>
-    {{#pagination.hasnext}}<a class="btn btn-outline-secondary" href="{{pagination.nexturl}}">{{#str}}
-        next, videoprogress {{/str}}</a>{{/pagination.hasnext}}
+    {{#pagination.hasnext}}
+        <a class="btn btn-outline-secondary" href="{{pagination.nexturl}}">{{#str}}next, videoprogress {{/str}}</a>
+    {{/pagination.hasnext}}
 </nav>

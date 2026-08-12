@@ -32,9 +32,13 @@
             <li>
                 <button type="button" data-content-point="{{id}}" data-time="{{timepoint}}"
                         class="videoprogress-video-content__point">
-                    <span class="videoprogress-video-content__status">{{#completed}}
-                        <span aria-hidden="true">✓</span><span class="sr-only">{{#str}}
-                        statuscompleted, videoprogress {{/str}}</span>{{/completed}}{{^completed}}{{timecode}}{{/completed}}</span>
+                    <span class="videoprogress-video-content__status">
+                        {{#completed}}
+                            <span aria-hidden="true">✓</span>
+                        <span class="sr-only">{{#str}}statuscompleted, videoprogress {{/str}}</span>
+                        {{/completed}}
+                        {{^completed}}{{timecode}}{{/completed}}
+                    </span>
                     <span class="videoprogress-video-content__text"><strong>{{title}}</strong>{{#hasitems}}
                         <small>{{#items}}<span>{{name}}</span>{{/items}}</small>{{/hasitems}}</span>
                     <span class="videoprogress-video-content__play" aria-hidden="true">▶</span>
