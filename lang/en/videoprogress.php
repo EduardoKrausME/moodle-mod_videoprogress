@@ -53,6 +53,7 @@ $string['captiondeleted'] = 'Legenda removida.';
 $string['captionfile'] = 'Arquivo WebVTT ou SRT';
 $string['captionfilemissing'] = 'Selecione um arquivo de legenda.';
 $string['captionlabel'] = 'Título da legenda';
+$string['captionlanguage'] = 'Idioma';
 $string['captionreviewhelp'] = 'Revise timestamps e texto. Uma faixa em rascunho não é exibida aos alunos.';
 $string['captions'] = 'Legendas';
 $string['captionsaved'] = 'Legenda salva.';
