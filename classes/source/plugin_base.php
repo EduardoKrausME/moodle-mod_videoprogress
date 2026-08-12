@@ -200,8 +200,7 @@ abstract class plugin_base {
      * @return string Protected file URL or an empty string when no file exists.
      * @throws coding_exception
      */
-    final protected function first_file_url(context_module $context, string $component, string $filearea,
-                                            int            $itemid = 0): string {
+    final protected function first_file_url(context_module $context, string $component, string $filearea, int $itemid = 0): string {
         $files = get_file_storage()->get_area_files(
             $context->id,
             $component,

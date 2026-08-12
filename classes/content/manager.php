@@ -155,7 +155,7 @@ class manager {
      * @throws moodle_exception
      */
     public function prepare_item_form_data(stdClass|null $item, context_module $context,
-                                           string        $pluginname, int $pointid): stdClass {
+                                           string $pluginname, int $pointid): stdClass {
         $data = $item ? clone $item : (object)[
             "pointid" => $pointid,
             "plugin" => $pluginname,
@@ -177,7 +177,7 @@ class manager {
      * @throws dml_exception
      * @throws moodle_exception
      */
-    public function save_item(stdClass       $point, stdClass|null $item, stdClass $data,
+    public function save_item(stdClass $point, stdClass|null $item, stdClass $data,
                               context_module $context): stdClass {
         global $DB;
         $pluginname = $item ? $item->plugin : clean_param($data->plugin, PARAM_PLUGIN);
@@ -222,7 +222,7 @@ class manager {
      * @throws coding_exception
      * @throws dml_exception
      */
-    public function get_student_data(int      $activityid, int $userid, context_module $context,
+    public function get_student_data(int $activityid, int $userid, context_module $context,
                                      stdClass $progress): array {
         global $DB;
         $pointrecords = $DB->get_records("videoprogress_points", [
@@ -515,7 +515,7 @@ class manager {
         $transaction = $DB->start_delegated_transaction();
         try {
             $this->get_plugin($item->plugin)->delete($item, $context);
-        } catch (moodle_exception $exception) {
+        } catch (moodle_exception $exception) { // phpcs:disable Generic.CodeAnalysis.EmptyStatement.DetectedCatch
             // The base item must remain removable when its subplugin was uninstalled.
         }
         $DB->delete_records("videoprogress_interactions", ["itemid" => $item->id]);

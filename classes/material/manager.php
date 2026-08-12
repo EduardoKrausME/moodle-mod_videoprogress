@@ -231,7 +231,7 @@ class manager {
         $transaction = $DB->start_delegated_transaction();
         try {
             $this->get_plugin($material->plugin)->delete($material, $context);
-        } catch (moodle_exception $exception) {
+        } catch (moodle_exception $exception) { // phpcs:disable Generic.CodeAnalysis.EmptyStatement.DetectedCatch
             // The base record must remain removable when its subplugin was uninstalled.
         }
         $DB->delete_records("videoprogress_materials", ["id" => $material->id]);

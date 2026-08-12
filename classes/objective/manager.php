@@ -247,7 +247,7 @@ class manager {
         $transaction = $DB->start_delegated_transaction();
         try {
             $this->get_plugin($objective->plugin)->delete($objective, $context);
-        } catch (moodle_exception $exception) {
+        } catch (moodle_exception $exception) { // phpcs:disable Generic.CodeAnalysis.EmptyStatement.DetectedCatch
             // Keep records removable when their objective type was uninstalled.
         }
         $DB->delete_records("videoprogress_objectives", ["id" => $objective->id]);

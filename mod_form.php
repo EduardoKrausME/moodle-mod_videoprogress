@@ -60,17 +60,23 @@ class mod_videoprogress_mod_form extends moodleform_mod {
         $mform->setDefault("videosource", $sourcemanager->get_default_source());
         $sourcemanager->add_form_elements($mform, "videosource");
 
-        $mform->addElement("filemanager", "poster", get_string("poster", "videoprogress"), null, [
-            "subdirs" => 0, "maxfiles" => 1, "accepted_types" => ["image"],
-        ]);
+        $filemanageroptions = [
+            "subdirs" => 0,
+            // "maxfiles" => 1,
+            "accepted_types" => ["image"],
+        ];
+        $mform->addElement("filemanager", "poster", get_string("poster", "videoprogress"), null, $filemanageroptions);
         $nopostersources = $sourcemanager->get_sources_without_poster();
         if ($nopostersources) {
             $mform->hideIf("poster", "videosource", "in", $nopostersources);
         }
 
-        $mform->addElement("filemanager", "subtitles", get_string("subtitles", "videoprogress"), null, [
-            "subdirs" => 0, "maxfiles" => 10, "accepted_types" => ['.vtt', '.srt'],
-        ]);
+        $filemanageroptions=[
+            "subdirs" => 0,
+            // "maxfiles" => 10,
+            "accepted_types" => ['.vtt', '.srt'],
+        ];
+        $mform->addElement("filemanager", "subtitles", get_string("subtitles", "videoprogress"), null, $filemanageroptions);
         $mform->addHelpButton("subtitles", "subtitles", "videoprogress");
         $nocaptionsources = $sourcemanager->get_sources_without_uploaded_captions();
         if ($nocaptionsources) {
@@ -141,9 +147,7 @@ class mod_videoprogress_mod_form extends moodleform_mod {
         $context = $this->context;
         (new manager())->prepare_form_data($defaultvalues, $context);
         $posterdraftid = file_get_submitted_draft_itemid("poster");
-        file_prepare_draft_area($posterdraftid, $context->id, "mod_videoprogress", "poster", 0, [
-            "subdirs" => 0, "maxfiles" => 1,
-        ]);
+        file_prepare_draft_area($posterdraftid, $context->id, "mod_videoprogress", "poster", 0, ["subdirs" => 0]);
         $defaultvalues["poster"] = $posterdraftid;
     }
 

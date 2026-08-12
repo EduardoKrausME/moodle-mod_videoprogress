@@ -81,8 +81,8 @@ class update_progress extends external_api {
      * @throws required_capability_exception
      * @throws coding_exception
      */
-    public static function execute(int    $cmid, float $currentposition, float $duration, float $playbackrate,
-                                   float  $segmentstart, float $segmentend, int $sequence, string $sessionkey, int $clienttime,
+    public static function execute(int $cmid, float $currentposition, float $duration, float $playbackrate,
+                                   float $segmentstart, float $segmentend, int $sequence, string $sessionkey, int $clienttime,
                                    string $playerstate): array {
         global $DB, $USER;
 

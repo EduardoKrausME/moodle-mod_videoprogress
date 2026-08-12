@@ -60,7 +60,7 @@ class view_map {
      * @return array Structured data produced by the operation.
      */
     public static function add_segment(array $map, float $start, float $end, float $duration,
-                                       int   $buckets = self::DEFAULT_BUCKETS): array {
+                                       int $buckets = self::DEFAULT_BUCKETS): array {
         $map = array_pad(array_slice(array_values($map), 0, $buckets), $buckets, 0);
         if ($duration <= 0 || $end <= $start) {
             return $map;
