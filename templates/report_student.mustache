@@ -75,13 +75,12 @@
         {{/canreset}}
     </header>
     <section class="videoprogress-detail-metrics">
-        <article><strong>{{percent}}%</strong><span>{{#str}} progress, videoprogress {{/str}}</span></article>
-        <article><strong>{{uniquewatched}}</strong><span>{{#str}} uniquewatched, videoprogress {{/str}}</span></article>
-        <article><strong>{{totalwatchtime}}</strong><span>{{#str}} totalwatchtime, videoprogress {{/str}}</span>
-        </article>
-        <article><strong>{{lastposition}}</strong><span>{{#str}} lastposition, videoprogress {{/str}}</span></article>
-        <article><strong>{{status}}</strong><span>{{#str}} status, videoprogress {{/str}}</span></article>
-        <article><strong>{{lastview}}</strong><span>{{#str}} lastview, videoprogress {{/str}}</span></article>
+        <article><h3>{{percent}}%</h3><span>{{#str}} progress, videoprogress {{/str}}</span></article>
+        <article><h3>{{uniquewatched}}</h3><span>{{#str}} uniquewatched, videoprogress {{/str}}</span></article>
+        <article><h3>{{totalwatchtime}}</h3><span>{{#str}} totalwatchtime, videoprogress {{/str}}</span></article>
+        <article><h3>{{lastposition}}</h3><span>{{#str}} lastposition, videoprogress {{/str}}</span></article>
+        <article><h3>{{status}}</h3><span>{{#str}} status, videoprogress {{/str}}</span></article>
+        <article><h3>{{lastview}}</h3><span>{{#str}} lastview, videoprogress {{/str}}</span></article>
     </section>
     <section class="videoprogress-report-timeline">
         <h3>{{#str}} individualtimeline, videoprogress {{/str}}</h3>
@@ -118,7 +117,7 @@
             <div class="videoprogress-sessions">
                 {{#sessions}}
                     <article>
-                        <strong>{{date}}</strong>
+                        <h3>{{date}}</h3>
                         <span>{{#str}}sessionduration, videoprogress, {{{duration}}} {{/str}}</span>
                         <span>{{#str}}sessionwatchtime, videoprogress, {{{watchtime}}} {{/str}}</span>
                         <span>{{range}}</span>

@@ -64,7 +64,9 @@
         <div class="videoprogress-manage-list">
             {{#items}}
                 <article>
-                    <div><strong>{{name}}</strong><span>{{pluginname}}</span>
+                    <div>
+                        <h3>{{name}}</h3>
+                        <span>{{pluginname}}</span>
                         {{#disabled}}
                             <span class="badge badge-secondary">{{#str}} disabled, videoprogress {{/str}}</span>
                         {{/disabled}}

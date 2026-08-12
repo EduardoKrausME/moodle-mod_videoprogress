@@ -59,7 +59,7 @@
     <section class="videoprogress-summary__grid">
         {{#cards}}
             <article class="videoprogress-stat-card">
-                <strong>{{value}}</strong>
+                <h3>{{value}}</h3>
                 <span>{{label}}</span>
             </article>
         {{/cards}}
@@ -83,7 +83,7 @@
             <div class="videoprogress-diagnostic-list">
                 {{#missinggradeitems}}
                     <article>
-                        <strong>{{name}}</strong>
+                        <h3>{{name}}</h3>
                         <span>{{#str}}activityid, videoprogress, {{{activityid}}} {{/str}}</span>
                         <span>{{#str}}courseid, videoprogress, {{{courseid}}} {{/str}}</span>
                     </article>
