@@ -46,7 +46,7 @@ class objective_form extends moodleform {
         $plugin = $this->_customdata["plugin"];
         $mform->addElement("hidden", "plugin");
         $mform->setType("plugin", PARAM_PLUGIN);
-        $mform->addElement("advcheckbox", "enabled", get_string("enabled", "videoprogress"));
+        $mform->addElement("selectyesno", "enabled", get_string("enabled", "videoprogress"));
         $mform->setDefault("enabled", 1);
         $mform->addElement("header", "pluginsettings", $plugin->get_name());
         $plugin->add_form_elements($mform);

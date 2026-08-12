@@ -51,7 +51,7 @@ class point_form extends moodleform {
         $mform->setType("timecode", PARAM_TEXT);
         $mform->addRule("timecode", null, "required", null, "client");
         $mform->addHelpButton("timecode", "pointtime", "videoprogress");
-        $mform->addElement("advcheckbox", "enabled", get_string("enabled", "videoprogress"));
+        $mform->addElement("selectyesno", "enabled", get_string("enabled", "videoprogress"));
         $mform->setDefault("enabled", 1);
         $this->add_action_buttons(true, get_string("savechanges"));
     }

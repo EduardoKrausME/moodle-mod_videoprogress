@@ -49,7 +49,7 @@ class material_form extends moodleform {
         $mform->addElement("text", "name", get_string("materialname", "videoprogress"), ["size" => 60]);
         $mform->setType("name", PARAM_TEXT);
         $mform->addRule("name", null, "required", null, "client");
-        $mform->addElement("advcheckbox", "enabled", get_string("enabled", "videoprogress"));
+        $mform->addElement("selectyesno", "enabled", get_string("enabled", "videoprogress"));
         $mform->setDefault("enabled", 1);
         $mform->addElement("header", "pluginsettings", $plugin->get_name());
         $plugin->add_form_elements($mform);

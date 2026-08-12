@@ -52,7 +52,7 @@ class point_item_form extends moodleform {
         $mform->addElement("static", "pointsummary", get_string("videopoint", "videoprogress"),
             format_string($this->_customdata["point"]->title) . ' · ' .
             timecode::format($this->_customdata["point"]->timepoint));
-        $mform->addElement("advcheckbox", "enabled", get_string("enabled", "videoprogress"));
+        $mform->addElement("selectyesno", "enabled", get_string("enabled", "videoprogress"));
         $mform->setDefault("enabled", 1);
         $mform->addElement("header", "pluginsettings", $plugin->get_name());
         $plugin->add_form_elements($mform);

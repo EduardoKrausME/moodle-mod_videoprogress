@@ -52,7 +52,7 @@ class caption_form extends moodleform {
         $options = ["accepted_types" => ['.vtt', '.srt'], "maxbytes" => 5 * 1024 * 1024];
         $mform->addElement("filepicker", "captionfile", get_string("captionfile", "videoprogress"), null, $options);
         $mform->addRule("captionfile", null, "required", null, "client");
-        $mform->addElement("advcheckbox", "isdefault", get_string("captiondefault", "videoprogress"));
+        $mform->addElement("selectyesno", "isdefault", get_string("captiondefault", "videoprogress"));
         $mform->addElement("select", "status", get_string("captionstatus", "videoprogress"), [
             "draft" => get_string("captionstatusdraft", "videoprogress"),
             "published" => get_string("captionstatuspublished", "videoprogress"),

@@ -57,7 +57,7 @@ class plugin extends plugin_base {
         $mform->addElement("editor", "message_editor", get_string("message", "videoprogresscontent_note"), null,
             self::editor_options($PAGE->context));
         $mform->addRule("message_editor", null, "required", null, "client");
-        $mform->addElement("advcheckbox", "pausevideo", get_string("pausevideo", "videoprogresscontent_note"));
+        $mform->addElement("selectyesno", "pausevideo", get_string("pausevideo", "videoprogresscontent_note"));
         $options = [];
         foreach ([5, 8, 10, 15, 30] as $seconds) {
             $options[$seconds] = get_string("seconds", "videoprogresscontent_note", $seconds);

@@ -61,7 +61,7 @@ class caption_editor_form extends moodleform {
         $mform->setType("content", PARAM_RAW);
         $mform->addRule("content", null, "required", null, "client");
 
-        $mform->addElement("advcheckbox", "isdefault", get_string("captiondefault", "videoprogress"));
+        $mform->addElement("selectyesno", "isdefault", get_string("captiondefault", "videoprogress"));
 
         $mform->addElement("select", "status", get_string("captionstatus", "videoprogress"), [
             "draft" => get_string("captionstatusdraft", "videoprogress"),

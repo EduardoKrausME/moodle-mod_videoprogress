@@ -152,7 +152,7 @@ class mod_videoprogress_mod_form extends moodleform_mod {
         $mform->setType($percentfield, PARAM_INT);
         $mform->setDefault($percentfield, 80);
         $mform->addRule($percentfield, null, "numeric", null, "client");
-        $mform->addElement("advcheckbox", $confirmationfield, get_string("requireconfirmation", "videoprogress"));
+        $mform->addElement("selectyesno", $confirmationfield, get_string("requireconfirmation", "videoprogress"));
         $mform->setDefault($confirmationfield, 0);
         return [$percentfield, $confirmationfield];
     }
