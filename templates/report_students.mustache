@@ -79,6 +79,7 @@
                     <div class="videoprogress-student-progress">
                         <strong>{{percentrounded}}%</strong>
                         <div class="progress"
+                             role="progressbar"
                              aria-label="{{#str}} studentprogressaria, videoprogress, {{{percentrounded}}} {{/str}}">
                             <div class="progress-bar" style="width: {{percent}}%"></div>
                         </div>
@@ -92,6 +93,7 @@
                         class="badge badge-{{statusclass}}">{{status}}</span></td>
                 <td data-label="{{#str}} timeline, videoprogress {{/str}}">
                     <div class="videoprogress-mini-map"
+                         role="progressbar"
                          aria-label="{{#str}} individualtimelinearia, videoprogress, {{{fullname}}} {{/str}}">
                         {{#timeline}}
                             <i class="level-{{level}}" title="{{tooltip}}"></i>
