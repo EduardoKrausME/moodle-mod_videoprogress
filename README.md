@@ -1,177 +1,311 @@
 # Video Progress
 
-O Video Progress transforma vídeos em atividades acompanháveis no Software Moodle™. Professores e gestores conseguem saber quanto cada aluno realmente assistiu, onde interrompeu a reprodução, quais partes foram ignoradas, quais momentos foram revistos e se o requisito de conclusão foi alcançado.
+O Video Progress transforma vídeos em atividades completas dentro do Software Moodle™. Em vez de considerar apenas se o aluno abriu o vídeo ou chegou ao final, a atividade registra quais trechos foram realmente reproduzidos, quanto conteúdo diferente foi assistido, quanto tempo foi gasto na reprodução e quais partes foram revistas.
 
-O progresso considera somente os trechos efetivamente reproduzidos. Se o aluno avançar do primeiro minuto para o final do vídeo, o período ignorado não será contado como assistido. Quando ele voltar e rever uma parte, esse trecho continuará contando uma única vez para o percentual, mas a repetição aparecerá no tempo total e nos relatórios de audiência.
+Professores e gestores podem acompanhar o progresso individual, analisar o comportamento da turma, identificar momentos de maior interesse, perceber pontos de abandono e utilizar o percentual realmente assistido para conclusão e nota.
+
+## Progresso baseado no que foi realmente assistido
+
+A posição alcançada no vídeo não é usada como sinônimo de progresso. Se o aluno avançar para uma parte distante, o trecho ignorado continuará marcado como não assistido.
+
+Em um vídeo de 10 minutos, se o aluno assistir do início até 1 minuto, avançar para o minuto 8 e assistir até o final, o resultado será:
+
+- Última posição em 10 minutos.
+- 3 minutos de conteúdo diferente assistido.
+- Aproximadamente 3 minutos de reprodução.
+- 30% de progresso.
+
+Chegar ao final do vídeo não transforma esse resultado em 100%.
+
+Quando o aluno volta e assiste novamente a uma parte, a repetição aumenta o tempo total de reprodução e a intensidade dessa região nos relatórios, mas não aumenta artificialmente o percentual.
+
+Em um vídeo de 10 minutos, se o aluno assistir do início até 5 minutos, voltar ao minuto 2 e rever até o minuto 5, o resultado será:
+
+- 5 minutos de conteúdo diferente assistido.
+- Aproximadamente 8 minutos de reprodução.
+- 50% de progresso.
+- Maior destaque para o trecho entre 2 e 5 minutos, pois ele foi assistido duas vezes.
 
 ## Recursos principais
 
 - Registro do início da visualização.
-- Percentual baseado no conteúdo realmente assistido.
-- Identificação dos trechos assistidos, ignorados e revistos.
-- Registro do tempo de conteúdo diferente assistido.
-- Registro do tempo total gasto em reprodução, incluindo repetições.
+- Percentual calculado pelo conteúdo realmente reproduzido.
+- Identificação de partes assistidas, ignoradas e revistas.
+- Tempo de conteúdo diferente assistido.
+- Tempo total de reprodução, incluindo repetições.
 - Última posição e ponto de retomada.
 - Data da última visualização.
-- Situação do aluno como não iniciado, em andamento ou concluído.
-- Conclusão da atividade por percentual mínimo.
-- Nota de 0 a 100 de acordo com o percentual realmente assistido.
-- Confirmação opcional do aluno após cumprir o percentual exigido.
+- Situação como não iniciado, em andamento ou concluído.
+- Conclusão por percentual mínimo.
+- Nota de 0 a 100 baseada no percentual realmente assistido.
+- Confirmação opcional do aluno depois de cumprir o percentual exigido.
+- Linha do tempo individual e da turma.
 - Proteção contra avanços para partes ainda não assistidas.
-- Limite configurável para a velocidade de reprodução.
-- Controle das tentativas de download, Picture in Picture e menu de contexto.
+- Limite configurável de velocidade.
+- Relatórios detalhados e exportação de resultados.
+- Materiais de apoio.
+- Objetivos de aprendizagem ilimitados.
+- Conteúdos e interações sincronizados com momentos do vídeo.
+- Múltiplas legendas, transcrição e tradução.
 
 ## Fontes de vídeo
 
-O professor pode utilizar diferentes origens de vídeo:
+O professor pode utilizar diferentes origens:
 
-- Arquivo enviado diretamente para o Software Moodle™.
-- Link direto para vídeos em MP4, WebM, OGV, M4V ou MOV.
-- Transmissões em HLS.
-- Vídeos do YouTube.
-- Vídeos públicos ou não listados do Vimeo.
+- Vídeo enviado diretamente para o Software Moodle™.
+- Link direto para um arquivo de vídeo.
+- Transmissão de vídeo por link.
+- YouTube.
+- Vimeo público.
+- Vimeo não listado.
 
-Novas fontes podem ser acrescentadas futuramente sem alterar a experiência de acompanhamento já oferecida pelo Video Progress.
+Cada origem mantém a mesma proposta de acompanhamento, respeitando os recursos que o serviço de vídeo disponibiliza.
 
 ## Retomada da reprodução
 
-O professor pode escolher como o vídeo deve se comportar quando o aluno retornar à atividade:
+O professor escolhe o que acontece quando o aluno retorna à atividade:
 
 - Continuar automaticamente do ponto onde parou.
-- Perguntar se deseja continuar daquele ponto.
-- Reiniciar o vídeo desde o começo.
+- Perguntar se deseja retomar daquele ponto.
+- Começar novamente desde o início.
 
-A posição de retomada serve apenas para facilitar a experiência do aluno e nunca é utilizada sozinha para calcular o progresso.
+A posição salva é utilizada somente para facilitar a retomada. Ela nunca substitui os trechos realmente assistidos no cálculo do progresso.
 
-## Linha do tempo do aluno
+## Proteção contra avanços
 
-A atividade apresenta uma linha do tempo visual com as partes que ainda não foram assistidas, as partes já vistas e os trechos revistos mais de uma vez. O aluno também recebe uma descrição textual do progresso, tornando a informação mais clara e acessível.
+Quando o avanço está bloqueado, o aluno não pode pular para uma região que ainda não assistiu. Ele continua podendo voltar e rever partes anteriores.
 
-Além do percentual, a página pode mostrar o tempo assistido, a duração do vídeo, o requisito mínimo para conclusão e a situação atual da atividade.
+O Video Progress também verifica se o deslocamento informado é compatível com o tempo transcorrido e com a velocidade de reprodução. Isso evita que um grande salto seja registrado como se todos os segundos intermediários tivessem sido assistidos.
 
-## Objetivos de aprendizagem
+## Velocidade e controles do player
 
-Depois de criar a atividade, o professor pode abrir **Gerenciar objetivos de aprendizagem** e cadastrar quantos objetivos forem necessários. Ao adicionar cada objetivo, escolhe o formato e preenche as informações próprias daquele tipo.
+É possível definir uma velocidade máxima, incluindo 1x, 1,25x, 1,5x, 1,75x e 2x, ou deixar sem limite.
 
-Os formatos incluídos permitem cadastrar um texto simples ou classificar o objetivo pela Taxonomia de Bloom. Outros formatos podem ser acrescentados pela instituição.
+Também existem opções para dificultar algumas ações comuns do navegador:
 
-Quando a confirmação estiver habilitada, o aluno deverá atingir o percentual mínimo e confirmar que revisou os objetivos ou o conteúdo apresentado. A confirmação complementa o acompanhamento e não substitui a visualização do vídeo.
+- Ocultar o botão de download quando possível.
+- Desabilitar a reprodução em uma pequena janela flutuante.
+- Desabilitar o menu aberto pelo botão direito do mouse.
+
+Essas opções ajudam a reduzir ações casuais, mas não representam proteção DRM e não impedem completamente a cópia ou a captura do vídeo.
+
+## Objetivos de aprendizagem ilimitados
+
+Depois de criar a atividade, o professor pode acessar **Gerenciar objetivos de aprendizagem** e cadastrar quantos objetivos forem necessários.
+
+Ao adicionar um objetivo, o professor escolhe o tipo e preenche as informações correspondentes. Os formatos disponíveis incluem:
+
+- Texto, para apresentar um objetivo de forma simples e direta.
+- Taxonomia de Bloom, para relacionar o objetivo a ações como lembrar, compreender, aplicar, analisar, avaliar ou criar.
+
+Os objetivos são exibidos ao aluno antes do vídeo e também aparecem nos detalhes pedagógicos da atividade.
+
+Quando a confirmação estiver habilitada, o aluno deverá atingir o percentual mínimo e confirmar que revisou os objetivos ou o conteúdo apresentado. A confirmação complementa o acompanhamento e nunca substitui a visualização.
 
 ## Materiais de apoio
 
-O professor pode disponibilizar materiais logo abaixo do player, mantendo o vídeo e os conteúdos complementares reunidos na mesma atividade.
+O professor pode disponibilizar materiais logo abaixo do vídeo, mantendo a aula e os conteúdos complementares reunidos na mesma atividade.
 
 Os formatos disponíveis incluem:
 
-- PDF com visualização no navegador e opção de permitir ou bloquear o download.
-- Guia de exercícios com textos, imagens, links e formatação.
+- PDF com visualização na página e opção de permitir ou bloquear o download.
+- Guia de exercícios com texto formatado, imagens e links.
 
 Outros formatos de material podem ser acrescentados conforme a necessidade da instituição.
 
 ## Conteúdo sincronizado com o vídeo
 
-É possível cadastrar pontos importantes em momentos específicos do vídeo. Esses pontos aparecem em uma lista lateral e acompanham a reprodução, ajudando o aluno a entender em qual assunto está.
+É possível cadastrar pontos importantes em tempos específicos. Esses pontos aparecem em uma lista lateral e acompanham a reprodução, mostrando ao aluno o assunto correspondente ao momento atual.
 
 Em cada ponto, o professor pode:
 
-- Exibir somente o título do assunto na lista lateral.
-- Mostrar uma explicação sobre o vídeo.
-- Apresentar um balão de destaque sobre o player.
+- Mostrar somente o título na lista lateral.
+- Exibir uma explicação sobre o vídeo.
+- Apresentar um balão sobre o player.
 - Pausar o vídeo até o aluno confirmar a leitura.
 - Aplicar um quiz obrigatório antes de continuar.
-- Adicionar mais de uma interação no mesmo momento.
+- Adicionar mais de um conteúdo no mesmo momento.
 
-Um ponto pode existir sem nenhuma interação, funcionando apenas como indicação visual da organização do conteúdo.
+Um ponto também pode existir sem nenhuma interação, funcionando apenas como marcador para organizar a aula.
+
+## Linha do tempo do aluno
+
+Abaixo do player, o aluno visualiza uma linha do tempo que diferencia:
+
+- Partes ainda não assistidas.
+- Partes assistidas uma vez.
+- Partes revistas.
+
+Ao passar o cursor por uma região, é possível consultar o período aproximado e quantas vezes ele foi reproduzido. A mesma informação possui uma descrição em texto para quem utiliza leitor de tela.
+
+Além da linha do tempo, a atividade apresenta o percentual, o tempo de conteúdo diferente assistido, a duração do vídeo, o requisito mínimo e a situação atual.
 
 ## Legendas
 
-O Video Progress permite trabalhar com várias legendas no mesmo vídeo, com idioma, título e faixa padrão. O professor pode enviar arquivos WebVTT ou SRT, substituir faixas, remover legendas e revisar o conteúdo antes da publicação.
+O Video Progress permite manter várias legendas para o mesmo vídeo, com idioma, título e escolha da faixa padrão.
 
-Também é possível utilizar serviços de inteligência artificial configurados pela instituição para:
+O professor pode:
 
-- Gerar uma transcrição do vídeo.
-- Criar uma legenda com marcação de tempo.
-- Traduzir uma legenda existente para outro idioma.
-- Revisar, editar e corrigir o resultado antes de publicar.
+- Enviar legendas existentes.
+- Adicionar diferentes idiomas.
+- Definir a legenda padrão.
+- Substituir ou remover uma faixa.
+- Revisar e editar o conteúdo.
+- Manter uma legenda como rascunho antes da publicação.
 
-A legenda original não é substituída automaticamente durante uma tradução.
+Quando a instituição possui um serviço de inteligência artificial configurado, também é possível:
+
+- Gerar uma transcrição com marcação de tempo.
+- Revisar e corrigir o resultado antes de publicar.
+- Traduzir uma legenda existente.
+- Preservar os tempos durante a tradução.
+- Criar uma nova faixa sem substituir a original.
+
+Todo o processamento ocorre no ambiente da instituição. Nenhuma credencial é enviada ao navegador do aluno.
+
+## Conclusão e nota
+
+O professor define o percentual mínimo de conteúdo diferente que o aluno precisa assistir, como 80%.
+
+A atividade pode ser concluída:
+
+- Ao atingir o percentual mínimo.
+- Ao atingir o percentual mínimo e realizar uma confirmação.
+
+A nota representa o percentual realmente assistido e é atualizada no livro de notas do Software Moodle™. A atividade também pode utilizar normalmente a nota mínima para aprovação definida no curso.
+
+Chegar ao final sem assistir às partes anteriores não conclui a atividade.
 
 ## Relatórios e análises
 
-O relatório de visualização apresenta uma visão geral da turma e permite acompanhar o desempenho individual de cada aluno.
+O relatório apresenta uma visão geral da turma com indicadores como:
 
-Os indicadores incluem:
-
-- Total de alunos matriculados.
-- Alunos que iniciaram o vídeo.
+- Alunos matriculados.
+- Alunos que iniciaram.
 - Alunos que nunca iniciaram.
 - Alunos em andamento.
 - Alunos que concluíram.
 - Percentual médio assistido.
-- Tempo médio de conteúdo assistido.
-- Tempo médio total de reprodução.
+- Média de conteúdo diferente assistido.
+- Média de tempo total de reprodução.
 - Tempo total reproduzido pela turma.
 - Taxa de conclusão.
 
-Uma linha do tempo de audiência mostra os momentos mais vistos, os trechos com menor visualização e os pontos onde ocorreu maior abandono. As regiões revistas com mais frequência recebem maior destaque visual.
+A linha do tempo da turma mostra a intensidade de visualização em cada região. Trechos vistos ou revistos por mais alunos recebem maior destaque.
+
+O relatório também identifica automaticamente:
+
+- Trecho mais assistido.
+- Trecho menos assistido.
+- Maior ponto de abandono.
 
 ## Acompanhamento individual
 
-Na lista de alunos, professores autorizados podem consultar:
+Para cada aluno, professores autorizados podem consultar:
 
-- Nome, sobrenome, foto e e-mail.
-- Percentual assistido.
-- Tempo de conteúdo diferente assistido.
+- Nome, foto e e-mail.
+- Percentual realmente assistido.
+- Tempo de conteúdo diferente.
 - Tempo total de reprodução.
 - Última posição.
 - Última visualização.
-- Situação da atividade.
+- Situação atual.
 - Linha do tempo individual.
+- Partes nunca assistidas, assistidas uma vez e revistas.
 - Sessões de visualização.
-- Confirmação dos objetivos.
+- Objetivos de aprendizagem.
+- Confirmação realizada pelo aluno.
 
-Os filtros permitem pesquisar por nome ou e-mail, selecionar grupos, situação, faixa de percentual e período da última visualização. A lista pode ser ordenada, dividida em páginas e exportada para CSV.
+Os resultados podem ser pesquisados por nome ou e-mail e filtrados por grupo, situação, faixa de percentual e período da última visualização.
 
-No celular, cada aluno aparece em um card adaptado para telas menores, evitando uma tabela extensa e difícil de consultar.
+A lista permite ordenação, paginação e escolha da quantidade de alunos por página. No celular, cada aluno aparece em um card próprio, evitando uma tabela extensa e difícil de usar.
 
 ## Relatório do curso
 
-O relatório do curso reúne os vídeos cadastrados e permite acessar os resultados de cada atividade. Dessa forma, professores e gestores conseguem comparar participação, progresso e conclusão sem precisar abrir cada vídeo individualmente.
+O relatório do curso reúne as atividades Video Progress disponíveis e apresenta um resumo de participação, progresso e conclusão de cada vídeo.
+
+O professor consegue acessar os detalhes de uma atividade diretamente dessa visão geral, sem precisar procurar cada vídeo dentro das seções do curso.
+
+## Exportação
+
+Professores autorizados podem exportar os resultados respeitando os filtros selecionados. O arquivo inclui identificação do aluno, grupo, percentual, tempos, última posição, situação, última visualização e conclusão.
+
+Os dados detalhados usados para desenhar as linhas do tempo não são incluídos por padrão.
 
 ## Reset de progresso
 
-Usuários autorizados podem resetar o progresso de um aluno ou dos resultados atuais de uma pesquisa. Antes de uma ação em massa, o sistema informa quantos alunos serão afetados e exige confirmação.
+Usuários autorizados podem resetar:
 
-O reset remove o percentual, os trechos assistidos, os tempos de reprodução, a posição salva, as sessões e a confirmação. A nota e a conclusão também são atualizadas.
+- O progresso de um aluno específico.
+- O progresso de todos os alunos correspondentes aos filtros atuais.
 
-## Livro de notas e conclusão
+Antes de um reset em massa, o sistema informa quantos alunos serão afetados e exige confirmação.
 
-A nota representa o percentual realmente assistido e é atualizada conforme o aluno avança. O Video Progress pode trabalhar com a nota mínima para aprovação definida no livro de notas do Software Moodle™.
+O reset remove percentual, trechos assistidos, intensidade da linha do tempo, duração registrada, posição salva, tempos de reprodução, sessões e confirmação. A nota e a conclusão também são atualizadas.
 
-A conclusão pode exigir apenas o percentual mínimo ou combinar o percentual com a confirmação do aluno. Chegar ao final do vídeo sem assistir aos trechos anteriores não conclui automaticamente a atividade.
+## Múltiplas abas e dispositivos
+
+O mesmo vídeo pode ser aberto em mais de uma aba, navegador ou dispositivo. O Video Progress evita que uma atualização antiga substitua informações mais recentes.
+
+Trechos válidos recebidos de sessões simultâneas podem ser combinados, preservando o conteúdo realmente assistido.
+
+## Falhas de conexão
+
+As atualizações são enviadas em intervalos adequados e também em momentos importantes, como pausa, mudança de posição, encerramento e saída da página.
+
+Se a conexão falhar, o navegador guarda temporariamente a atualização pendente e tenta enviá-la novamente. Os dados confirmados pelo Software Moodle™ continuam sendo a fonte oficial do progresso.
 
 ## Acessibilidade
 
-As páginas foram organizadas para oferecer navegação por teclado, foco visível, contraste adequado, textos de apoio e informações que não dependem apenas de cores. As linhas do tempo possuem alternativa textual para leitores de tela.
+As páginas oferecem:
+
+- Navegação por teclado.
+- Foco visível.
+- Contraste adequado.
+- Textos de apoio.
+- Informações que não dependem apenas de cor.
+- Descrição textual das linhas do tempo.
+- Organização adaptada para computadores, tablets e celulares.
 
 ## Aplicativo Moodle
 
-A atividade pode ser aberta pelo aplicativo Moodle mantendo o acompanhamento da reprodução. Quando necessário, o vídeo é exibido em uma página integrada para preservar o registro correto do progresso e das interações.
+A atividade pode ser aberta pelo aplicativo Moodle mantendo o acompanhamento da reprodução. Quando necessário, o vídeo é exibido em uma página integrada para preservar o registro do progresso, dos conteúdos sincronizados e das interações.
 
 ## Privacidade
 
 O Video Progress guarda somente as informações necessárias para acompanhar a atividade, como progresso, trechos assistidos, posição, tempos, sessões, confirmação e datas de acesso.
 
-Não são armazenados endereço IP, localização ou identificação do dispositivo. Os dados do aluno podem ser exportados ou excluídos conforme as regras de privacidade da instituição.
+Não são armazenados endereço IP, localização, impressão digital do navegador ou identificação do dispositivo.
 
-## Segurança e proteção do conteúdo
+Os dados podem ser exportados ou excluídos conforme as regras de privacidade da instituição.
 
-As opções para ocultar download, Picture in Picture e menu de contexto dificultam algumas ações comuns do navegador, mas não funcionam como DRM e não impedem completamente a cópia ou captura do vídeo.
+## Cópia e restauração de cursos
 
-As atualizações de progresso são verificadas para evitar que avanços incompatíveis com o tempo de reprodução sejam contabilizados como conteúdo assistido. Isso também protege atividades abertas simultaneamente em diferentes abas ou dispositivos.
+Ao copiar ou restaurar uma atividade, podem ser preservados:
+
+- Configurações do vídeo.
+- Descrição.
+- Arquivo do vídeo.
+- Imagem de capa.
+- Legendas.
+- Objetivos de aprendizagem.
+- Materiais de apoio.
+- Pontos e conteúdos sincronizados.
+- Configurações de reprodução.
+
+Quando a cópia inclui dados dos alunos, também podem ser preservados progresso, trechos assistidos, tempos, sessões, posição e confirmação. Quando não inclui, nenhuma informação de acompanhamento dos alunos é levada para a nova atividade.
 
 ## Diagnóstico administrativo
 
-Administradores podem consultar um diagnóstico geral das atividades, registros de progresso, notas, percentuais e dados de visualização. A página ajuda a identificar registros inválidos, atividades sem item de nota e diferenças entre o progresso e o livro de notas.
+Administradores podem consultar uma visão geral para identificar:
 
-Quando necessário, o administrador pode reparar o livro de notas, reenviar notas, atualizar conclusões e verificar fórmulas que fazem referência a itens inexistentes. Fórmulas não são modificadas automaticamente sem que o problema seja apresentado ao responsável.
+- Atividades cadastradas.
+- Quantidade de registros de progresso.
+- Registros sem atividade correspondente.
+- Atividades sem item de nota.
+- Notas diferentes do progresso calculado.
+- Percentuais inválidos.
+- Linhas do tempo com dados inválidos.
+- Problemas em fórmulas do livro de notas.
+
+Quando necessário, o sistema pode recriar itens de nota ausentes, reenviar notas, sincronizar o livro de notas e atualizar conclusões. Fórmulas com referências ausentes são apresentadas ao administrador, mas não são modificadas automaticamente.
