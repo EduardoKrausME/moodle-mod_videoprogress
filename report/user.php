@@ -46,12 +46,18 @@ $progress = $repository->get_progress($userid);
 $sessions = [];
 foreach ($repository->get_sessions($userid) as $session) {
     $sessionend = $session->timeend ?: $session->timemodified;
+    $startposition = format::duration($session->startposition);
+    $endposition = format::duration($session->endposition);
     $sessions[] = [
         "date" => userdate($session->timestart, get_string("strftimedatetimeshort", "langconfig")),
         "duration" => format::duration(max(0, $sessionend - $session->timestart)),
         "watchtime" => format::duration($session->watchtime),
-        "startposition" => format::duration($session->startposition),
-        "endposition" => format::duration($session->endposition),
+        "startposition" => $startposition,
+        "endposition" => $endposition,
+        "range" => get_string("sessionrange", "videoprogress", (object)[
+            "startposition" => $startposition,
+            "endposition" => $endposition,
+        ]),
     ];
 }
 $objectives = (new \mod_videoprogress\objective\manager())->get_student_items(

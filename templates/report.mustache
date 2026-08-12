@@ -48,7 +48,7 @@
             {{#coursevideos}}
                 <a href="{{url}}" class="videoprogress-course-video {{#active}}is-active{{/active}}">
                     <strong>{{name}}</strong>
-                    <span>{{#str}} coursevideostats, videoprogress, {{.}} {{/str}}</span>
+                    <span>{{stats}}</span>
                     <div class="videoprogress-mini-map" aria-hidden="true">
                         {{#timeline}}<i class="level-{{level}}"></i>{{/timeline}}
                     </div>

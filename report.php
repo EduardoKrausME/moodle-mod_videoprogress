@@ -47,6 +47,14 @@ $filters = mod_videoprogress\report_filters::from_request(
 $repository = new report_repository($activity, $cm);
 $service = new report_service($activity, $cm, $repository);
 $templatedata = $service->build($filters, $allowedgroups);
+foreach ($templatedata["coursevideos"] as &$video) {
+    $video["stats"] = get_string("coursevideostats", "videoprogress", (object)[
+        "started" => $video["started"],
+        "completed" => $video["completed"],
+        "averagepercent" => $video["averagepercent"],
+    ]);
+}
+unset($video);
 
 $PAGE->set_url('/mod/videoprogress/report.php', ["id" => $cm->id] + $filters->url_params());
 $PAGE->set_title(get_string("reporttitle", "videoprogress"));

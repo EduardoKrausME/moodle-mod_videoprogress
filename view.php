@@ -167,6 +167,10 @@ $templatedata = [
     "canmanageobjectives" => has_capability('mod/videoprogress:manageobjectives', $context),
     "objectivesurl" => (new moodle_url('/mod/videoprogress/objectives.php', ["id" => $cm->id]))->out(false),
 ];
+$templatedata["progress"]["watchedofduration"] = get_string("watchedofduration", "videoprogress", (object)[
+    "uniquewatched" => $templatedata["progress"]["uniquewatched"],
+    "duration" => $templatedata["progress"]["duration"],
+]);
 
 $PAGE->requires->strings_for_js([
     "resumequestion", "resumeyes", "resumeno", "trackingerror", "seekblocked",
