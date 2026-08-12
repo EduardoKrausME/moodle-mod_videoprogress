@@ -22,13 +22,13 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string["pluginname"] = "Link externo";
-$string["externalurl"] = "URL externa";
-$string["externalurl_help"] = "Informe um endereço HTTP ou HTTPS para artigo, site, referência, ferramenta ou outro conteúdo relacionado ao vídeo.";
-$string["opennewwindow"] = "Abrir link em uma nova aba";
-$string["invalidurl"] = "Informe uma URL HTTP ou HTTPS válida.";
-$string["linkbadge"] = "LINK";
-$string["viewlink"] = "Ver referência externa";
-$string["openlink"] = "Abrir material";
-$string["nourl"] = "Nenhuma URL foi configurada para este material.";
-$string["privacy:metadata"] = "O subplugin de link externo não armazena dados pessoais independentemente da atividade Video Progress.";
+$string['externalurl'] = 'URL externa';
+$string['externalurl_help'] = 'Informe um endereço HTTP ou HTTPS para artigo, site, referência, ferramenta ou outro conteúdo relacionado ao vídeo.';
+$string['invalidurl'] = 'Informe uma URL HTTP ou HTTPS válida.';
+$string['linkbadge'] = 'LINK';
+$string['nourl'] = 'Nenhuma URL foi configurada para este material.';
+$string['openlink'] = 'Abrir material';
+$string['opennewwindow'] = 'Abrir link em uma nova aba';
+$string['pluginname'] = 'Link externo';
+$string['privacy:metadata'] = 'O subplugin de link externo não armazena dados pessoais independentemente da atividade Video Progress.';
+$string['viewlink'] = 'Ver referência externa';

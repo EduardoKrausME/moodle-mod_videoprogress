@@ -22,14 +22,14 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string["pluginname"] = "Office document";
-$string["officefile"] = "Office file";
-$string["officefile_help"] = "Upload one DOC, DOCX, XLS, XLSX, PPT or PPTX file. The document is displayed inside Moodle using Google Docs Viewer. The Moodle site must be reachable from the internet for Google to fetch the preview.";
-$string["allowdownload"] = "Allow file download";
-$string["allowdownload_help"] = "When enabled, authenticated users can also download the original Office file.";
-$string["officebadge"] = "OFFICE";
-$string["viewdocument"] = "View Office document";
-$string["download"] = "Download original file";
-$string["previewunavailable"] = "The document preview is unavailable. The Moodle site may not be reachable by Google Docs Viewer.";
-$string["nofile"] = "No Office file is available in this material.";
-$string["privacy:metadata"] = "The Office material subplugin does not store personal data independently of the Video Progress activity.";
+$string['allowdownload'] = 'Allow file download';
+$string['allowdownload_help'] = 'When enabled, authenticated users can also download the original Office file.';
+$string['download'] = 'Download original file';
+$string['nofile'] = 'No Office file is available in this material.';
+$string['officebadge'] = 'OFFICE';
+$string['officefile'] = 'Office file';
+$string['officefile_help'] = 'Upload one DOC, DOCX, XLS, XLSX, PPT or PPTX file. The document is displayed inside Moodle using Google Docs Viewer. The Moodle site must be reachable from the internet for Google to fetch the preview.';
+$string['pluginname'] = 'Office document';
+$string['previewunavailable'] = 'The document preview is unavailable. The Moodle site may not be reachable by Google Docs Viewer.';
+$string['privacy:metadata'] = 'The Office material subplugin does not store personal data independently of the Video Progress activity.';
+$string['viewdocument'] = 'View Office document';

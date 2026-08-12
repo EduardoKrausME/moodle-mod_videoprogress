@@ -22,14 +22,14 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string["pluginname"] = "Image or infographic";
-$string["imagefile"] = "Image file";
-$string["imagefile_help"] = "Upload one JPG, JPEG, PNG, GIF or WebP image to display directly as support material.";
-$string["alttext"] = "Alternative text";
-$string["alttext_help"] = "Describe the relevant information in the image for users who cannot see it. If left empty, the material name is used.";
-$string["allowdownload"] = "Allow image download";
-$string["imagebadge"] = "IMG";
-$string["viewimage"] = "View image";
-$string["download"] = "Download image";
-$string["nofile"] = "No image is available in this material.";
-$string["privacy:metadata"] = "The image material subplugin does not store personal data independently of the Video Progress activity.";
+$string['allowdownload'] = 'Allow image download';
+$string['alttext'] = 'Alternative text';
+$string['alttext_help'] = 'Describe the relevant information in the image for users who cannot see it. If left empty, the material name is used.';
+$string['download'] = 'Download image';
+$string['imagebadge'] = 'IMG';
+$string['imagefile'] = 'Image file';
+$string['imagefile_help'] = 'Upload one JPG, JPEG, PNG, GIF or WebP image to display directly as support material.';
+$string['nofile'] = 'No image is available in this material.';
+$string['pluginname'] = 'Image or infographic';
+$string['privacy:metadata'] = 'The image material subplugin does not store personal data independently of the Video Progress activity.';
+$string['viewimage'] = 'View image';

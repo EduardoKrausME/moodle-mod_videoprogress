@@ -22,14 +22,14 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string["pluginname"] = "Imagem ou infográfico";
-$string["imagefile"] = "Arquivo de imagem";
-$string["imagefile_help"] = "Envie uma imagem JPG, JPEG, PNG, GIF ou WebP para exibir diretamente como material de apoio.";
-$string["alttext"] = "Texto alternativo";
-$string["alttext_help"] = "Descreva a informação relevante da imagem para quem não consegue visualizá-la. Se ficar vazio, será usado o nome do material.";
-$string["allowdownload"] = "Permitir download da imagem";
-$string["imagebadge"] = "IMG";
-$string["viewimage"] = "Visualizar imagem";
-$string["download"] = "Baixar imagem";
-$string["nofile"] = "Nenhuma imagem está disponível neste material.";
-$string["privacy:metadata"] = "O subplugin de imagem não armazena dados pessoais independentemente da atividade Video Progress.";
+$string['allowdownload'] = 'Permitir download da imagem';
+$string['alttext'] = 'Texto alternativo';
+$string['alttext_help'] = 'Descreva a informação relevante da imagem para quem não consegue visualizá-la. Se ficar vazio, será usado o nome do material.';
+$string['download'] = 'Baixar imagem';
+$string['imagebadge'] = 'IMG';
+$string['imagefile'] = 'Arquivo de imagem';
+$string['imagefile_help'] = 'Envie uma imagem JPG, JPEG, PNG, GIF ou WebP para exibir diretamente como material de apoio.';
+$string['nofile'] = 'Nenhuma imagem está disponível neste material.';
+$string['pluginname'] = 'Imagem ou infográfico';
+$string['privacy:metadata'] = 'O subplugin de imagem não armazena dados pessoais independentemente da atividade Video Progress.';
+$string['viewimage'] = 'Visualizar imagem';

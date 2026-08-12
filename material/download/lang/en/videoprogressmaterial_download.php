@@ -22,11 +22,11 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string["pluginname"] = "File download";
-$string["files"] = "Files";
-$string["files_help"] = "Add up to 20 files that students can download as support material for the video.";
-$string["filebadge"] = "FILE";
-$string["viewfiles"] = "View downloadable files";
-$string["download"] = "Download";
-$string["nofiles"] = "No files are available in this material.";
-$string["privacy:metadata"] = "The file download material subplugin does not store personal data independently of the Video Progress activity.";
+$string['download'] = 'Download';
+$string['filebadge'] = 'FILE';
+$string['files'] = 'Files';
+$string['files_help'] = 'Add up to 20 files that students can download as support material for the video.';
+$string['nofiles'] = 'No files are available in this material.';
+$string['pluginname'] = 'File download';
+$string['privacy:metadata'] = 'The file download material subplugin does not store personal data independently of the Video Progress activity.';
+$string['viewfiles'] = 'View downloadable files';

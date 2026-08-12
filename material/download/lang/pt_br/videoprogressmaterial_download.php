@@ -22,11 +22,11 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string["pluginname"] = "Download de arquivos";
-$string["files"] = "Arquivos";
-$string["files_help"] = "Adicione até 20 arquivos para o aluno baixar como material de apoio do vídeo. Os arquivos ficam protegidos pelo acesso normal da atividade no Moodle.";
-$string["filebadge"] = "ARQ";
-$string["viewfiles"] = "Ver arquivos para download";
-$string["download"] = "Baixar";
-$string["nofiles"] = "Nenhum arquivo está disponível neste material.";
-$string["privacy:metadata"] = "O subplugin de download não armazena dados pessoais independentemente da atividade Video Progress.";
+$string['download'] = 'Baixar';
+$string['filebadge'] = 'ARQ';
+$string['files'] = 'Arquivos';
+$string['files_help'] = 'Adicione até 20 arquivos para o aluno baixar como material de apoio do vídeo. Os arquivos ficam protegidos pelo acesso normal da atividade no Moodle.';
+$string['nofiles'] = 'Nenhum arquivo está disponível neste material.';
+$string['pluginname'] = 'Download de arquivos';
+$string['privacy:metadata'] = 'O subplugin de download não armazena dados pessoais independentemente da atividade Video Progress.';
+$string['viewfiles'] = 'Ver arquivos para download';
