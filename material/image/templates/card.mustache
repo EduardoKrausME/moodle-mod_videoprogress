@@ -15,17 +15,18 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template videoprogressmaterial_pdf/card
+    @template videoprogressmaterial_image/card
 
     Example context (json):
     {
-        "name": "Material em PDF",
-        "viewurl": "/mod/videoprogress/material/view.php?id=10&materialid=3"
+        "name": "Infográfico da aula",
+        "viewurl": "/mod/videoprogress/material/view.php?id=10&materialid=7"
     }
 }}
-
-<article class="videoprogress-material-card videoprogress-material-card--pdf">
-    <span class="videoprogress-material-card__icon" aria-hidden="true">{{#str}}filebadge, videoprogressmaterial_pdf {{/str}}</span>
+<article class="videoprogress-material-card videoprogress-material-card--image">
+    <span class="videoprogress-material-card__icon" aria-hidden="true">{{#str}}imagebadge, videoprogressmaterial_image{{/str}}</span>
     <h3>{{name}}</h3>
-    <a href="{{viewurl}}" class="stretched-link"><span class="sr-only">{{#str}}viewdocument, videoprogressmaterial_pdf {{/str}}</span></a>
+    <a href="{{viewurl}}" class="stretched-link">
+        <span class="sr-only">{{#str}}viewimage, videoprogressmaterial_image{{/str}}</span>
+    </a>
 </article>

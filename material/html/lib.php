@@ -15,14 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * lib.php
- *
- * @package   videoprogressmaterial_html
- * @copyright 2026 Eduardo Kraus {@link https://eduardokraus.com}
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
-/**
  * Serves protected files embedded in HTML support materials.
  *
  * @param mixed $course Course record.
@@ -33,6 +25,11 @@
  * @param bool $forcedownload Whether Moodle requested a forced download.
  * @param array $options Additional file-serving options.
  * @return bool Whether Moodle should accept the result.
+ * @throws coding_exception
+ * @throws dml_exception
+ * @throws moodle_exception
+ * @throws require_login_exception
+ * @throws required_capability_exception
  */
 function videoprogressmaterial_html_pluginfile($course, $cm, $context, string $filearea, array $args,
                                                bool $forcedownload, array $options = []): bool {

@@ -15,50 +15,50 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Serves a protected PDF and enforces its configured download behavior.
+ * File serving callbacks for Office support materials.
  *
- * @param mixed $course Course record.
- * @param mixed $cm Course module record.
- * @param mixed $context Module context.
- * @param string $filearea Requested File API area.
- * @param array $args Remaining pluginfile path arguments.
- * @param bool $forcedownload Whether Moodle requested a forced download.
- * @param array $options Additional file-serving options.
- * @return bool Whether Moodle should accept the result.
- * @throws coding_exception
- * @throws dml_exception
- * @throws moodle_exception
- * @throws require_login_exception
- * @throws required_capability_exception
+ * @package videoprogressmaterial_office
+ * @copyright 2026 Eduardo Kraus
+ * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-function videoprogressmaterial_pdf_pluginfile($course, $cm, $context, string $filearea, array $args,
-                                              bool $forcedownload, array $options = []): bool {
+
+/**
+ * Serves the Office file to authenticated students and teachers.
+ */
+function videoprogressmaterial_office_pluginfile($course, $cm, $context, string $filearea, array $args,
+                                                 bool $forcedownload, array $options = []): bool {
     global $DB;
+
     if ($context->contextlevel !== CONTEXT_MODULE || $filearea !== "document") {
         return false;
     }
+
     require_login($course, true, $cm);
     require_capability('mod/videoprogress:view', $context);
+
     $materialid = (int)array_shift($args);
     $material = $DB->get_record("videoprogress_materials", [
         "id" => $materialid,
         "videoprogressid" => $cm->instance,
-        "plugin" => "pdf",
+        "plugin" => "office",
         "enabled" => 1,
     ]);
     if (!$material) {
         return false;
     }
+
     $config = json_decode($material->configdata ?? '', true) ?: [];
     if (empty($config["allowdownload"])) {
-        $forcedownload = false;
+        return false;
     }
+
     $filename = array_pop($args);
     $filepath = '/' . ($args ? implode('/', $args) . '/' : '');
     $file = get_file_storage()->get_file(
-        $context->id, "videoprogressmaterial_pdf", "document", $materialid, $filepath, $filename);
+        $context->id, "videoprogressmaterial_office", "document", $materialid, $filepath, $filename);
     if (!$file || $file->is_directory()) {
         return false;
     }
-    send_stored_file($file, 0, 0, $forcedownload, $options);
+
+    send_stored_file($file, 0, 0, true, $options);
 }

@@ -59,7 +59,7 @@ class plugin extends plugin_base {
             "maxfiles" => 1,
             "accepted_types" => ['.pdf'],
         ]);
-        $mform->addElement("advcheckbox", "allowdownload", get_string("allowdownload", "videoprogressmaterial_pdf"));
+        $mform->addElement("selectyesno", "allowdownload", get_string("allowdownload", "videoprogressmaterial_pdf"));
         $mform->setDefault("allowdownload", 1);
     }
 

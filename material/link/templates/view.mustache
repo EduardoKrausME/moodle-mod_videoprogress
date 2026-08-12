@@ -15,17 +15,26 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template videoprogressmaterial_pdf/card
+    @template videoprogressmaterial_link/view
 
     Example context (json):
     {
-        "name": "Material em PDF",
-        "viewurl": "/mod/videoprogress/material/view.php?id=10&materialid=3"
+        "name": "Artigo complementar",
+        "hasurl": true,
+        "externalurl": "https://example.com/article",
+        "host": "example.com",
+        "opennewwindow": true
     }
 }}
-
-<article class="videoprogress-material-card videoprogress-material-card--pdf">
-    <span class="videoprogress-material-card__icon" aria-hidden="true">{{#str}}filebadge, videoprogressmaterial_pdf {{/str}}</span>
+<section class="videoprogress-material-view videoprogress-material-view--link">
     <h3>{{name}}</h3>
-    <a href="{{viewurl}}" class="stretched-link"><span class="sr-only">{{#str}}viewdocument, videoprogressmaterial_pdf {{/str}}</span></a>
-</article>
+    {{#hasurl}}
+        {{#host}}<p class="text-muted mb-3">{{host}}</p>{{/host}}
+        <a class="btn btn-primary" href="{{externalurl}}"{{#opennewwindow}} target="_blank" rel="noopener noreferrer"{{/opennewwindow}}>
+            {{#str}}openlink, videoprogressmaterial_link{{/str}}
+        </a>
+    {{/hasurl}}
+    {{^hasurl}}
+        <div class="alert alert-info">{{#str}}nourl, videoprogressmaterial_link{{/str}}</div>
+    {{/hasurl}}
+</section>
