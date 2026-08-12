@@ -29,8 +29,10 @@ use mod_videoprogress\objective\manager;
 
 /**
  * Verifies unlimited learning objective persistence and rendering behavior.
+ *
+ * @covers \mod_videoprogress\objective\manager
  */
-class objective_manager_test extends \advanced_testcase {
+final class objective_manager_test extends \advanced_testcase {
     /**
      * Confirms that more than three objectives can be stored and displayed in order.
      *

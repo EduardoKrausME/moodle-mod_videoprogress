@@ -26,8 +26,10 @@ namespace mod_videoprogress;
 
 /**
  * Provides PHPUnit coverage for segment manager behavior.
+ *
+ * @covers \mod_videoprogress\segment_manager
  */
-class segment_manager_test extends \advanced_testcase {
+final class segment_manager_test extends \advanced_testcase {
     /**
      * Verifies that adjacent segments are merged.
      *

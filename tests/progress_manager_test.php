@@ -26,8 +26,10 @@ namespace mod_videoprogress;
 
 /**
  * Provides PHPUnit coverage for progress manager behavior.
+ *
+ * @covers \mod_videoprogress\progress_manager
  */
-class progress_manager_test extends \advanced_testcase {
+final class progress_manager_test extends \advanced_testcase {
     /**
      * Verifies that unique progress is not last position.
      *

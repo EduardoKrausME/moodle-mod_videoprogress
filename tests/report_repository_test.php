@@ -26,8 +26,10 @@ namespace mod_videoprogress;
 
 /**
  * Provides PHPUnit coverage for report repository behavior.
+ *
+ * @covers \mod_videoprogress\report_repository
  */
-class report_repository_test extends \advanced_testcase {
+final class report_repository_test extends \advanced_testcase {
     /**
      * Verifies that report includes enrolled users without progress.
      *

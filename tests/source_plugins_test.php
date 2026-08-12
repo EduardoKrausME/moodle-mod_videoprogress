@@ -26,8 +26,13 @@ namespace mod_videoprogress;
 
 /**
  * Verifies discovery and normalization behavior supplied by video source subplugins.
+ *
+ * @covers \mod_videoprogress\source\manager
+ * @covers \videoprogresssource_url\plugin
+ * @covers \videoprogresssource_youtube\plugin
+ * @covers \videoprogresssource_vimeo\plugin
  */
-class source_plugins_test extends \advanced_testcase {
+final class source_plugins_test extends \advanced_testcase {
     /**
      * Confirms that the source manager discovers every source bundled with the activity.
      *

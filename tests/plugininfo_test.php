@@ -32,8 +32,13 @@ use mod_videoprogress\plugininfo\videoprogresssource;
 
 /**
  * Verifies that Moodle resolves the custom Video Progress subplugin types correctly.
+ *
+ * @covers \mod_videoprogress\plugininfo\videoprogresssource
+ * @covers \mod_videoprogress\plugininfo\videoprogressmaterial
+ * @covers \mod_videoprogress\plugininfo\videoprogresscontent
+ * @covers \mod_videoprogress\plugininfo\videoprogressobjective
  */
-class plugininfo_test extends \advanced_testcase {
+final class plugininfo_test extends \advanced_testcase {
     /**
      * Confirms that video sources use the dedicated plugin information class.
      *

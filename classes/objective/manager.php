@@ -194,8 +194,10 @@ class manager {
      * @param int $cmid Course module identifier.
      * @param context_module $context Activity context.
      * @return array Objective management items.
+     * @throws \core\exception\moodle_exception
      * @throws coding_exception
      * @throws dml_exception
+     * @throws \core\exception\moodle_exception
      */
     public function get_manage_data(int $activityid, int $cmid, context_module $context): array {
         global $DB;

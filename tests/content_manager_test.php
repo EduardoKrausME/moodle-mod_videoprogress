@@ -26,8 +26,10 @@ namespace mod_videoprogress;
 
 /**
  * Provides PHPUnit coverage for content manager behavior.
+ *
+ * @covers \mod_videoprogress\content\manager
  */
-class content_manager_test extends \advanced_testcase {
+final class content_manager_test extends \advanced_testcase {
     /**
      * Verifies that required quiz blocks progress but optional note does not.
      *

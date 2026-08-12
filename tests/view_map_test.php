@@ -26,8 +26,10 @@ namespace mod_videoprogress;
 
 /**
  * Provides PHPUnit coverage for view map behavior.
+ *
+ * @covers \mod_videoprogress\view_map
  */
-class view_map_test extends \advanced_testcase {
+final class view_map_test extends \advanced_testcase {
     /**
      * Verifies that rewatch increases bucket intensity.
      *

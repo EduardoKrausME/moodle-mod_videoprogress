@@ -26,8 +26,10 @@ namespace mod_videoprogress;
 
 /**
  * Provides PHPUnit coverage for tracking manager behavior.
+ *
+ * @covers \mod_videoprogress\tracking_manager
  */
-class tracking_manager_test extends \advanced_testcase {
+final class tracking_manager_test extends \advanced_testcase {
     /**
      * Verifies that impossible forward jump is blocked and not recorded.
      *

@@ -26,8 +26,10 @@ namespace mod_videoprogress;
 
 /**
  * Provides PHPUnit coverage for timecode behavior.
+ *
+ * @covers \mod_videoprogress\content\timecode
  */
-class timecode_test extends \advanced_testcase {
+final class timecode_test extends \advanced_testcase {
     /**
      * Verifies that parses minutes seconds and hours.
      *

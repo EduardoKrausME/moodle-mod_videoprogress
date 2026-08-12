@@ -26,8 +26,10 @@ namespace mod_videoprogress;
 
 /**
  * Provides PHPUnit coverage for completion behavior.
+ *
+ * @covers \mod_videoprogress\progress_manager
  */
-class completion_test extends \advanced_testcase {
+final class completion_test extends \advanced_testcase {
     /**
      * Verifies that confirmation and percentage are both required.
      *
