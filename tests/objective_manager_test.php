@@ -52,7 +52,8 @@ final class objective_manager_test extends \advanced_testcase {
 
         foreach (range(1, 5) as $index) {
             $manager->save($activity->id, null, (object)[
-                "plugin" => "text",
+                "plugin" => "bloom",
+                "level" => "remember",
                 "description" => "Objective " . $index,
                 "enabled" => $index !== 5,
             ], $context);
