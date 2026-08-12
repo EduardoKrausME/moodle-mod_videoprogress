@@ -40,12 +40,12 @@ class tracking_manager {
      *
      * @param stdClass $activity Activity configuration record.
      * @param stdClass $progress Persisted student progress record.
-     * @param stdClass|null $session Current playback session record, when available.
+     * @param stdClass|false|null $session Current playback session record, when available.
      * @param array $data Validated input or tracking data.
      * @param int $now Current server timestamp.
      * @return array Structured data produced by the operation.
      */
-    public function validate(stdClass $activity, stdClass $progress, stdClass|null $session, array $data, int $now): array {
+    public function validate(stdClass $activity, stdClass $progress, stdClass|false|null $session, array $data, int $now): array {
         $duration = max(0.0, (float)$data["duration"]);
         $current = max(0.0, min($duration, (float)$data["currentposition"]));
         $rate = max(0.25, min(4.0, (float)$data["playbackrate"]));

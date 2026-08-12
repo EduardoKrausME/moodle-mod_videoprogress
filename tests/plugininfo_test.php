@@ -41,7 +41,7 @@ class plugininfo_test extends \advanced_testcase {
      */
     public function test_source_plugininfo_class_is_resolved(): void {
         self::assertSame(
-            videoprogresssource::class,
+            '\\' . videoprogresssource::class,
             core_plugin_manager::resolve_plugininfo_class("videoprogresssource")
         );
     }
@@ -53,7 +53,7 @@ class plugininfo_test extends \advanced_testcase {
      */
     public function test_material_plugininfo_class_is_resolved(): void {
         self::assertSame(
-            videoprogressmaterial::class,
+            '\\' . videoprogressmaterial::class,
             core_plugin_manager::resolve_plugininfo_class("videoprogressmaterial")
         );
     }
@@ -65,7 +65,7 @@ class plugininfo_test extends \advanced_testcase {
      */
     public function test_content_plugininfo_class_is_resolved(): void {
         self::assertSame(
-            videoprogresscontent::class,
+            '\\' . videoprogresscontent::class,
             core_plugin_manager::resolve_plugininfo_class("videoprogresscontent")
         );
     }
@@ -77,7 +77,7 @@ class plugininfo_test extends \advanced_testcase {
      */
     public function test_objective_plugininfo_class_is_resolved(): void {
         self::assertSame(
-            videoprogressobjective::class,
+            '\\' . videoprogressobjective::class,
             core_plugin_manager::resolve_plugininfo_class("videoprogressobjective")
         );
     }
