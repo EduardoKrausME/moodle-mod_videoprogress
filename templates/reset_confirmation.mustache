@@ -39,8 +39,12 @@
 <div class="videoprogress-reset-confirmation">
     <span class="videoprogress-reset-confirmation__icon" aria-hidden="true">!</span>
     <h2>{{#str}} resetconfirmationtitle, videoprogress {{/str}}</h2>
-    {{#mass}}<p>{{#str}} massresetconfirmation, videoprogress, {{{count}}} {{/str}}</p>{{/mass}}
-    {{^mass}}<p>{{#str}} resetconfirmation, videoprogress, {{{targetname}}} {{/str}}</p>{{/mass}}
+    {{#mass}}
+        <p>{{#str}} massresetconfirmation, videoprogress, {{{count}}} {{/str}}</p>
+    {{/mass}}
+    {{^mass}}
+        <p>{{#str}} resetconfirmation, videoprogress, {{{targetname}}} {{/str}}</p>
+    {{/mass}}
     <p class="text-muted">{{#str}} resetdatadescription, videoprogress {{/str}}</p>
     <form method="post" action="{{actionurl}}">
         <input type="hidden" name="id" value="{{cmid}}">
@@ -48,7 +52,9 @@
         <input type="hidden" name="mass" value="{{#mass}}1{{/mass}}{{^mass}}0{{/mass}}">
         <input type="hidden" name="confirmed" value="1">
         <input type="hidden" name="sesskey" value="{{sesskey}}">
-        {{#hiddenfields}}<input type="hidden" name="{{name}}" value="{{value}}">{{/hiddenfields}}
+        {{#hiddenfields}}
+            <input type="hidden" name="{{name}}" value="{{value}}">
+        {{/hiddenfields}}
         <div class="videoprogress-reset-confirmation__actions">
             <button type="submit" class="btn btn-danger">{{#str}} confirmreset, videoprogress {{/str}}</button>
             <a href="{{returnurl}}" class="btn btn-secondary">{{#str}} cancel, videoprogress {{/str}}</a>

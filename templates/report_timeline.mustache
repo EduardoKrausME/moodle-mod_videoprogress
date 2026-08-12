@@ -55,8 +55,10 @@
     {{#hasaggregateddata}}
         <div class="videoprogress-timeline is-aggregate" role="img"
              aria-label="{{#str}} reporttimelineaccessible, videoprogress {{/str}}">
-            {{#aggregatetimeline}}<span class="videoprogress-timeline__bucket level-{{level}}" tabindex="0"
-                                        title="{{tooltip}}"></span>{{/aggregatetimeline}}
+            {{#aggregatetimeline}}
+                <span class="videoprogress-timeline__bucket level-{{level}}" tabindex="0"
+                      title="{{tooltip}}"></span>
+            {{/aggregatetimeline}}
         </div>
         <div class="videoprogress-insights">
             {{#insights.mostwatched}}
@@ -80,5 +82,6 @@
         </div>
     {{/hasaggregateddata}}
     {{^hasaggregateddata}}
-        <p class="videoprogress-muted-panel">{{#str}} noanalyticsyet, videoprogress {{/str}}</p>{{/hasaggregateddata}}
+        <p class="videoprogress-muted-panel">{{#str}} noanalyticsyet, videoprogress {{/str}}</p>
+    {{/hasaggregateddata}}
 </section>

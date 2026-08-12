@@ -93,7 +93,9 @@
                 <td data-label="{{#str}} timeline, videoprogress {{/str}}">
                     <div class="videoprogress-mini-map"
                          aria-label="{{#str}} individualtimelinearia, videoprogress, {{{fullname}}} {{/str}}">
-                        {{#timeline}}<i class="level-{{level}}" title="{{tooltip}}"></i>{{/timeline}}
+                        {{#timeline}}
+                            <i class="level-{{level}}" title="{{tooltip}}"></i>
+                        {{/timeline}}
                     </div>
                     <span class="sr-only">{{timelinealternative}}</span>
                 </td>

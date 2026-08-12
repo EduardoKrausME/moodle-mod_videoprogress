@@ -56,7 +56,9 @@
                     {{#str}} addobjective, videoprogress {{/str}}
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    {{#addurls}}<a class="dropdown-item" href="{{url}}">{{name}}</a>{{/addurls}}
+                    {{#addurls}}
+                        <a class="dropdown-item" href="{{url}}">{{name}}</a>
+                    {{/addurls}}
                 </div>
             </div>
         {{/hasplugins}}

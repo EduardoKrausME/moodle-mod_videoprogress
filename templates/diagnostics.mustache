@@ -59,8 +59,11 @@
     </header>
     <section class="videoprogress-summary__grid">
         {{#cards}}
-            <article class="videoprogress-stat-card"><strong>{{value}}</strong><span>{{label}}</span>
-            </article>{{/cards}}
+            <article class="videoprogress-stat-card">
+                <strong>{{value}}</strong>
+                <span>{{label}}</span>
+            </article>
+        {{/cards}}
     </section>
     <section class="videoprogress-detail-section">
         <h3>{{#str}} repairgradebook, videoprogress {{/str}}</h3>
@@ -96,10 +99,19 @@
         <h3>{{#str}} brokenformulas, videoprogress {{/str}}</h3>
         <p>{{#str}} brokenformulashelp, videoprogress {{/str}}</p>
         {{#hasformulas}}
-            <div class="videoprogress-diagnostic-list">{{#formulas}}
-                <article><strong>{{itemname}}</strong><code>{{formula}}</code><span>{{problem}}</span><a
-                        href="{{editurl}}">{{#str}} editgradebook, videoprogress {{/str}}</a></article>{{/formulas}}
-            </div>{{/hasformulas}}
-        {{^hasformulas}}<p>{{#str}} nobrokenformulas, videoprogress {{/str}}</p>{{/hasformulas}}
+            <div class="videoprogress-diagnostic-list">
+                {{#formulas}}
+                    <article>
+                        <strong>{{itemname}}</strong>
+                        <code>{{formula}}</code>
+                        <span>{{problem}}</span>
+                        <a href="{{editurl}}">{{#str}} editgradebook, videoprogress {{/str}}</a>
+                    </article>
+                {{/formulas}}
+            </div>
+        {{/hasformulas}}
+        {{^hasformulas}}
+            <p>{{#str}} nobrokenformulas, videoprogress {{/str}}</p>
+        {{/hasformulas}}
     </section>
 </div>

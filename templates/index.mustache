@@ -40,12 +40,18 @@
         <div class="videoprogress-index__list">
             {{#activities}}
                 <article>
-                    <div><h3><a href="{{viewurl}}">{{name}}</a></h3>
-                        <p>{{#str}} indexrequirement, videoprogress, {{{completionpercent}}} {{/str}}</p></div>
+                    <div>
+                        <h3><a href="{{viewurl}}">{{name}}</a></h3>
+                        <p>{{#str}} indexrequirement, videoprogress, {{{completionpercent}}} {{/str}}</p>
+                    </div>
                     {{#canreport}}
                         <a href="{{reporturl}}" class="btn btn-outline-primary">{{#str}}viewreport, videoprogress {{/str}}</a>
-                    {{/canreport}}</article>{{/activities}}
+                    {{/canreport}}
+                </article>
+            {{/activities}}
         </div>
     {{/hasactivities}}
-    {{^hasactivities}}<p>{{#str}} noactivities, videoprogress {{/str}}</p>{{/hasactivities}}
+    {{^hasactivities}}
+        <p>{{#str}} noactivities, videoprogress {{/str}}</p>
+    {{/hasactivities}}
 </div>

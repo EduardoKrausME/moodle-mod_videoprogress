@@ -88,15 +88,20 @@
         <h3>{{#str}} individualtimeline, videoprogress {{/str}}</h3>
         <div class="videoprogress-timeline" role="img"
              aria-label="{{#str}} individualtimelinearia, videoprogress, {{{fullname}}} {{/str}}">
-            {{#timeline}}<span class="videoprogress-timeline__bucket level-{{level}}" tabindex="0"
-                               title="{{tooltip}}"></span>{{/timeline}}
+            {{#timeline}}
+                <span class="videoprogress-timeline__bucket level-{{level}}" tabindex="0"
+                      title="{{tooltip}}"></span>
+            {{/timeline}}
         </div>
         <p class="sr-only">{{timelinealternative}}</p>
     </section>
     {{#hasobjectives}}
         <section class="videoprogress-detail-section"><h3>{{#str}} learningobjectives, videoprogress {{/str}}</h3>
-            <ul>{{#objectives}}
-                <li>{{{html}}}</li>{{/objectives}}</ul>
+            <ul>
+                {{#objectives}}
+                    <li>{{{html}}}</li>
+                {{/objectives}}
+            </ul>
         </section>
     {{/hasobjectives}}
     <section class="videoprogress-detail-section">
@@ -122,6 +127,8 @@
                 {{/sessions}}
             </div>
         {{/hassessions}}
-        {{^hassessions}}<p>{{#str}} nosessions, videoprogress {{/str}}</p>{{/hassessions}}
+        {{^hassessions}}
+            <p>{{#str}} nosessions, videoprogress {{/str}}</p>
+        {{/hassessions}}
     </section>
 </div>

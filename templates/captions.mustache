@@ -59,8 +59,13 @@
             <div class="videoprogress-caption-list">
                 {{#captions}}
                     <article>
-                        <div><strong>{{label}}</strong><span>{{language}} · {{status}} · {{source}}</span>{{#isdefault}}
-                            <span class="badge badge-primary">{{#str}}default, videoprogress {{/str}}</span>{{/isdefault}}</div>
+                        <div>
+                            <strong>{{label}}</strong>
+                            <span>{{language}} · {{status}} · {{source}}</span>
+                            {{#isdefault}}
+                                <span class="badge badge-primary">{{#str}}default, videoprogress {{/str}}</span>
+                            {{/isdefault}}
+                        </div>
                         <div class="videoprogress-row-actions">
                             <a href="{{editurl}}" class="btn btn-sm btn-outline-primary">{{#str}}edit, videoprogress {{/str}}</a>
                             <form method="post" action="{{actionurl}}" data-action="delete-caption">
@@ -76,6 +81,8 @@
                 {{/captions}}
             </div>
         {{/hascaptions}}
-        {{^hascaptions}}<p>{{#str}} nocaptions, videoprogress {{/str}}</p>{{/hascaptions}}
+        {{^hascaptions}}
+            <p>{{#str}} nocaptions, videoprogress {{/str}}</p>
+        {{/hascaptions}}
     </section>
 </div>

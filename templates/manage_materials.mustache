@@ -58,21 +58,30 @@
         </div>
     </div>
     {{#hasitems}}
-        <div class="videoprogress-manage-list">{{#items}}
-            <article>
-                <div><strong>{{name}}</strong><span>{{pluginname}}</span>{{#disabled}}
-                    <span class="badge badge-secondary">{{#str}} disabled, videoprogress {{/str}}</span>{{/disabled}}
-                </div>
-                <div>
-                    {{#pluginavailable}}
-                        <a class="btn btn-sm btn-outline-primary"
-                           href="{{editurl}}">{{#str}}edit, videoprogress {{/str}}</a>
-                    {{/pluginavailable}}
-                    <a class="btn btn-sm btn-outline-danger"
-                       href="{{deleteurl}}">{{#str}}delete, videoprogress {{/str}}</a>
-                </div>
-            </article>{{/items}}</div>{{/hasitems}}
+        <div class="videoprogress-manage-list">
+            {{#items}}
+                <article>
+                    <div><strong>{{name}}</strong><span>{{pluginname}}</span>
+                        {{#disabled}}
+                            <span class="badge badge-secondary">{{#str}} disabled, videoprogress {{/str}}</span>
+                        {{/disabled}}
+                    </div>
+                    <div>
+                        {{#pluginavailable}}
+                            <a class="btn btn-sm btn-outline-primary"
+                               href="{{editurl}}">{{#str}}edit, videoprogress {{/str}}</a>
+                        {{/pluginavailable}}
+                        <a class="btn btn-sm btn-outline-danger"
+                           href="{{deleteurl}}">{{#str}}delete, videoprogress {{/str}}</a>
+                    </div>
+                </article>
+            {{/items}}
+        </div>
+    {{/hasitems}}
     {{^hasitems}}
-        <div class="videoprogress-empty"><h3>{{#str}} nomaterials, videoprogress {{/str}}</h3>
-            <p>{{#str}} nomaterialshelp, videoprogress {{/str}}</p></div>{{/hasitems}}
+        <div class="videoprogress-empty">
+            <h3>{{#str}} nomaterials, videoprogress {{/str}}</h3>
+            <p>{{#str}} nomaterialshelp, videoprogress {{/str}}</p>
+        </div>
+    {{/hasitems}}
 </div>

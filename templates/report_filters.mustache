@@ -89,14 +89,16 @@
             <label for="videoprogress-group">{{#str}} group, videoprogress {{/str}}</label>
             <select id="videoprogress-group" name="groupid" class="form-control">
                 {{#filters.groups}}
-                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>{{/filters.groups}}
+                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+                {{/filters.groups}}
             </select>
         </div>
         <div class="form-group">
             <label for="videoprogress-status">{{#str}} status, videoprogress {{/str}}</label>
             <select id="videoprogress-status" name="status" class="form-control">
                 {{#filters.statuses}}
-                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>{{/filters.statuses}}
+                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+                {{/filters.statuses}}
             </select>
         </div>
         <div class="form-group">
@@ -104,21 +106,24 @@
             <select id="videoprogress-percent" name="percentrange" class="form-control">
                 {{#filters.percentranges}}
                     <option value="{{value}}"
-                            {{#selected}}selected{{/selected}}>{{label}}</option>{{/filters.percentranges}}
+                            {{#selected}}selected{{/selected}}>{{label}}</option>
+                {{/filters.percentranges}}
             </select>
         </div>
         <div class="form-group">
             <label for="videoprogress-lastview">{{#str}} lastview, videoprogress {{/str}}</label>
             <select id="videoprogress-lastview" name="lastview" class="form-control">
                 {{#filters.lastviews}}
-                    <option value="{{value}}"{{#selected}}selected{{/selected}}>{{label}}</option>{{/filters.lastviews}}
+                    <option value="{{value}}"{{#selected}}selected{{/selected}}>{{label}}</option>
+                {{/filters.lastviews}}
             </select>
         </div>
         <div class="form-group">
             <label for="videoprogress-sort">{{#str}} sortby, videoprogress {{/str}}</label>
             <select id="videoprogress-sort" name="sort" class="form-control">
                 {{#filters.sorts}}
-                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>{{/filters.sorts}}
+                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+                {{/filters.sorts}}
             </select>
         </div>
         <div class="form-group">
@@ -126,14 +131,16 @@
             <select id="videoprogress-direction" name="direction" class="form-control">
                 {{#filters.directions}}
                     <option value="{{value}}"
-                            {{#selected}}selected{{/selected}}>{{label}}</option>{{/filters.directions}}
+                            {{#selected}}selected{{/selected}}>{{label}}</option>
+                {{/filters.directions}}
             </select>
         </div>
         <div class="form-group">
             <label for="videoprogress-perpage">{{#str}} perpage, videoprogress {{/str}}</label>
             <select id="videoprogress-perpage" name="perpage" class="form-control">
                 {{#filters.perpages}}
-                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>{{/filters.perpages}}
+                    <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+                {{/filters.perpages}}
             </select>
         </div>
         <button type="submit" class="btn btn-primary">{{#str}} applyfilters, videoprogress {{/str}}</button>

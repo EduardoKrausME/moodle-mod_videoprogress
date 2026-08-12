@@ -62,7 +62,8 @@
             <p>{{#str}} managecontenthelp, videoprogress {{/str}}</p></div>
         <a class="btn btn-primary" href="{{addpointurl}}">{{#str}} addpoint, videoprogress {{/str}}</a></div>
     {{#haspoints}}
-        <div class="videoprogress-point-list">{{#points}}
+        <div class="videoprogress-point-list">
+            {{#points}}
             <article class="videoprogress-point-editor">
                 <header>
                     <div>
@@ -96,11 +97,18 @@
                 <div class="dropdown">
                     <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button"
                             data-toggle="dropdown">{{#str}} addpointcontent, videoprogress {{/str}}</button>
-                    <div class="dropdown-menu">{{#addurls}}
-                        <a class="dropdown-item" href="{{url}}">{{name}}</a>{{/addurls}}</div>
+                    <div class="dropdown-menu">
+                        {{#addurls}}
+                            <a class="dropdown-item" href="{{url}}">{{name}}</a>
+                        {{/addurls}}
+                    </div>
                 </div>
-            </article>{{/points}}</div>{{/haspoints}}
+            </article>
+        {{/points}}
+        </div>
+    {{/haspoints}}
     {{^haspoints}}
         <div class="videoprogress-empty"><h3>{{#str}} nopoints, videoprogress {{/str}}</h3>
-            <p>{{#str}} nopointshelp, videoprogress {{/str}}</p></div>{{/haspoints}}
+            <p>{{#str}} nopointshelp, videoprogress {{/str}}</p></div>
+    {{/haspoints}}
 </div>

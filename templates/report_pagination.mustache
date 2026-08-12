@@ -43,7 +43,8 @@
     <div class="videoprogress-pagination__pages">
         {{#pagination.pages}}
             <a href="{{url}}" class="btn {{#active}}btn-primary{{/active}}{{^active}}btn-outline-secondary{{/active}}"
-               {{#active}}aria-current="page"{{/active}}>{{number}}</a>{{/pagination.pages}}
+               {{#active}}aria-current="page"{{/active}}>{{number}}</a>
+        {{/pagination.pages}}
     </div>
     {{#pagination.hasnext}}
         <a class="btn btn-outline-secondary" href="{{pagination.nexturl}}">{{#str}}next, videoprogress {{/str}}</a>
