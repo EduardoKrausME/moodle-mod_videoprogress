@@ -30,6 +30,11 @@ use core_privacy\metadata\null_provider;
  * Declares that the subplugin stores no personal data independently of the parent activity.
  */
 class provider implements null_provider {
+    /**
+     * get_reason
+     *
+     * @return string
+     */
     public static function get_reason(): string {
         return 'privacy:metadata';
     }
