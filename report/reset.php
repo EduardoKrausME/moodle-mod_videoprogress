@@ -60,7 +60,8 @@ if ($mass) {
     $userids = [$userid];
 }
 $returnurl = new moodle_url('/mod/videoprogress/report/report.php', ["id" => $cm->id] + $filters->url_params());
-$PAGE->set_url('/mod/videoprogress/report/reset.php', ["id" => $cm->id, "userid" => $userid, "mass" => $mass] + $filters->url_params());
+$PAGE->set_url('/mod/videoprogress/report/reset.php',
+    ["id" => $cm->id, "userid" => $userid, "mass" => $mass] + $filters->url_params());
 $PAGE->set_title(get_string("resetprogress", "videoprogress"));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
