@@ -25,12 +25,21 @@
 defined('MOODLE_INTERNAL') || die();
 
 $functions = [
+    "mod_videoprogress_get_app_view" => [
+        "classname" => '\\mod_videoprogress\\external\\get_app_view',
+        "description" => "Returns Video Progress launch information for mobile clients.",
+        "type" => "read",
+        "ajax" => true,
+        "capabilities" => 'mod/videoprogress:view',
+        "services" => [MOODLE_OFFICIAL_MOBILE_SERVICE],
+    ],
     "mod_videoprogress_update_progress" => [
         "classname" => '\\mod_videoprogress\\external\\update_progress',
         "description" => get_string("serviceupdateprogress", "videoprogress"),
         "type" => "write",
         "ajax" => true,
         "capabilities" => 'mod/videoprogress:view',
+        "services" => [MOODLE_OFFICIAL_MOBILE_SERVICE],
     ],
     "mod_videoprogress_complete_point" => [
         "classname" => '\\mod_videoprogress\\external\\complete_point',
@@ -38,5 +47,6 @@ $functions = [
         "type" => "write",
         "ajax" => true,
         "capabilities" => 'mod/videoprogress:view',
+        "services" => [MOODLE_OFFICIAL_MOBILE_SERVICE],
     ],
 ];
