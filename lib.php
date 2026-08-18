@@ -31,20 +31,27 @@ use mod_videoprogress\source\manager;
  * @param string $feature Moodle feature constant.
  * @return bool|null Whether Moodle should accept the result.
  */
-function videoprogress_supports(string $feature): bool|null {
-    return match ($feature) {
-        FEATURE_MOD_ARCHETYPE => MOD_ARCHETYPE_RESOURCE,
-        FEATURE_GROUPS => true,
-        FEATURE_GROUPINGS => true,
-        FEATURE_MOD_INTRO => true,
-        FEATURE_SHOW_DESCRIPTION => true,
-        FEATURE_GRADE_HAS_GRADE => true,
-        FEATURE_COMPLETION_TRACKS_VIEWS => true,
-        FEATURE_COMPLETION_HAS_RULES => true,
-        FEATURE_BACKUP_MOODLE2 => true,
-        FEATURE_MOD_PURPOSE => MOD_PURPOSE_CONTENT,
-        default => null,
-    };
+function videoprogress_supports($feature) {
+    switch ($feature) {
+        case FEATURE_MOD_ARCHETYPE:
+            return MOD_ARCHETYPE_RESOURCE;
+        case FEATURE_GROUPS:
+            return false;
+        case FEATURE_GROUPINGS:
+            return false;
+        case FEATURE_MOD_INTRO:
+            return true;
+        case FEATURE_COMPLETION_TRACKS_VIEWS:
+            return true;
+        case FEATURE_GRADE_HAS_GRADE:
+            return false;
+        case FEATURE_BACKUP_MOODLE2:
+            return true;
+        case FEATURE_MOD_PURPOSE:
+            return MOD_PURPOSE_CONTENT;
+        default:
+            return null;
+    }
 }
 
 /**
@@ -294,6 +301,7 @@ function videoprogress_get_coursemodule_info(stdClass $cm): cached_cm_info|null 
             "requireconfirmation" => (bool)$activity->requireconfirmation,
         ];
     }
+
     return $info;
 }
 
