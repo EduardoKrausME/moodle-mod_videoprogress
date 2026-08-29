@@ -34,19 +34,56 @@ $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($coursecontext);
 
 $modinfo = get_fast_modinfo($course);
-$activities = [];
+
+$cms = [];
+$instanceids = [];
+
 foreach ($modinfo->get_instances_of("videoprogress") as $cm) {
     if (!$cm->uservisible) {
         continue;
     }
-    $activity = $DB->get_record("videoprogress", ["id" => $cm->instance], 'id,name,completionpercent', MUST_EXIST);
+
+    $cms[] = $cm;
+    $instanceids[] = $cm->instance;
+}
+
+$activityrecords = [];
+
+if ($instanceids) {
+    $activityrecords = $DB->get_records_list(
+        "videoprogress",
+        "id",
+        $instanceids,
+        "",
+        "id,name,completionpercent"
+    );
+}
+
+$activities = [];
+
+foreach ($cms as $cm) {
+    if (!isset($activityrecords[$cm->instance])) {
+        continue;
+    }
+
+    $activity = $activityrecords[$cm->instance];
     $context = context_module::instance($cm->id);
+
     $activities[] = [
         "name" => format_string($activity->name),
         "completionpercent" => $activity->completionpercent,
-        "viewurl" => new moodle_url('/mod/videoprogress/view.php', ["id" => $cm->id]),
-        "canreport" => has_capability('mod/videoprogress:viewreport', $context),
-        "reporturl" => (string)new moodle_url('/mod/videoprogress/report/report.php', ["id" => $cm->id]),
+        "viewurl" => new moodle_url(
+            '/mod/videoprogress/view.php',
+            ["id" => $cm->id]
+        ),
+        "canreport" => has_capability(
+            'mod/videoprogress:viewreport',
+            $context
+        ),
+        "reporturl" => (string)new moodle_url(
+            '/mod/videoprogress/report/report.php',
+            ["id" => $cm->id]
+        ),
     ];
 }
 echo $OUTPUT->header();
