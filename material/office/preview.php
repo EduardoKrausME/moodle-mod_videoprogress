@@ -27,10 +27,34 @@
 
 require('../../../../config.php');
 
-require_login();
-
 $materialid = required_param("materialid", PARAM_INT);
 $token = required_param("token", PARAM_ALPHANUMEXT);
+
+$material = $DB->get_record("videoprogress_materials", [
+    "id" => $materialid,
+    "plugin" => "office",
+    "enabled" => 1,
+]);
+
+if (!$material) {
+    http_response_code(404);
+    exit;
+}
+
+$cm = get_coursemodule_from_instance("videoprogress", $material->videoprogressid, 0, false, MUST_EXIST);
+$course = $DB->get_record("course", ["id" => $cm->course], "*", MUST_EXIST);
+$context = context_module::instance($cm->id);
+
+require_login($course, true, $cm);
+require_capability('mod/videoprogress:view', $context);
+
+$config = json_decode($material->configdata ?? '', true) ?: [];
+$storedtoken = (string)($config["previewtoken"] ?? '');
+
+if ($storedtoken === '' || !hash_equals($storedtoken, $token)) {
+    http_response_code(404);
+    exit;
+}
 
 $material = $DB->get_record("videoprogress_materials", [
     "id" => $materialid,
