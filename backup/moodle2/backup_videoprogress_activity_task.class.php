@@ -15,17 +15,21 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * restore_videoprogress_activity_task.php
+ * backup_videoprogress_activity_task.class.php
  *
  * @package   mod_videoprogress
  * @copyright 2026 Eduardo Kraus {@link https://eduardokraus.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
+
+require_once($CFG->dirroot . '/mod/videoprogress/backup/moodle2/backup_videoprogress_stepslib.php');
+
 /**
- * Defines the Moodle restore task and content-link mappings for Video Progress activities.
+ * Defines the Moodle backup task for Video Progress activities.
  */
-class restore_videoprogress_activity_task extends restore_activity_task {
+class backup_videoprogress_activity_task extends backup_activity_task {
     /**
      * Defines activity-specific restore or backup settings.
      *
@@ -40,42 +44,16 @@ class restore_videoprogress_activity_task extends restore_activity_task {
      * @return void This method does not return a value.
      */
     protected function define_my_steps(): void {
-        $this->add_step(new restore_videoprogress_activity_structure_step("videoprogress_structure", 'videoprogress.xml'));
+        $this->add_step(new backup_videoprogress_activity_structure_step("videoprogress_structure", 'videoprogress.xml'));
     }
 
     /**
-     * Registers activity content fields that must be decoded during restore.
+     * Rewrites Video Progress links so they remain valid when the activity is restored.
      *
-     * @return array Structured data produced by the operation.
+     * @param mixed $content Caption or editor content.
+     * @return string The resolved or formatted string value.
      */
-    public static function define_decode_contents(): array {
-        return [];
-    }
-
-    /**
-     * Defines the content-link rewrite rules applied during activity restore.
-     *
-     * @return array Structured data produced by the operation.
-     */
-    public static function define_decode_rules(): array {
-        return [];
-    }
-
-    /**
-     * Defines the log record mappings restored for this activity.
-     *
-     * @return array Structured data produced by the operation.
-     */
-    public static function define_restore_log_rules(): array {
-        return [];
-    }
-
-    /**
-     * Defines course-level log mappings restored for this activity.
-     *
-     * @return array Structured data produced by the operation.
-     */
-    public static function define_restore_log_rules_for_course(): array {
-        return [];
+    public static function encode_content_links($content): string {
+        return $content;
     }
 }
