@@ -43,9 +43,8 @@ class custom_completion extends activity_custom_completion {
     public function get_state(string $rule): int {
         global $DB;
 
-        if (!in_array($rule, ["completionpercent", "requireconfirmation"], true)) {
-            throw new coding_exception(get_string("invalidcompletionrule", "videoprogress", $rule));
-        }
+        $this->validate_rule($rule);
+
         $activity = $DB->get_record("videoprogress", ["id" => $this->cm->instance], "*", MUST_EXIST);
         $progress = $DB->get_record("videoprogress_progress", [
             "videoprogressid" => $activity->id,
@@ -55,9 +54,13 @@ class custom_completion extends activity_custom_completion {
             return COMPLETION_INCOMPLETE;
         }
         if ($rule === "completionpercent") {
-            return (float)$progress->percent >= (float)$activity->completionpercent ? COMPLETION_COMPLETE : COMPLETION_INCOMPLETE;
+            return (float)$progress->percent >= (float)$activity->completionpercent
+                ? COMPLETION_COMPLETE
+                : COMPLETION_INCOMPLETE;
         }
-        return !$activity->requireconfirmation || !empty($progress->confirmation) ? COMPLETION_COMPLETE : COMPLETION_INCOMPLETE;
+        return !$activity->requireconfirmation || !empty($progress->confirmation)
+            ? COMPLETION_COMPLETE
+            : COMPLETION_INCOMPLETE;
     }
 
     /**
@@ -89,31 +92,17 @@ class custom_completion extends activity_custom_completion {
     }
 
     /**
-     * Checks whether the supplied custom completion rule is configured for the activity.
+     * Returns an array of all completion rules, in the order they should be displayed to users.
      *
-     * @param string $rule Custom completion rule identifier.
-     * @return bool Whether the evaluated condition or operation succeeded.
-     * @throws dml_exception
-     */
-    public function is_defined(string $rule): bool {
-        global $DB;
-        if ($rule === "completionpercent") {
-            return true;
-        }
-        if ($rule === "requireconfirmation") {
-            return (bool)$DB->get_field("videoprogress", "requireconfirmation", ["id" => $this->cm->instance]);
-        }
-        return false;
-    }
-
-    /**
-     * Function get_sort_order
      * @return string[]
      */
     public function get_sort_order(): array {
         return [
+            "completionview",
             "completionpercent",
             "requireconfirmation",
+            "completionusegrade",
+            "completionpassgrade",
         ];
     }
 }
