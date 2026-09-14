@@ -15,17 +15,25 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * version.php
+ * provider.php
  *
- * @package   mod_videoprogress
+ * @package   videoprogresssource_nextcloud
  * @copyright 2026 Eduardo Kraus {@link https://eduardokraus.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+namespace videoprogresssource_nextcloud\privacy;
 
-$plugin->version = 2026091403;
-$plugin->release = "1.3.11";
-$plugin->component = "mod_videoprogress";
-$plugin->requires = 2024042200;
-$plugin->maturity = MATURITY_STABLE;
+/**
+ * Declares that the Nextcloud source stores no personal data independently of the parent activity.
+ */
+class provider implements \core_privacy\metadata\null_provider {
+    /**
+     * Returns the Privacy API explanation for this stateless source plugin.
+     *
+     * @return string Language identifier describing the absence of personal data.
+     */
+    public static function get_reason(): string {
+        return 'privacy:metadata';
+    }
+}

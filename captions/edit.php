@@ -42,28 +42,34 @@ $PAGE->set_title(get_string("editcaption", "videoprogress"));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
 
-$languageoptions = [];
-foreach (get_string_manager()->get_list_of_translations() as $code => $name) {
-    $languageoptions[str_replace('_', '-', strtolower($code))] = $name;
-}
-
+$languageoptions = caption_manager::get_language_options();
 $files = get_file_storage()->get_area_files($context->id, "mod_videoprogress", "caption", $caption->id, "filename", false);
 $caption->content = $files ? reset($files)->get_content() : '';
-$caption->language = str_replace('_', '-', strtolower($caption->language));
+try {
+    $caption->language = caption_manager::normalise_language((string)$caption->language);
+} catch (moodle_exception $exception) {
+    $languageoptions[$caption->language] = $caption->label ?: $caption->language;
+}
 $caption->captionid = $caption->id;
 $caption->id = $cm->id;
-$mform = new caption_editor_form($PAGE->url, ["languages" => $languageoptions]);
+$caption->captionurl = $caption->sourceurl ?? '';
+$caption->captionnextcloudurl = $caption->sourceurl ?? '';
+$mform = new caption_editor_form($PAGE->url, [
+    "languages" => $languageoptions,
+    "source" => $caption->source,
+]);
 $mform->set_data($caption);
 if ($mform->is_cancelled()) {
     redirect(new moodle_url('/mod/videoprogress/captions.php', ["id" => $cm->id]));
 } else if ($data = $mform->get_data()) {
-    if (!isset($languageoptions[$data->language])) {
-        throw new invalid_parameter_exception('Invalid caption language.');
-    }
-    $data->label = $languageoptions[$data->language];
+    $data->label = $languageoptions[$data->language] ?? $data->language;
     $captionrecord = $DB->get_record("videoprogress_captions",
         ["id" => $data->captionid, "videoprogressid" => $activity->id], "*", MUST_EXIST);
-    (new caption_manager())->update_content($captionrecord, $context, $data);
+    try {
+        (new caption_manager())->update($captionrecord, $context, $data);
+    } catch (moodle_exception $exception) {
+        redirect($PAGE->url, $exception->getMessage(), null, \core\output\notification::NOTIFY_ERROR);
+    }
     redirect(new moodle_url('/mod/videoprogress/captions.php',
         ["id" => $cm->id]), get_string("captionsaved", "videoprogress"));
 }

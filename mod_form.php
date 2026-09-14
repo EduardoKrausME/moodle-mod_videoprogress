@@ -22,6 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+use mod_videoprogress\caption_manager;
 use mod_videoprogress\source\manager;
 
 defined('MOODLE_INTERNAL') || die();
@@ -70,6 +71,69 @@ class mod_videoprogress_mod_form extends moodleform_mod {
             $mform->hideIf("poster", "videosource", "in", $nopostersources);
         }
 
+        $mform->addElement("header", "captionsheader", get_string("subtitles", "videoprogress"));
+        $mform->addHelpButton("captionsheader", "subtitles", "videoprogress");
+        $nocaptionsources = $sourcemanager->get_sources_without_uploaded_captions();
+        if ($nocaptionsources) {
+            $mform->hideIf("captionsheader", "videosource", "in", $nocaptionsources);
+        }
+        $languages = caption_manager::get_language_options();
+        $captionsources = caption_manager::get_source_options();
+        $repeatarray = [];
+        $repeatarray[] = $mform->createElement("select", "captionsource",
+            get_string("captionsource", "videoprogress"), $captionsources);
+        $repeatarray[] = $mform->createElement("select", "captionlanguage",
+            get_string("captionlanguage", "videoprogress"), $languages);
+        $repeatarray[] = $mform->createElement("filepicker", "captionfile",
+            get_string("captionfile", "videoprogress"), null, [
+                "accepted_types" => ['.vtt', '.srt'],
+                "maxbytes" => caption_manager::MAX_BYTES,
+            ]);
+        $repeatarray[] = $mform->createElement("url", "captionurl", get_string("captionurl", "videoprogress"),
+            ["size" => 80], ["usefilepicker" => false]);
+        $repeatarray[] = $mform->createElement("url", "captionnextcloudurl",
+            get_string("captionnextcloudurl", "videoprogress"), ["size" => 80], ["usefilepicker" => false]);
+        $repeatoptions = [
+            "captionsource" => ["default" => "upload", "type" => PARAM_ALPHA],
+            "captionlanguage" => ["default" => "en-US", "type" => PARAM_ALPHANUMEXT],
+            "captionurl" => ["type" => PARAM_URL, "hideif" => ["captionsource", "neq", "url"]],
+            "captionnextcloudurl" => ["type" => PARAM_URL, "hideif" => ["captionsource", "neq", "nextcloud"]],
+            "captionfile" => ["hideif" => ["captionsource", "neq", "upload"]],
+        ];
+        if (!empty($this->current->instance) && !empty($this->_cm->id)) {
+            global $OUTPUT, $PAGE;
+            $existing = (new caption_manager())->get_management_tracks(
+                (int)$this->current->instance,
+                (int)$this->_cm->id
+            );
+            if ($existing) {
+                $mform->addElement("html", $OUTPUT->render_from_template('mod_videoprogress/caption_list', [
+                    "captions" => $existing,
+                    "hascaptions" => true,
+                ]));
+                $PAGE->requires->strings_for_js(["deletecaptionconfirm", "confirmdelete", "cancel"], "videoprogress");
+                $PAGE->requires->js_call_amd('mod_videoprogress/captions', "init");
+            }
+        }
+        $repeats = $this->repeat_elements(
+            $repeatarray,
+            1,
+            $repeatoptions,
+            "caption_repeats",
+            "caption_add",
+            1,
+            get_string("addcaption", "videoprogress"),
+            true
+        );
+        if ($nocaptionsources) {
+            $mform->hideIf("caption_add", "videosource", "in", $nocaptionsources);
+            for ($index = 0; $index < $repeats; $index++) {
+                foreach (["captionsource", "captionlanguage", "captionfile", "captionurl", "captionnextcloudurl"] as $field) {
+                    $mform->hideIf("{$field}[{$index}]", "videosource", "in", $nocaptionsources);
+                }
+            }
+        }
+
         $mform->addElement("html", html_writer::tag("h3", get_string("playbackheader", "videoprogress")));
         $mform->addElement("select", "resumeplayback", get_string("resumeplayback", "videoprogress"), [
             1 => get_string("resumeautomatic", "videoprogress"),
@@ -111,6 +175,7 @@ class mod_videoprogress_mod_form extends moodleform_mod {
             $errors[$percentfield] = get_string("errorpercent", "videoprogress");
         }
         $errors += (new manager())->validation((array)$data, (array)$files);
+        $errors += $this->validate_caption_rows((array)$data);
         return $errors;
     }
 
@@ -183,6 +248,87 @@ class mod_videoprogress_mod_form extends moodleform_mod {
             }
         }
         return $data;
+    }
+
+    /**
+     * Validates completed caption rows submitted with the activity form.
+     *
+     * Empty rows are ignored so teachers can leave unused repeats blank.
+     *
+     * @param array $data Submitted activity form values.
+     * @return array Field names mapped to localized validation errors.
+     */
+    private function validate_caption_rows(array $data): array {
+        global $USER;
+
+        $source = clean_param((string)($data["videosource"] ?? ''), PARAM_PLUGIN);
+        try {
+            if (!(new manager())->get_plugin($source)->supports_uploaded_captions()) {
+                return [];
+            }
+        } catch (moodle_exception $exception) {
+            unset($exception);
+            return [];
+        }
+
+        $errors = [];
+        $captionmanager = new caption_manager();
+        $repeats = (int)($data["caption_repeats"] ?? 0);
+        for ($index = 0; $index < $repeats; $index++) {
+            $rowsource = clean_param((string)($data["captionsource"][$index] ?? "upload"), PARAM_ALPHA);
+            $hasfile = $this->draft_has_caption_file((int)($data["captionfile"][$index] ?? 0), (int)$USER->id);
+            $url = trim((string)($data["captionurl"][$index] ?? ''));
+            $nextcloudurl = trim((string)($data["captionnextcloudurl"][$index] ?? ''));
+            $empty = match ($rowsource) {
+                "url" => $url === '',
+                "nextcloud" => $nextcloudurl === '',
+                default => !$hasfile,
+            };
+            if ($empty) {
+                continue;
+            }
+            try {
+                caption_manager::normalise_language((string)($data["captionlanguage"][$index] ?? ''));
+            } catch (moodle_exception $exception) {
+                $errors["captionlanguage[{$index}]"] = $exception->getMessage();
+            }
+            if ($rowsource === "url") {
+                try {
+                    $captionmanager->validate_direct_caption_url($url);
+                } catch (moodle_exception $exception) {
+                    $errors["captionurl[{$index}]"] = $exception->getMessage();
+                }
+            } else if ($rowsource === "nextcloud") {
+                try {
+                    $captionmanager->to_nextcloud_download_url($nextcloudurl);
+                } catch (moodle_exception $exception) {
+                    $errors["captionnextcloudurl[{$index}]"] = $exception->getMessage();
+                }
+            }
+        }
+        return $errors;
+    }
+
+    /**
+     * Checks whether a caption filepicker draft area contains a file.
+     *
+     * @param int $draftitemid File picker draft item identifier.
+     * @param int $userid User owning the draft area.
+     * @return bool Whether a caption file is present.
+     */
+    private function draft_has_caption_file(int $draftitemid, int $userid): bool {
+        if ($draftitemid < 1) {
+            return false;
+        }
+        $files = get_file_storage()->get_area_files(
+            context_user::instance($userid)->id,
+            "user",
+            "draft",
+            $draftitemid,
+            "id",
+            false
+        );
+        return (bool)$files;
     }
 
     /**

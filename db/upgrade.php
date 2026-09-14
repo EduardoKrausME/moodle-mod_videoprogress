@@ -29,5 +29,18 @@
  * @return bool Whether Moodle should accept the result.
  */
 function xmldb_videoprogress_upgrade(int $oldversion): bool {
+    global $DB;
+
+    $dbman = $DB->get_manager();
+
+    if ($oldversion < 2026091401) {
+        $table = new xmldb_table("videoprogress_captions");
+        $field = new xmldb_field("sourceurl", XMLDB_TYPE_TEXT, null, null, null, null, null, "source");
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+        upgrade_mod_savepoint(true, 2026091401, "videoprogress");
+    }
+
     return true;
 }
