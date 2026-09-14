@@ -1,4 +1,3 @@
-<?php
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -15,17 +14,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * version.php
+ * player.js
  *
- * @package   mod_videoprogress
+ * @package   videoprogresssource_nextcloud
  * @copyright 2026 Eduardo Kraus {@link https://eduardokraus.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+define([
+    "jquery",
+    "mod_videoprogress/html5",
+    "mod_videoprogress/hls"
+], function ($, Html5Adapter, HlsAdapter) {
+    const create = (root, config) => {
+        const Adapter = config.hls ? HlsAdapter : Html5Adapter;
+        return (new Adapter(root, config)).initialise();
+    };
 
-$plugin->version = 2026091403;
-$plugin->release = "1.3.11";
-$plugin->component = "mod_videoprogress";
-$plugin->requires = 2024042200;
-$plugin->maturity = MATURITY_STABLE;
+    return {create: create};
+});

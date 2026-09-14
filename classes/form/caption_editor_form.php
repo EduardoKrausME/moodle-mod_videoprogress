@@ -52,7 +52,22 @@ class caption_editor_form extends moodleform {
 
         $mform->addElement("select", "language", get_string("captionlanguage", "videoprogress"), $languages);
         $mform->setType("language", PARAM_ALPHANUMEXT);
+        $mform->setDefault("language", "en-US");
         $mform->addRule("language", null, "required", null, "client");
+        $mform->addHelpButton("language", "captionlanguage", "videoprogress");
+
+        $source = $this->_customdata["source"] ?? "upload";
+        if ($source === "url") {
+            $mform->addElement("url", "captionurl", get_string("captionurl", "videoprogress"),
+                ["size" => 80], ["usefilepicker" => false]);
+            $mform->setType("captionurl", PARAM_URL);
+            $mform->addHelpButton("captionurl", "captionurl", "videoprogress");
+        } else if ($source === "nextcloud") {
+            $mform->addElement("url", "captionnextcloudurl", get_string("captionnextcloudurl", "videoprogress"),
+                ["size" => 80], ["usefilepicker" => false]);
+            $mform->setType("captionnextcloudurl", PARAM_URL);
+            $mform->addHelpButton("captionnextcloudurl", "captionnextcloudurl", "videoprogress");
+        }
 
         $options = ["rows" => 24, "class" => 'w-100'];
         $mform->addElement("textarea", "content", get_string("captioncontent", "videoprogress"), $options);

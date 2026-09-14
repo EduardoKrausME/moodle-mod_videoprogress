@@ -17,15 +17,16 @@
 /**
  * version.php
  *
- * @package   mod_videoprogress
+ * @package   videoprogresssource_nextcloud
  * @copyright 2026 Eduardo Kraus {@link https://eduardokraus.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2026091403;
-$plugin->release = "1.3.11";
-$plugin->component = "mod_videoprogress";
+$plugin->component = "videoprogresssource_nextcloud";
+$plugin->version = 2026091400;
+$plugin->release = '1.0.0';
 $plugin->requires = 2024042200;
+$plugin->dependencies = ["mod_videoprogress" => 2026081202];
 $plugin->maturity = MATURITY_STABLE;

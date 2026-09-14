@@ -64,13 +64,17 @@ class instance_manager {
                 "accepted_types" => ["image"],
             ]);
         }
-        if ($sourceplugin->supports_uploaded_captions() && !empty($data->subtitles)) {
-            (new caption_manager())->import_draft_files(
-                (int)$data->subtitles,
-                (int)$data->id,
-                $context,
-                (int)$USER->id
-            );
+        if ($sourceplugin->supports_uploaded_captions()) {
+            $captionmanager = new caption_manager();
+            if (!empty($data->subtitles)) {
+                $captionmanager->import_draft_files(
+                    (int)$data->subtitles,
+                    (int)$data->id,
+                    $context,
+                    (int)$USER->id
+                );
+            }
+            $captionmanager->save_form_tracks($data, $context, (int)$USER->id);
         }
     }
 }

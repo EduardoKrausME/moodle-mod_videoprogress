@@ -40,7 +40,7 @@ class backup_videoprogress_activity_structure_step extends backup_activity_struc
         ]);
         $captions = new backup_nested_element("captions");
         $caption = new backup_nested_element("caption", ["id"], [
-            "language", "label", "isdefault", "status", "source", "createdby", "timecreated", "timemodified",
+            "language", "label", "isdefault", "status", "source", "sourceurl", "createdby", "timecreated", "timemodified",
         ]);
         $materials = new backup_nested_element("materials");
         $material = new backup_nested_element("material", ["id"], [

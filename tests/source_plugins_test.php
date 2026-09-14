@@ -31,6 +31,7 @@ namespace mod_videoprogress;
  * @covers \videoprogresssource_url\plugin
  * @covers \videoprogresssource_youtube\plugin
  * @covers \videoprogresssource_vimeo\plugin
+ * @covers \videoprogresssource_nextcloud\plugin
  */
 final class source_plugins_test extends \advanced_testcase {
     /**
@@ -46,6 +47,7 @@ final class source_plugins_test extends \advanced_testcase {
         self::assertArrayHasKey("url", $plugins);
         self::assertArrayHasKey("youtube", $plugins);
         self::assertArrayHasKey("vimeo", $plugins);
+        self::assertArrayHasKey("nextcloud", $plugins);
         foreach ($plugins as $plugin) {
             self::assertInstanceOf(source\plugin_base::class, $plugin);
         }
@@ -138,5 +140,123 @@ final class source_plugins_test extends \advanced_testcase {
 
         self::assertSame("AbCdEf12345", $record->videourl);
         self::assertSame(["id" => "AbCdEf12345"], json_decode($record->sourceconfig, true));
+    }
+
+    /**
+     * Confirms that public Nextcloud share URLs are converted to canonical download URLs.
+     *
+     * @return void
+     */
+    public function test_nextcloud_source_converts_share_urls_to_download_urls(): void {
+        $plugin = new \videoprogresssource_nextcloud\plugin();
+
+        self::assertSame(
+            'https://cloud.sysclass.com/index.php/s/HgrGTatBqTnEpSF/download',
+            $plugin->to_download_url('https://cloud.sysclass.com/s/HgrGTatBqTnEpSF')
+        );
+        self::assertSame(
+            'https://cloud.sysclass.com/index.php/s/HgrGTatBqTnEpSF/download',
+            $plugin->to_download_url('https://cloud.sysclass.com/index.php/s/HgrGTatBqTnEpSF')
+        );
+        self::assertSame(
+            'https://cloud.sysclass.com/index.php/s/HgrGTatBqTnEpSF/download',
+            $plugin->to_download_url('https://cloud.sysclass.com/s/HgrGTatBqTnEpSF/download')
+        );
+        self::assertSame(
+            'https://cloud.sysclass.com:8443/index.php/s/HgrGTatBqTnEpSF/download?path=%2Flesson.mp4',
+            $plugin->to_download_url(
+                'https://cloud.sysclass.com:8443/s/HgrGTatBqTnEpSF?path=%2Flesson.mp4'
+            )
+        );
+    }
+
+    /**
+     * Confirms that a reachable Nextcloud video share is stored as a playable download URL.
+     *
+     * @return void
+     */
+    public function test_nextcloud_source_build_config_returns_download_url(): void {
+        $plugin = $this->create_nextcloud_plugin_with_probe([
+            "status" => 200,
+            "contenttype" => "video/mp4",
+            "acceptranges" => "bytes",
+        ]);
+
+        self::assertSame(
+            [
+                "shareurl" => 'https://cloud.sysclass.com/s/HgrGTatBqTnEpSF',
+                "url" => 'https://cloud.sysclass.com/index.php/s/HgrGTatBqTnEpSF/download',
+                "hls" => false,
+            ],
+            $plugin->build_config((object)[
+                "nextcloudurl" => 'https://cloud.sysclass.com/s/HgrGTatBqTnEpSF',
+            ])
+        );
+    }
+
+    /**
+     * Confirms that Nextcloud HLS playlists select the HLS adapter without requiring a file extension.
+     *
+     * @return void
+     */
+    public function test_nextcloud_source_detects_hls_content_type(): void {
+        $plugin = $this->create_nextcloud_plugin_with_probe([
+            "status" => 200,
+            "contenttype" => 'application/vnd.apple.mpegurl',
+            "acceptranges" => '',
+        ]);
+
+        $config = $plugin->build_config((object)[
+            "nextcloudurl" => 'https://cloud.sysclass.com/index.php/s/HgrGTatBqTnEpSF',
+        ]);
+        self::assertTrue($config["hls"]);
+        self::assertSame(
+            'https://cloud.sysclass.com/index.php/s/HgrGTatBqTnEpSF/download',
+            $config["url"]
+        );
+    }
+
+    /**
+     * Confirms that unsupported Nextcloud share URLs are rejected before any media probe.
+     *
+     * @return void
+     */
+    public function test_nextcloud_source_rejects_unsupported_urls(): void {
+        $this->expectException(\moodle_exception::class);
+        (new \videoprogresssource_nextcloud\plugin())->to_download_url(
+            'https://example.test/video.mp4'
+        );
+    }
+
+    /**
+     * Confirms that a Nextcloud share that is not a video is rejected after the HEAD probe.
+     *
+     * @return void
+     */
+    public function test_nextcloud_source_rejects_non_video_content_type(): void {
+        $plugin = $this->create_nextcloud_plugin_with_probe([
+            "status" => 200,
+            "contenttype" => "application/pdf",
+            "acceptranges" => "bytes",
+        ]);
+
+        $this->expectException(\moodle_exception::class);
+        $plugin->build_config((object)[
+            "nextcloudurl" => 'https://cloud.sysclass.com/s/HgrGTatBqTnEpSF',
+        ]);
+    }
+
+    /**
+     * Returns a Nextcloud source whose remote HEAD probe is replaced with a fixture.
+     *
+     * @param array $probe Simulated HTTP probe result.
+     * @return \videoprogresssource_nextcloud\plugin Test double of the Nextcloud source.
+     */
+    private function create_nextcloud_plugin_with_probe(array $probe): \videoprogresssource_nextcloud\plugin {
+        $plugin = $this->getMockBuilder(\videoprogresssource_nextcloud\plugin::class)
+            ->onlyMethods(["fetch_probe"])
+            ->getMock();
+        $plugin->method("fetch_probe")->willReturn($probe);
+        return $plugin;
     }
 }

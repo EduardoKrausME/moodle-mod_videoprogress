@@ -14,14 +14,23 @@
     padding: 1rem;
 }
 
-.videoprogress-caption-list article > div:first-child {
+.videoprogress-caption-list__info {
     display: flex;
-    flex-wrap: wrap;
-    gap: .35rem .75rem;
+    flex: 1;
+    flex-direction: column;
+    gap: .35rem;
+    min-width: 0;
 }
 
 .videoprogress-caption-list article span {
     color: $videoprogress-muted;
+}
+
+.videoprogress-caption-list__url {
+    display: block;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .videoprogress-inline-form {
