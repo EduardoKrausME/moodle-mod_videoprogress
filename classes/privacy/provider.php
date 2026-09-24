@@ -25,21 +25,21 @@
 
 namespace mod_videoprogress\privacy;
 
-use core_privacy\metadata\collection;
-use core_privacy\request\approved_contextlist;
-use core_privacy\request\approved_userlist;
-use core_privacy\request\contextlist;
-use core_privacy\request\transform;
-use core_privacy\request\userlist;
-use core_privacy\request\writer;
+use core_privacy\local\metadata\collection;
+use core_privacy\local\request\approved_contextlist;
+use core_privacy\local\request\approved_userlist;
+use core_privacy\local\request\contextlist;
+use core_privacy\local\request\transform;
+use core_privacy\local\request\userlist;
+use core_privacy\local\request\writer;
 
 /**
  * Implements Moodle Privacy API metadata, export, discovery, and deletion operations.
  */
 class provider implements
-    \core_privacy\metadata\provider,
-    \core_privacy\request\plugin\provider,
-    \core_privacy\request\core_userlist_provider {
+    \core_privacy\local\metadata\provider,
+    \core_privacy\local\request\plugin\provider,
+    \core_privacy\local\request\core_userlist_provider {
 
     /**
      * Declares the personal data stored by Video Progress for the Moodle Privacy API.

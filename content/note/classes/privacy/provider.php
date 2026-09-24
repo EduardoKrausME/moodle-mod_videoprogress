@@ -27,7 +27,7 @@ namespace videoprogresscontent_note\privacy;
 /**
  * Declares that this subplugin stores no personal data independently of the parent activity.
  */
-class provider implements \core_privacy\metadata\null_provider {
+class provider implements \core_privacy\local\metadata\null_provider {
     /**
      * Returns the Privacy API explanation for a subplugin that stores no personal data.
      *
