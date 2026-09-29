@@ -24,7 +24,7 @@
 
 namespace videoprogressmaterial_pdf\privacy;
 
-use core_privacy\metadata\null_provider;
+use core_privacy\local\metadata\null_provider;
 
 /**
  * Declares that this subplugin stores no personal data independently of the parent activity.

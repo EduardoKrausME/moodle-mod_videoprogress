@@ -27,7 +27,7 @@ namespace videoprogresssource_vimeo\privacy;
 /**
  * Declares that the Vimeo source stores no personal data independently of the parent activity.
  */
-class provider implements \core_privacy\metadata\null_provider {
+class provider implements \core_privacy\local\metadata\null_provider {
     /**
      * Returns the Privacy API explanation for this stateless source plugin.
      *
