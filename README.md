@@ -153,6 +153,7 @@ The following are currently included:
 - `videoprogresssource_url`
 - `videoprogresssource_youtube`
 - `videoprogresssource_vimeo`
+- `videoprogresssource_nextcloud`
 
 This architecture makes it possible to add new video platforms in the future without changing the core of `mod_videoprogress`.
 
@@ -452,8 +453,10 @@ Each subtitle has:
 The teacher can:
 
 - Upload a new subtitle.
+- Paste a direct WebVTT URL.
+- Paste a public Nextcloud share URL.
+- Choose the language from a supported list.
 - Keep multiple subtitles.
-- Choose the language.
 - Define the default track.
 - Edit the WebVTT content.
 - Publish or keep a track unpublished.
