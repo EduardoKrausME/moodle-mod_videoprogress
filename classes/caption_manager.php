@@ -522,7 +522,7 @@ class caption_manager {
             }
             $file = reset($files);
             $tracks[] = [
-                "id" => $caption->id,
+                "id" => (int)$caption->id,
                 "language" => s($caption->language),
                 "label" => s(self::get_language_label((string)$caption->language)),
                 "isdefault" => (bool)$caption->isdefault,
