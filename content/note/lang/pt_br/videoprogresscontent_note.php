@@ -22,6 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die;
+
 $string['acknowledge'] = 'OK, entendi';
 $string['acknowledged'] = 'Ponto revisado.';
 $string['acknowledgementrequired'] = 'Confirme a leitura para continuar.';

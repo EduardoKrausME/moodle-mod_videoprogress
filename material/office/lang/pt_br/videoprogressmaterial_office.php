@@ -22,6 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die;
+
 $string['allowdownload'] = 'Permitir download do arquivo';
 $string['allowdownload_help'] = 'Quando habilitado, usuários autenticados também podem baixar o arquivo original do Office.';
 $string['download'] = 'Baixar arquivo original';

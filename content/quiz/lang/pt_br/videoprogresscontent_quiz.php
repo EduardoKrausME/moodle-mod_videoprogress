@@ -22,6 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die;
+
 $string['answer'] = 'Alternativa {$a}';
 $string['chooseanswer'] = 'Selecione uma alternativa';
 $string['correctanswer'] = 'Alternativa correta';

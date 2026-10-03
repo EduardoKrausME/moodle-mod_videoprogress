@@ -22,6 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die;
+
 $string['allowdownload'] = 'Allow download';
 $string['documentunavailable'] = 'The PDF file is not available.';
 $string['downloaddocument'] = 'Download PDF';

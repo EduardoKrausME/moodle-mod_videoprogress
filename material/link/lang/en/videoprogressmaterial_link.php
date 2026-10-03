@@ -22,6 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die;
+
 $string['externalurl'] = 'External URL';
 $string['externalurl_help'] = 'Add an HTTP or HTTPS address for an article, website, reference, tool or other material related to the video.';
 $string['invalidurl'] = 'Enter a valid HTTP or HTTPS URL.';

@@ -22,6 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die;
+
 $string['description'] = 'Objective';
 $string['invalidlevel'] = 'Select a valid Bloom\'s Taxonomy level.';
 $string['level'] = 'Bloom\'s Taxonomy level';

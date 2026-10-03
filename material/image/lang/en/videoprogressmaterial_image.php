@@ -22,6 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die;
+
 $string['allowdownload'] = 'Allow image download';
 $string['alttext'] = 'Alternative text';
 $string['alttext_help'] = 'Describe the relevant information in the image for users who cannot see it. If left empty, the material name is used.';
