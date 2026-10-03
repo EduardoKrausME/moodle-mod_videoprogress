@@ -29,7 +29,7 @@ use context_user;
 use moodle_exception;
 use moodleform;
 
-defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die;
 
 require_once($CFG->libdir . '/formslib.php');
 

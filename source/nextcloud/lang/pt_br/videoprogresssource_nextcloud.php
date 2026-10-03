@@ -22,7 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die;
 
 $string['invalidcontenttype'] = 'O compartilhamento do Nextcloud não é um vídeo. O servidor deve retornar um Content-Type começando com video/ ou uma playlist HLS.';
 $string['invalidmedia'] = 'Não foi possível acessar o compartilhamento do Nextcloud ou ele não retornou um arquivo de vídeo.';

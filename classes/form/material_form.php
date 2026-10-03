@@ -27,7 +27,7 @@ namespace mod_videoprogress\form;
 use coding_exception;
 use moodleform;
 
-defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die;
 
 require_once($CFG->libdir . '/formslib.php');
 

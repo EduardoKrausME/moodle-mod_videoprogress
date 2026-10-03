@@ -22,7 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die;
 
 $string['invalidurl'] = 'Informe uma URL válida de um vídeo público ou não listado do Vimeo.';
 $string['pluginname'] = 'Vimeo';

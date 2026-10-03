@@ -22,7 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die;
 
 $string['invalidextension'] = 'Informe uma URL terminada em MP4, WebM, OGV, M4V, MOV ou M3U8.';
 $string['invalidurl'] = 'Informe uma URL HTTP ou HTTPS válida.';

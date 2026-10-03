@@ -22,7 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die;
 
 $string['pluginname'] = 'File uploaded to Moodle';
 $string['privacy:metadata'] = 'The upload subplugin does not store personal data separately from the Video Progress activity.';

@@ -25,7 +25,7 @@
 use mod_videoprogress\caption_manager;
 use mod_videoprogress\source\manager;
 
-defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die;
 
 global $CFG;
 require_once($CFG->dirroot . '/course/moodleform_mod.php');

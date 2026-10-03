@@ -22,7 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die;
 
 $string['invalidextension'] = 'Enter a URL ending in MP4, WebM, OGV, M4V, MOV or M3U8.';
 $string['invalidurl'] = 'Enter a valid HTTP or HTTPS URL.';

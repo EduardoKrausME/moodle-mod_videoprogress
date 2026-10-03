@@ -28,7 +28,7 @@ use coding_exception;
 use mod_videoprogress\content\timecode;
 use moodleform;
 
-defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die;
 
 require_once($CFG->libdir . '/formslib.php');
 
