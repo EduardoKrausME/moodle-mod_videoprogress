@@ -66,7 +66,6 @@ $PAGE->set_title(get_string("resetprogress", "videoprogress"));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
 
-
 if ($confirmed) {
     require_sesskey();
     if (count($userids) > 100) {
