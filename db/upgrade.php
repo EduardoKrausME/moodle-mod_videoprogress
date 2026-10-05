@@ -43,7 +43,7 @@ function xmldb_videoprogress_upgrade(int $oldversion): bool {
     }
 
 
-    if ($oldversion < 2026100505) {
+    if ($oldversion < 2026100506) {
         $fs = get_file_storage();
         $contextids = $DB->get_fieldset_sql(
             "SELECT DISTINCT contextid
@@ -95,7 +95,7 @@ function xmldb_videoprogress_upgrade(int $oldversion): bool {
             }
         }
 
-        upgrade_mod_savepoint(true, 2026100505, "videoprogress");
+        upgrade_mod_savepoint(true, 2026100506, "videoprogress");
     }
 
     return true;
