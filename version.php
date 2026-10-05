@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version = 2026100506;
+$plugin->version = 2026100507;
 $plugin->release = "1.4.0";
 $plugin->component = "mod_videoprogress";
 $plugin->requires = 2024042200;
