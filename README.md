@@ -85,9 +85,9 @@ Represents how much time was spent watching the video, including repetitions.
 
 ## Video sources
 
-Video sources are implemented as subplugins of type `videoprogresssource`.
+Video sources are provided by the required `local_video_bridge` plugin and are implemented as shared subplugins of type `videoprogresssource`.
 
-The plugin currently includes the following sources.
+Video Progress consumes the following sources from Video Bridge.
 
 ### Upload
 
@@ -141,13 +141,9 @@ URLs containing the private identifier used by unlisted videos are also supporte
 
 ## Source architecture
 
-Sources are not hard-coded directly into the activity core.
+Sources are not hard-coded into the activity and are no longer shipped inside `mod_videoprogress`.
 
-Video Progress declares the subplugin type:
-
-`videoprogresssource`
-
-The following are currently included:
+The shared `local_video_bridge` plugin owns the `videoprogresssource` subplugin type and currently provides:
 
 - `videoprogresssource_upload`
 - `videoprogresssource_url`
@@ -155,7 +151,7 @@ The following are currently included:
 - `videoprogresssource_vimeo`
 - `videoprogresssource_nextcloud`
 
-This architecture makes it possible to add new video platforms in the future without changing the core of `mod_videoprogress`.
+Video Progress uses `local_video_bridge\\source\\manager` for discovery, form fields, validation, normalized source configuration, protected source files and player configuration. This keeps video providers reusable by other video activities instead of coupling them to `mod_videoprogress`.
 
 ## Playback resume
 

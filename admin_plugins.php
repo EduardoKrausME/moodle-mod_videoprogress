@@ -27,11 +27,6 @@ require_once($CFG->libdir . '/adminlib.php');
 
 $type = required_param("type", PARAM_ALPHA);
 $types = [
-    "videoprogresssource" => [
-        "section" => "mod_videoprogress_sourceplugins",
-        "title" => "subplugintype_videoprogresssource_plural",
-        "description" => "sourcepluginshelp",
-    ],
     "videoprogressmaterial" => [
         "section" => "mod_videoprogress_materialplugins",
         "title" => "subplugintype_videoprogressmaterial_plural",

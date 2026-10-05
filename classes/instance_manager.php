@@ -29,6 +29,7 @@ use context_module;
 use dml_exception;
 use dml_transaction_exception;
 use file_exception;
+use local_video_bridge\source\manager as source_manager;
 use moodle_exception;
 use stdClass;
 use stored_file_creation_exception;
@@ -53,7 +54,7 @@ class instance_manager {
     public static function save_files(stdClass $data, string|null $previoussource = null): void {
         global $USER;
         $context = context_module::instance($data->coursemodule);
-        $sourcemanager = new source\manager();
+        $sourcemanager = new source_manager();
         $sourceplugin = $sourcemanager->get_plugin((string)$data->videosource);
         $sourcemanager->save_files($data, $context, $previoussource);
         if (!$sourceplugin->supports_poster()) {

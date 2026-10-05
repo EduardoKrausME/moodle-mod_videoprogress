@@ -42,5 +42,61 @@ function xmldb_videoprogress_upgrade(int $oldversion): bool {
         upgrade_mod_savepoint(true, 2026091401, "videoprogress");
     }
 
+
+    if ($oldversion < 2026100505) {
+        $fs = get_file_storage();
+        $contextids = $DB->get_fieldset_sql(
+            "SELECT DISTINCT contextid
+               FROM {files}
+              WHERE component = :component
+                AND filearea = :filearea",
+            [
+                "component" => "mod_videoprogress",
+                "filearea" => "video",
+            ]
+        );
+
+        foreach ($contextids as $contextid) {
+            $files = $fs->get_area_files(
+                (int)$contextid,
+                "mod_videoprogress",
+                "video",
+                0,
+                "id",
+                false
+            );
+
+            foreach ($files as $file) {
+                if (!$fs->file_exists(
+                    (int)$contextid,
+                    "local_video_bridge",
+                    "video",
+                    0,
+                    $file->get_filepath(),
+                    $file->get_filename()
+                )) {
+                    $fs->create_file_from_storedfile([
+                        "contextid" => (int)$contextid,
+                        "component" => "local_video_bridge",
+                        "filearea" => "video",
+                        "itemid" => 0,
+                        "filepath" => $file->get_filepath(),
+                        "filename" => $file->get_filename(),
+                        "userid" => $file->get_userid(),
+                        "source" => $file->get_source(),
+                        "author" => $file->get_author(),
+                        "license" => $file->get_license(),
+                        "timecreated" => $file->get_timecreated(),
+                        "timemodified" => $file->get_timemodified(),
+                        "sortorder" => $file->get_sortorder(),
+                    ], $file);
+                }
+                $file->delete();
+            }
+        }
+
+        upgrade_mod_savepoint(true, 2026100505, "videoprogress");
+    }
+
     return true;
 }

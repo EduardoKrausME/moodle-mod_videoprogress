@@ -24,10 +24,12 @@
 
 namespace mod_videoprogress;
 
+use local_video_bridge\source;
+
 /**
  * Verifies discovery and normalization behavior supplied by video source subplugins.
  *
- * @covers \mod_videoprogress\source\manager
+ * @covers \local_video_bridge\source\manager
  * @covers \videoprogresssource_url\plugin
  * @covers \videoprogresssource_youtube\plugin
  * @covers \videoprogresssource_vimeo\plugin
@@ -35,7 +37,7 @@ namespace mod_videoprogress;
  */
 final class source_plugins_test extends \advanced_testcase {
     /**
-     * Confirms that the source manager discovers every source bundled with the activity.
+     * Confirms that the source manager discovers every source supplied by Video Bridge.
      *
      * @return void
      */

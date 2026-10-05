@@ -26,13 +26,6 @@ defined('MOODLE_INTERNAL') || die;
 
 if ($hassiteconfig) {
     $ADMIN->add("modsettings", new admin_externalpage(
-        "mod_videoprogress_sourceplugins",
-        get_string("subplugintype_videoprogresssource_plural", "videoprogress"),
-        new moodle_url('/mod/videoprogress/admin_plugins.php', ["type" => "videoprogresssource"]),
-        'moodle/site:config'
-    ));
-
-    $ADMIN->add("modsettings", new admin_externalpage(
         "mod_videoprogress_materialplugins",
         get_string("subplugintype_videoprogressmaterial_plural", "videoprogress"),
         new moodle_url('/mod/videoprogress/admin_plugins.php', ["type" => "videoprogressmaterial"]),

@@ -90,7 +90,6 @@ class backup_videoprogress_activity_structure_step extends backup_activity_struc
         $activity->add_child($sessions);
         $sessions->add_child($session);
         $activity->set_source_table("videoprogress", ["id" => backup::VAR_ACTIVITYID]);
-        $this->add_subplugin_structure("videoprogresssource", $activity, true);
         $caption->set_source_table("videoprogress_captions", ["videoprogressid" => backup::VAR_PARENTID]);
         $material->set_source_table("videoprogress_materials", ["videoprogressid" => backup::VAR_PARENTID]);
         $objective->set_source_table("videoprogress_objectives", ["videoprogressid" => backup::VAR_PARENTID]);
@@ -105,7 +104,7 @@ class backup_videoprogress_activity_structure_step extends backup_activity_struc
         $progress->annotate_ids("user", "userid");
         $session->annotate_ids("user", "userid");
         $interaction->annotate_ids("user", "userid");
-        $activity->annotate_files("mod_videoprogress", "video", null);
+        $activity->annotate_files("local_video_bridge", "video", null);
         $activity->annotate_files("mod_videoprogress", "poster", null);
         $caption->annotate_files("mod_videoprogress", "caption", "id");
         $material->annotate_files("videoprogressmaterial_pdf", "document", "id");

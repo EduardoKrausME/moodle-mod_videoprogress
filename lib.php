@@ -23,7 +23,7 @@
  */
 
 use mod_videoprogress\progress_manager;
-use mod_videoprogress\source\manager;
+use local_video_bridge\source\manager;
 
 /**
  * Declares the Moodle core features supported by the activity module.
@@ -171,14 +171,14 @@ function mod_videoprogress_pluginfile($course, $cm, $context, string $filearea, 
                                       bool $forcedownload, array $options = []): bool {
     global $DB;
 
-    if ($context->contextlevel !== CONTEXT_MODULE || !in_array($filearea, ["video", "poster", "caption"], true)) {
+    if ($context->contextlevel !== CONTEXT_MODULE || !in_array($filearea, ["poster", "caption"], true)) {
         return false;
     }
 
     require_login($course, true, $cm);
     require_capability('mod/videoprogress:view', $context);
     $itemid = (int)array_shift($args);
-    if ($filearea !== "caption" && $itemid !== 0) {
+    if ($filearea === "poster" && $itemid !== 0) {
         return false;
     }
     if ($filearea === "caption") {
@@ -209,7 +209,6 @@ function mod_videoprogress_pluginfile($course, $cm, $context, string $filearea, 
  */
 function videoprogress_get_file_areas($course, $cm, $context): array {
     return [
-        "video" => get_string("videofile", "videoprogress"),
         "poster" => get_string("poster", "videoprogress"),
         "caption" => get_string("captions", "videoprogress"),
     ];

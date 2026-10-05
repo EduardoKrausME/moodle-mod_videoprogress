@@ -26,6 +26,7 @@ namespace mod_videoprogress;
 
 use coding_exception;
 use context_module;
+use local_video_bridge\source\manager as source_manager;
 use moodle_exception;
 use moodle_url;
 use stdClass;
@@ -44,7 +45,7 @@ class player_config {
      * @throws moodle_exception
      */
     public static function build(stdClass $activity, context_module $context): array {
-        $sourceconfig = (new source\manager())->get_player_config($activity, $context);
+        $sourceconfig = (new source_manager())->get_player_config($activity, $context);
         return $sourceconfig + [
                 "poster" => self::first_file_url($context, "poster"),
                 "maxplaybackrate" => (float)$activity->maxplaybackrate,

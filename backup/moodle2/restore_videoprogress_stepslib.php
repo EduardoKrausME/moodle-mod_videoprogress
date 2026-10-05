@@ -34,7 +34,6 @@ class restore_videoprogress_activity_structure_step extends restore_activity_str
     protected function define_structure(): array {
         $activitypath = new restore_path_element("videoprogress", '/activity/videoprogress');
         $paths = [$activitypath];
-        $this->add_subplugin_structure("videoprogresssource", $activitypath);
         $paths[] = new restore_path_element("videoprogress_caption", '/activity/videoprogress/captions/caption');
         $paths[] = new restore_path_element("videoprogress_material", '/activity/videoprogress/materials/material');
         $paths[] = new restore_path_element("videoprogress_objective", '/activity/videoprogress/objectives/objective');
@@ -204,6 +203,8 @@ class restore_videoprogress_activity_structure_step extends restore_activity_str
      * @return void This method does not return a value.
      */
     protected function after_execute(): void {
+        $this->add_related_files("local_video_bridge", "video", null);
+        // Keep old backups restorable; the upload source can migrate this legacy area on first use.
         $this->add_related_files("mod_videoprogress", "video", null);
         $this->add_related_files("mod_videoprogress", "poster", null);
         $this->add_related_files("mod_videoprogress", "caption", "videoprogress_caption");
