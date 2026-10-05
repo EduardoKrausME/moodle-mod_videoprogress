@@ -28,12 +28,12 @@ use core_plugin_manager;
 use mod_videoprogress\plugininfo\videoprogresscontent;
 use mod_videoprogress\plugininfo\videoprogressmaterial;
 use mod_videoprogress\plugininfo\videoprogressobjective;
-use mod_videoprogress\plugininfo\videoprogresssource;
+use local_video_bridge\plugininfo\videoprogresssource;
 
 /**
  * Verifies that Moodle resolves the custom Video Progress subplugin types correctly.
  *
- * @covers \mod_videoprogress\plugininfo\videoprogresssource
+ * @covers \local_video_bridge\plugininfo\videoprogresssource
  * @covers \mod_videoprogress\plugininfo\videoprogressmaterial
  * @covers \mod_videoprogress\plugininfo\videoprogresscontent
  * @covers \mod_videoprogress\plugininfo\videoprogressobjective
