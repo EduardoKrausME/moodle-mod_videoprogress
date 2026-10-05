@@ -42,7 +42,6 @@ function xmldb_videoprogress_upgrade(int $oldversion): bool {
         upgrade_mod_savepoint(true, 2026091401, "videoprogress");
     }
 
-
     if ($oldversion < 2026100506) {
         $fs = get_file_storage();
         $contextids = $DB->get_fieldset_sql(
