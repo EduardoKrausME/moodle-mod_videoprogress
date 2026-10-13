@@ -25,7 +25,7 @@
 use mod_videoprogress\caption_manager;
 use mod_videoprogress\format;
 use mod_videoprogress\progress_manager;
-use mod_videoprogress\source\manager;
+use local_video_bridge\source\manager;
 
 require('../../config.php');
 
