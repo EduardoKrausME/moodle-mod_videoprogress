@@ -8,6 +8,12 @@ The progress percentage is calculated based on the content actually watched. See
 
 Teachers and managers also have access to individual and class reports, a viewing timeline, automatic completion, gradebook integration, supporting materials, learning objectives, and content synchronized with specific moments in the video.
 
+## Requirements and installation
+
+**Required dependency:** [Moodle Video Bridge (`local_video_bridge`)](https://github.com/EduardoKrausME/moodle-local_video_bridge), version `2026100505` or later. The Video Bridge plugin is not bundled with this activity; install it in `local/video_bridge` before installing or upgrading `mod_videoprogress`.
+
+Video Bridge requires Moodle 4.5 or later and currently also depends on `local_ai_bridge`. Install its dependencies and complete the upgrade through **Site administration > Notifications**. An installation limited to plugins available on the Moodle Marketplace must ensure that these required plugins are available there; the activity cannot run without Video Bridge.
+
 ## Main features
 
 - Progress based on the segments actually watched.
