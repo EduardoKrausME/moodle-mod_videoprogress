@@ -24,11 +24,11 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version = 2026100507;
-$plugin->release = "1.4.0";
+$plugin->version = 2026101900;
+$plugin->release = "1.4.1";
 $plugin->component = "mod_videoprogress";
 $plugin->requires = 2024042200;
+$plugin->maturity = MATURITY_STABLE;
 $plugin->dependencies = [
     "local_video_bridge" => 2026100505,
 ];
-$plugin->maturity = MATURITY_STABLE;
