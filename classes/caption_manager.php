@@ -200,11 +200,14 @@ class caption_manager {
      * @throws coding_exception
      */
     public static function get_source_options(): array {
-        return [
+        $options = [
             "upload" => get_string("captionsourceupload", "videoprogress"),
             "url" => get_string("captionsourceurl", "videoprogress"),
-            "nextcloud" => get_string("captionsourcenextcloud", "videoprogress"),
         ];
+        if (class_exists(nextcloud_plugin::class)) {
+            $options["nextcloud"] = get_string("captionsourcenextcloud", "videoprogress");
+        }
+        return $options;
     }
 
     /**

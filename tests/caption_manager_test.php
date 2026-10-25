@@ -81,17 +81,26 @@ final class caption_manager_test extends \advanced_testcase {
     }
 
     /**
-     * Confirms that Nextcloud caption shares are converted to canonical download URLs.
+     * Verifies that the optional Nextcloud caption source follows provider availability.
      *
      * @return void
      */
-    public function test_nextcloud_caption_share_is_converted_to_download_url(): void {
+    public function test_nextcloud_caption_source_follows_provider_availability(): void {
         $manager = new caption_manager();
+        $shareurl = "https://cloud.sysclass.com/s/CaptionToken";
 
-        self::assertSame(
-            'https://cloud.sysclass.com/index.php/s/CaptionToken/download',
-            $manager->to_nextcloud_download_url('https://cloud.sysclass.com/s/CaptionToken')
-        );
+        if (class_exists(\videoprogresssource_nextcloud\plugin::class)) {
+            self::assertArrayHasKey("nextcloud", caption_manager::get_source_options());
+            self::assertSame(
+                "https://cloud.sysclass.com/index.php/s/CaptionToken/download",
+                $manager->to_nextcloud_download_url($shareurl)
+            );
+            return;
+        }
+
+        self::assertArrayNotHasKey("nextcloud", caption_manager::get_source_options());
+        $this->expectException(\moodle_exception::class);
+        $manager->to_nextcloud_download_url($shareurl);
     }
 
     /**
