@@ -2,6 +2,14 @@
 
 This changelog documents only the two most recent published GitHub releases. Each entry describes changes verified by comparing its tag with the immediately preceding published release. Changes made later on `master` are excluded.
 
+## 1.4.2 - 2026-10-31
+
+- Corrected caption-source options and regression tests after removal of the Nextcloud source provider.
+- Updated the empty-report Mustache template and rebuilt the captions JavaScript asset.
+- Removed installation instructions from the README.
+
+**Full comparison:** [1.4.1...1.4.2](https://github.com/EduardoKrausME/moodle-mod_videoprogress/compare/1.4.1...1.4.2)
+
 ## 1.4.1 - 2026-10-19
 
 ### Changed
