@@ -229,11 +229,13 @@ class manager {
     public function delete(stdClass $material, context_module $context): void {
         global $DB;
         $transaction = $DB->start_delegated_transaction();
+        // phpcs:disable Generic.CodeAnalysis.EmptyStatement.DetectedCatch
         try {
             $this->get_plugin($material->plugin)->delete($material, $context);
-        } catch (moodle_exception $exception) { // phpcs:disable Generic.CodeAnalysis.EmptyStatement.DetectedCatch
+        } catch (moodle_exception $exception) {
             // The base record must remain removable when its subplugin was uninstalled.
         }
+        // phpcs:enable Generic.CodeAnalysis.EmptyStatement.DetectedCatch
         $DB->delete_records("videoprogress_materials", ["id" => $material->id]);
         $transaction->allow_commit();
     }

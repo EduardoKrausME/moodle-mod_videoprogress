@@ -513,11 +513,13 @@ class manager {
     public function delete_item(stdClass $item, context_module $context): void {
         global $DB;
         $transaction = $DB->start_delegated_transaction();
+        // phpcs:disable Generic.CodeAnalysis.EmptyStatement.DetectedCatch
         try {
             $this->get_plugin($item->plugin)->delete($item, $context);
-        } catch (moodle_exception $exception) { // phpcs:disable Generic.CodeAnalysis.EmptyStatement.DetectedCatch
+        } catch (moodle_exception $exception) {
             // The base item must remain removable when its subplugin was uninstalled.
         }
+        // phpcs:enable Generic.CodeAnalysis.EmptyStatement.DetectedCatch
         $DB->delete_records("videoprogress_interactions", ["itemid" => $item->id]);
         $DB->delete_records("videoprogress_pointitems", ["id" => $item->id]);
         $transaction->allow_commit();
