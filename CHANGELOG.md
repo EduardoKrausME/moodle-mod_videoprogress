@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.3 - 2026-11-21
+
+- Updated the plugin icon and release metadata; no functional code changes.
+
+**Comparison:** [1.4.2...1.4.3](https://github.com/EduardoKrausME/moodle-mod_videoprogress/compare/1.4.2...1.4.3)
+
 This changelog documents only the two most recent published GitHub releases. Each entry describes changes verified by comparing its tag with the immediately preceding published release. Changes made later on `master` are excluded.
 
 ## 1.4.2 - 2026-10-31
